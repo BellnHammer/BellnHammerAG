@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Careers | Bell & Hammer | Pacific Northwest Construction</title>
+    <meta name="description" content="Join the Bell & Hammer crew. We're hiring experienced carpenters, laborers, and construction workers in Kitsap County, Washington.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: #e8e4df; background: #0a0a0a; line-height: 1.6; }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        :root {
+            --dark: #0a0a0a; --dark2: #111; --dark3: #1a1917;
+            --rust: #be7258; --rust-glow: #d4896e; --gold: #c9a96e;
+            --cream: #e8e4df; --mid: #8a8579; --dim: #4a4640; --white: #fff;
+        }
+        h1, h2, h3 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; }
+        h1 { font-size: clamp(2.8rem, 8vw, 5rem); line-height: 0.95; color: var(--cream); }
+        h2 { font-size: clamp(1.8rem, 4vw, 3rem); color: var(--cream); }
+        h3 { font-size: 1.3rem; letter-spacing: 1.5px; color: var(--cream); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+        .tag { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 4px; color: var(--rust); margin-bottom: 16px; display: inline-block; }
+        .tag::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--rust); margin-right: 12px; vertical-align: middle; }
+        .divider { height: 1px; background: linear-gradient(to right, transparent, var(--dim), transparent); }
+
+        /* Nav */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 24px 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 4px; color: var(--cream); }
+        .nav-logo span { color: var(--rust); }
+        .nav-links { display: flex; gap: 36px; list-style: none; }
+        .nav-links a { color: var(--mid); font-size: 0.75rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--cream); }
+        .nav-cta { font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--rust); border: 1px solid rgba(190,114,88,0.3); padding: 10px 24px; transition: all 0.3s; }
+        .nav-cta:hover { background: var(--rust); color: var(--dark); }
+        .nav-toggle { display: none; background: none; border: none; cursor: pointer; width: 30px; height: 20px; position: relative; z-index: 60; }
+        .nav-toggle span { display: block; width: 100%; height: 1.5px; background: var(--cream); position: absolute; left: 0; transition: all 0.3s; }
+        .nav-toggle span:nth-child(1) { top: 0; }
+        .nav-toggle span:nth-child(2) { top: 9px; }
+        .nav-toggle span:nth-child(3) { top: 18px; }
+        .nav-toggle.open span:nth-child(1) { top: 9px; transform: rotate(45deg); }
+        .nav-toggle.open span:nth-child(2) { opacity: 0; }
+        .nav-toggle.open span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
+
+        /* Hero */
+        .careers-hero { padding: 220px 0 80px; background: var(--dark2); border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .careers-hero h1 em { font-style: normal; color: var(--rust); }
+        .careers-hero p { color: var(--mid); font-weight: 300; margin-top: 20px; max-width: 560px; line-height: 1.8; }
+
+        /* Section */
+        .section { padding: 100px 0; }
+        .section-dark { background: var(--dark); }
+        .section-dark2 { background: var(--dark2); }
+
+        /* Intro */
+        .intro-text { max-width: 720px; }
+        .intro-text p { color: var(--mid); font-weight: 300; line-height: 1.9; margin-bottom: 20px; }
+        .intro-text strong { color: var(--cream); font-weight: 500; }
+
+        /* Offer Grid */
+        .offer-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 48px; }
+        .offer-card { background: var(--dark2); padding: 40px 32px; position: relative; overflow: hidden; transition: all 0.5s ease; }
+        .section-dark2 .offer-card { background: var(--dark3); }
+        .offer-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--rust); transform: scaleX(0); transform-origin: left; transition: transform 0.5s ease; }
+        .offer-card:hover::before { transform: scaleX(1); }
+        .offer-card:hover { background: var(--dark3); }
+        .offer-card h3 { margin-bottom: 12px; }
+        .offer-card p { color: var(--mid); font-size: 0.9rem; font-weight: 300; line-height: 1.7; }
+
+        /* Looking For */
+        .looking-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; margin-top: 48px; }
+        .looking-traits { list-style: none; }
+        .looking-traits li { font-size: 0.95rem; color: var(--mid); padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.04); padding-left: 24px; position: relative; font-weight: 300; }
+        .looking-traits li::before { content: ''; position: absolute; left: 0; top: 22px; width: 6px; height: 6px; background: var(--rust); transform: rotate(45deg); }
+        .looking-traits li strong { color: var(--cream); font-weight: 500; }
+
+        .role-card { background: var(--dark3); border: 1px solid rgba(255,255,255,0.04); padding: 28px 24px; margin-bottom: 12px; transition: border-color 0.4s; }
+        .role-card:hover { border-color: rgba(190,114,88,0.3); }
+        .role-card h3 { font-size: 1.1rem; margin-bottom: 6px; }
+        .role-card p { color: var(--mid); font-size: 0.85rem; font-weight: 300; line-height: 1.7; }
+
+        /* CTA */
+        .careers-cta { padding: 100px 0; background: var(--dark2); text-align: center; border-top: 1px solid rgba(255,255,255,0.04); }
+        .careers-cta h2 { margin-bottom: 20px; }
+        .careers-cta p { color: var(--mid); font-weight: 300; max-width: 520px; margin: 0 auto 40px; line-height: 1.8; }
+        .btn { display: inline-flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; padding: 18px 40px; border: none; cursor: pointer; transition: all 0.4s ease; }
+        .btn-rust { background: var(--rust); color: var(--dark); }
+        .btn-rust:hover { background: var(--rust-glow); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(190,114,88,0.3); }
+        .btn-ghost { background: transparent; color: var(--cream); border: 1px solid var(--dim); padding: 18px 40px; }
+        .btn-ghost:hover { border-color: var(--rust); color: var(--rust); }
+        .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+        /* Footer */
+        .footer { background: var(--dark2); padding: 60px 0 0; border-top: 1px solid rgba(255,255,255,0.03); }
+        .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 48px; }
+        .footer-brand p { color: var(--dim); font-size: 0.85rem; font-weight: 300; max-width: 300px; line-height: 1.7; margin-top: 16px; }
+        .footer-col p { color: var(--dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+        .footer-col a { display: block; color: var(--mid); font-size: 0.85rem; margin-bottom: 10px; transition: color 0.3s; font-weight: 300; }
+        .footer-col a:hover { color: var(--cream); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.03); padding: 20px 0; text-align: center; font-size: 0.7rem; color: var(--dim); letter-spacing: 1px; }
+
+        @media (max-width: 900px) {
+            .nav-links, .nav-cta { display: none; }
+            .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,10,10,0.98); padding: 100px 32px 32px; gap: 24px; z-index: 55; }
+            .nav-links.open a { font-size: 1.2rem; color: var(--cream); }
+            .nav-toggle { display: block; }
+            .offer-grid { grid-template-columns: 1fr; }
+            .looking-grid { grid-template-columns: 1fr; gap: 40px; }
+            .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="bellnhammer.html" class="nav-logo"><img src="images/logo.png" alt="Bell & Hammer" style="height:48px;border-radius:6px;"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="bellnhammer.html#services">Services</a></li>
+            <li><a href="bellnhammer.html#work">Work</a></li>
+            <li><a href="bellnhammer.html#about">About</a></li>
+            <li><a href="bellnhammer.html#reviews">Reviews</a></li>
+            <li><a href="bellnhammer.html#faq">FAQ</a></li>
+            <li><a href="careers.html" style="color:var(--cream);">Careers</a></li>
+            <li><a href="https://clienthub.getjobber.com/client_hubs/d39802b2-7d77-40f0-a155-36e7188d511d/login/new?source=share_login" target="_blank">Client Portal</a></li>
+        </ul>
+        <a href="bellnhammer.html#contact" class="nav-cta">Get Estimate</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<section class="careers-hero">
+    <div class="container">
+        <div class="tag">Now Hiring</div>
+        <h1>Build Your Career<br><em>With Us</em></h1>
+        <p>We're a small crew that does big work. If you take pride in your craft and show up ready to build, we want to hear from you.</p>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section section-dark">
+    <div class="container">
+        <div class="tag">Who We Are</div>
+        <h2>Not Your Typical Contractor</h2>
+        <div class="intro-text">
+            <p>Bell &amp; Hammer was founded by <strong>Bryce Bell</strong> and <strong>Trayton Shelton</strong> in Kitsap County, Washington. We're a residential construction company that runs on communication, accountability, and craftsmanship — not excuses.</p>
+            <p>We keep our crew small on purpose. That means every person matters, every voice is heard, and every project gets the attention it deserves. You won't be a number here. You'll be on real job sites doing real work with people who give a damn.</p>
+            <p>If you're tired of disorganized crews, unclear expectations, or bosses who don't pick up a tool — this is the opposite of that.</p>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section section-dark2">
+    <div class="container">
+        <div class="tag">Benefits</div>
+        <h2>What We Offer</h2>
+        <div class="offer-grid">
+            <div class="offer-card">
+                <h3>Competitive Pay</h3>
+                <p>Fair wages based on skill and experience. We pay what the work is worth — no lowball games.</p>
+            </div>
+            <div class="offer-card">
+                <h3>Growth Opportunity</h3>
+                <p>Small company means more responsibility, faster. Step up and there's room to lead.</p>
+            </div>
+            <div class="offer-card">
+                <h3>Respectful Culture</h3>
+                <p>Clean sites, clear expectations, and a crew that treats each other and clients with respect.</p>
+            </div>
+            <div class="offer-card">
+                <h3>Real Projects</h3>
+                <p>Full remodels, additions, roofing, siding, decks — not just punch list work. You'll build things you're proud of.</p>
+            </div>
+            <div class="offer-card">
+                <h3>Daily Variety</h3>
+                <p>No two days look the same. Framing one week, tile the next, siding after that. You'll grow your skills fast.</p>
+            </div>
+            <div class="offer-card">
+                <h3>Pacific Northwest Life</h3>
+                <p>Work in Kitsap County surrounded by water, mountains, and trees. Commute past the Puget Sound, not a parking lot.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="section section-dark">
+    <div class="container">
+        <div class="tag">Open Roles</div>
+        <h2>Who We're Looking For</h2>
+        <div class="looking-grid">
+            <div>
+                <ul class="looking-traits">
+                    <li><strong>Show up on time.</strong> Every day. No exceptions. Reliability is the foundation.</li>
+                    <li><strong>Take pride in your work.</strong> If it's not right, fix it. Don't walk away from it.</li>
+                    <li><strong>Communicate.</strong> If something's off, say so. We'd rather hear about it early than discover it late.</li>
+                    <li><strong>Be willing to learn.</strong> Whether you've got 20 years or 2, there's always something new on the next job.</li>
+                    <li><strong>Respect the team.</strong> Respect the client. Respect the site. That's non-negotiable.</li>
+                </ul>
+            </div>
+            <div>
+                <div class="role-card">
+                    <h3>Experienced Carpenter</h3>
+                    <p>3+ years residential framing, finishing, or remodel experience. Comfortable reading plans, running a crew, and working independently when needed.</p>
+                </div>
+                <div class="role-card">
+                    <h3>General Laborer</h3>
+                    <p>Willing to work hard, learn fast, and take direction. Demo, cleanup, material handling, and support work. Great entry point into the trade.</p>
+                </div>
+                <div class="role-card">
+                    <h3>Construction Worker</h3>
+                    <p>Some experience with tools and job sites. Comfortable with framing, siding, decking, or fencing. Ready to grow with a company that invests in its people.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<section class="careers-cta">
+    <div class="container">
+        <div class="tag">Apply Now</div>
+        <h2>Interested? Reach Out.</h2>
+        <p>No formal application needed. Send us an email or give us a call. Tell us who you are, what you've done, and when you can start.</p>
+        <div class="cta-actions">
+            <a href="mailto:admin@bellnhammer.biz?subject=Career%20Inquiry%20-%20Bell%20%26%20Hammer" class="btn btn-rust">Email Us</a>
+            <a href="tel:3607100409" class="btn btn-ghost">(360) 710-0409</a>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container footer-inner">
+        <div class="footer-brand">
+            <span class="nav-logo">BELL <span>&amp;</span> HAMMER</span>
+            <p>Licensed, bonded &amp; insured residential construction in the Pacific Northwest. Built on craft. Led by communication.</p>
+        </div>
+        <div class="footer-col">
+            <p>Navigation</p>
+            <a href="bellnhammer.html#services">Services</a>
+            <a href="bellnhammer.html#work">Our Work</a>
+            <a href="bellnhammer.html#about">About</a>
+            <a href="bellnhammer.html#reviews">Reviews</a>
+            <a href="bellnhammer.html#contact">Request Estimate</a>
+            <a href="careers.html">Careers</a>
+        </div>
+        <div class="footer-col">
+            <p>Contact</p>
+            <a href="tel:3607100409">(360) 710-0409</a>
+            <a href="mailto:admin@bellnhammer.biz">admin@bellnhammer.biz</a>
+            <a href="https://clienthub.getjobber.com/client_hubs/d39802b2-7d77-40f0-a155-36e7188d511d/login/new?source=share_login" target="_blank" style="margin-top:12px; color:var(--rust);">Client Portal Login &rarr;</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Bell &amp; Hammer. All rights reserved. &nbsp;|&nbsp; <a href="terms.html" style="color:var(--dim);">Terms</a> &nbsp;|&nbsp; <a href="privacy.html" style="color:var(--dim);">Privacy</a></p>
+    </div>
+</footer>
+
+<script>
+const toggle = document.getElementById('navToggle');
+const links = document.getElementById('navLinks');
+toggle.addEventListener('click', () => { links.classList.toggle('open'); toggle.classList.toggle('open'); });
+document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); toggle.classList.remove('open'); }));
+</script>
+
+</body>
+</html>

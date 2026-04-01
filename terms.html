@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms & Conditions | Bell & Hammer</title>
+    <meta name="description" content="Bell & Hammer website and project terms of service. Licensed residential construction in Kitsap County, Washington.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: #e8e4df; background: #0a0a0a; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        :root {
+            --dark: #0a0a0a; --dark2: #111; --dark3: #1a1917;
+            --rust: #be7258; --rust-glow: #d4896e; --gold: #c9a96e;
+            --cream: #e8e4df; --mid: #8a8579; --dim: #4a4640; --white: #fff;
+        }
+        h1, h2, h3 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; }
+        h1 { font-size: clamp(2.8rem, 8vw, 5rem); line-height: 0.95; color: var(--cream); }
+        h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--cream); margin-top: 48px; margin-bottom: 16px; }
+        h3 { font-size: 1.1rem; letter-spacing: 1.5px; color: var(--cream); margin-top: 32px; margin-bottom: 12px; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+        .tag { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 4px; color: var(--rust); margin-bottom: 16px; display: inline-block; }
+        .tag::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--rust); margin-right: 12px; vertical-align: middle; }
+
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 24px 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 4px; color: var(--cream); }
+        .nav-logo span { color: var(--rust); }
+        .nav-links { display: flex; gap: 36px; list-style: none; }
+        .nav-links a { color: var(--mid); font-size: 0.75rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--cream); }
+        .nav-cta { font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--rust); border: 1px solid rgba(190,114,88,0.3); padding: 10px 24px; transition: all 0.3s; }
+        .nav-cta:hover { background: var(--rust); color: var(--dark); }
+        .nav-toggle { display: none; background: none; border: none; cursor: pointer; width: 30px; height: 20px; position: relative; z-index: 60; }
+        .nav-toggle span { display: block; width: 100%; height: 1.5px; background: var(--cream); position: absolute; left: 0; transition: all 0.3s; }
+        .nav-toggle span:nth-child(1) { top: 0; }
+        .nav-toggle span:nth-child(2) { top: 9px; }
+        .nav-toggle span:nth-child(3) { top: 18px; }
+        .nav-toggle.open span:nth-child(1) { top: 9px; transform: rotate(45deg); }
+        .nav-toggle.open span:nth-child(2) { opacity: 0; }
+        .nav-toggle.open span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
+
+        .legal-hero { padding: 220px 0 60px; background: var(--dark2); border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .legal-hero h1 em { font-style: normal; color: var(--rust); }
+
+        .legal-content { padding: 60px 0 100px; }
+        .legal-content p { color: var(--mid); font-weight: 300; line-height: 1.9; margin-bottom: 16px; font-size: 0.92rem; }
+        .legal-content strong { color: var(--cream); font-weight: 500; }
+        .legal-content ul { list-style: none; margin: 12px 0 20px; }
+        .legal-content ul li { color: var(--mid); font-weight: 300; font-size: 0.9rem; padding: 6px 0 6px 24px; position: relative; line-height: 1.7; }
+        .legal-content ul li::before { content: ''; position: absolute; left: 0; top: 13px; width: 5px; height: 5px; background: var(--rust); transform: rotate(45deg); }
+        .legal-divider { height: 1px; background: linear-gradient(to right, transparent, var(--dim), transparent); margin: 60px 0; }
+
+        .footer { background: var(--dark2); padding: 60px 0 0; border-top: 1px solid rgba(255,255,255,0.03); }
+        .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 48px; }
+        .footer-brand p { color: var(--dim); font-size: 0.85rem; font-weight: 300; max-width: 300px; line-height: 1.7; margin-top: 16px; }
+        .footer-col p { color: var(--dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+        .footer-col a { display: block; color: var(--mid); font-size: 0.85rem; margin-bottom: 10px; transition: color 0.3s; font-weight: 300; }
+        .footer-col a:hover { color: var(--cream); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.03); padding: 20px 0; text-align: center; font-size: 0.7rem; color: var(--dim); letter-spacing: 1px; }
+
+        @media (max-width: 900px) {
+            .nav-links, .nav-cta { display: none; }
+            .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,10,10,0.98); padding: 100px 32px 32px; gap: 24px; z-index: 55; }
+            .nav-links.open a { font-size: 1.2rem; color: var(--cream); }
+            .nav-toggle { display: block; }
+            .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="bellnhammer.html" class="nav-logo"><img src="images/logo.png" alt="Bell & Hammer" style="height:48px;border-radius:6px;"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="bellnhammer.html#services">Services</a></li>
+            <li><a href="bellnhammer.html#work">Work</a></li>
+            <li><a href="bellnhammer.html#about">About</a></li>
+            <li><a href="bellnhammer.html#reviews">Reviews</a></li>
+            <li><a href="bellnhammer.html#faq">FAQ</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="https://clienthub.getjobber.com/client_hubs/d39802b2-7d77-40f0-a155-36e7188d511d/login/new?source=share_login" target="_blank">Client Portal</a></li>
+        </ul>
+        <a href="bellnhammer.html#contact" class="nav-cta">Get Estimate</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<section class="legal-hero">
+    <div class="container">
+        <div class="tag">Legal</div>
+        <h1>Terms <em>&amp; Conditions</em></h1>
+    </div>
+</section>
+
+<section class="legal-content">
+    <div class="container">
+
+        <h2>Website Terms of Service</h2>
+        <p><strong>Effective Date: March 29, 2025</strong></p>
+
+        <h3>1. Use of Our Website</h3>
+        <p>By accessing this website, you agree to use it lawfully and responsibly. Prohibited activities include:</p>
+        <ul>
+            <li>Attempting to access our systems without permission</li>
+            <li>Using the site to send unsolicited messages (no spam)</li>
+            <li>Copying or reverse-engineering any content</li>
+            <li>Submitting false or misleading information</li>
+        </ul>
+
+        <h3>2. Services Offered</h3>
+        <p>This website provides information about our construction services, allows you to submit estimate requests, and offers homeowner education on damage and improvements. Submission of a request does not guarantee a job, timeline, or service commitment until confirmed by us in writing.</p>
+
+        <h3>3. Intellectual Property</h3>
+        <p>All content on this site belongs to Bell &amp; Hammer or our licensed partners. You may not copy, reuse, or redistribute anything without our written permission.</p>
+
+        <h3>4. Third-Party Links</h3>
+        <p>Our site may link to external websites. We are not responsible for their content, policies, or reliability.</p>
+
+        <h3>5. Disclaimer of Warranties</h3>
+        <p>This site is provided "as is" and "as available" with no guarantees regarding uptime, accuracy, or results.</p>
+
+        <h3>6. Limitation of Liability</h3>
+        <p>Bell &amp; Hammer will not be held liable for indirect damages or losses arising from reliance on this website or its unavailability.</p>
+
+        <h3>7. Changes to These Terms</h3>
+        <p>We may update these terms from time to time. Updates will be posted with a revised effective date.</p>
+
+        <h3>8. Governing Law</h3>
+        <p>These terms are governed by the laws of Washington State. Any disputes will be handled in local jurisdiction courts.</p>
+
+        <h3>9. Contact Us</h3>
+        <p><strong>Phone:</strong> <a href="tel:3607100409" style="color:var(--rust);">(360) 710-0409</a><br>
+        <strong>Email:</strong> <a href="mailto:admin@bellnhammer.biz" style="color:var(--rust);">admin@bellnhammer.biz</a></p>
+
+        <div class="legal-divider"></div>
+
+        <h2>Project Terms of Service</h2>
+
+        <h3>1. Scope of Work</h3>
+        <p>Any modifications, additions, or reductions to the original scope must be requested in writing and may be subject to additional costs and timeline adjustments.</p>
+
+        <h3>2. Payment Terms</h3>
+        <ul>
+            <li>A deposit is required before work begins</li>
+            <li>Progress invoices will be issued at the completion of each project phase and are due within 7 business days</li>
+            <li>Final payment is due upon substantial completion</li>
+            <li>Late payments will incur a service charge of 8% per month or the maximum rate allowed by law</li>
+        </ul>
+
+        <h3>3. Deposits &amp; Advance Payments</h3>
+        <p><strong>Before physical work begins:</strong> 50% of the deposit is non-refundable to cover administrative and procurement costs.</p>
+        <p><strong>After physical work has started:</strong> 100% of the deposit is non-refundable. All deposits are applied toward the final project price.</p>
+
+        <h3>4. Change Orders</h3>
+        <p>Any deviation from the agreed-upon scope must be documented in a formal Change Order signed by both parties before additional work begins.</p>
+
+        <h3>5. Project Timeline</h3>
+        <p>Work is scheduled to commence on an agreed-upon date with an estimated completion timeline. Timelines are subject to delays caused by weather, supply chain issues, hidden conditions, or permitting.</p>
+
+        <h3>6. Materials &amp; Site Conditions</h3>
+        <p>The client typically provides materials unless otherwise specified in the estimate. If the contractor sources materials, additional costs for procurement and delivery will apply. The job site must be accessible and free of obstructions.</p>
+
+        <h3>7. Minimum Labor Requirement</h3>
+        <p>A minimum labor charge of two (2) hours will be applied to all handyman and small-scale service tasks, regardless of the actual time required to complete the work.</p>
+
+        <h3>8. Material &amp; Finish Selections</h3>
+        <p>All material and finish selections are considered final upon client approval or purchase. Changes after approval require a formal change order, and the client assumes all additional costs.</p>
+        <p><strong>Finish Standards:</strong> Work meets industry standards for residential construction with uniform color when viewed under normal lighting conditions from a distance of six (6) feet. Older homes may retain imperfections, variations in texture, or minor inconsistencies inherent to the existing structure.</p>
+
+        <h3>9. Workmanship &amp; Warranty</h3>
+        <p>All work is performed professionally and includes a <strong>limited 24-month warranty</strong> from the completion date. This warranty excludes damages caused by misuse, neglect, or external factors beyond our control.</p>
+
+        <h3>10. Permits &amp; Client Responsibilities</h3>
+        <p>The contractor will obtain all necessary permits and coordinate inspections. The client is responsible for providing any required documentation in a timely manner.</p>
+
+        <h3>11. Liability &amp; Insurance</h3>
+        <p>Bell &amp; Hammer maintains general liability and workers' compensation insurance. We are not liable for pre-existing conditions or issues arising from client-supplied materials.</p>
+
+        <h3>12. Project Cancellation</h3>
+        <p><strong>Before work begins:</strong> The deposit is refundable minus any planning costs already incurred.</p>
+        <p><strong>After work has begun:</strong> No deposit is refundable. The client must pay for all labor, materials, and subcontractor costs incurred to date.</p>
+
+        <h3>13. Unforeseen Conditions</h3>
+        <p>The contractor is not responsible for hidden or unforeseen conditions not reasonably visible at the time of the estimate, including but not limited to rot, mold, asbestos, lead paint, water intrusion, and pest damage.</p>
+
+        <h3>14. Client-Supplied Materials</h3>
+        <p>The contractor does not warranty or assume responsibility for the quality, suitability, or performance of client-supplied materials.</p>
+
+        <h3>15. Access &amp; Utilities</h3>
+        <p>The client must provide reasonable access to the work area, including parking, electricity, water, and restroom facilities where applicable.</p>
+
+        <h3>16. Client Communication &amp; Site Conduct</h3>
+        <p>All project communication should go through the designated project manager. Interference or "hovering" that causes delays to the crew may result in additional labor charges. The client is responsible for restricting pet and child access to the work area.</p>
+
+        <h3>17. Photography &amp; Marketing Rights</h3>
+        <p>The contractor reserves the right to photograph the project before, during, and after completion for documentation and marketing purposes.</p>
+
+        <h3>18. Delays Caused by Client</h3>
+        <p>If the client causes project delays (late decisions, restricted access, etc.), the contractor reserves the right to adjust the schedule and charge for any additional costs incurred.</p>
+
+        <h3>19. Dispute Resolution</h3>
+        <p>Any disputes arising from this agreement shall first be addressed through direct negotiation. If unresolved, disputes shall be submitted to mediation or binding arbitration in Kitsap County, WA.</p>
+
+        <h3>20. Attorney's Fees</h3>
+        <p>In the event of legal action, the prevailing party shall be entitled to recover reasonable attorney's fees, mediation/arbitration costs, and court costs.</p>
+
+        <h3>21. Termination</h3>
+        <p>Either party may terminate with 30 days' written notice. If the client terminates, all unpaid invoices plus incurred costs become immediately due. If the contractor terminates, any unused deposit will be refunded.</p>
+
+        <h3>22. Entire Agreement</h3>
+        <p>This agreement, together with the attached estimate and any signed Change Orders, constitutes the entire agreement between the parties.</p>
+
+        <h3>23. Severability</h3>
+        <p>If any provision of this agreement is found to be invalid or unenforceable, the remaining provisions shall continue in full force and effect.</p>
+
+        <h3>24. Licensed Trades</h3>
+        <p>Specialty trade work will be performed by licensed contractors of their respective trades in accordance with Washington State law.</p>
+
+        <h3>25. Subcontractor Standards &amp; Expectations</h3>
+        <p>All subcontractors working under Bell &amp; Hammer must maintain current licenses, insurance, and bonding. They are expected to comply with OSHA safety standards, maintain professional conduct, meet agreed timelines, and use only approved materials.</p>
+
+        <h3>26. Electronic Signatures</h3>
+        <p>Signatures transmitted electronically (including via PDF or e-signature platform) shall be deemed legally binding and enforceable.</p>
+
+        <div class="legal-divider"></div>
+
+        <h2>SMS / Text Messaging Program</h2>
+        <p><strong>Program Name:</strong> Bell &amp; Hammer Text Messaging</p>
+        <p>By providing your phone number, you consent to receive text messages regarding:</p>
+        <ul>
+            <li>Appointment confirmations and reminders</li>
+            <li>Project updates and scheduling</li>
+            <li>Estimate follow-ups</li>
+            <li>Invoice notifications</li>
+            <li>Customer service communications</li>
+            <li>Limited promotional messages</li>
+        </ul>
+        <p><strong>Message Frequency:</strong> Varies. You may receive multiple messages per week during active projects.</p>
+        <p><strong>Message &amp; Data Rates:</strong> Standard carrier rates may be charged by your mobile provider.</p>
+        <p><strong>Opt-Out:</strong> Reply <strong>STOP</strong> at any time to unsubscribe. You will receive a confirmation message.</p>
+        <p><strong>Help:</strong> Reply <strong>HELP</strong> for assistance, or contact us at (360) 710-0409.</p>
+        <p><strong>Consent:</strong> Provided through website forms, contracts, or in-person communication. Consent is not required as a condition of purchase.</p>
+        <p><strong>Privacy:</strong> Your phone number is used solely for business communication and will not be shared with third parties for marketing purposes.</p>
+        <p><strong>Limitation of Liability:</strong> Bell &amp; Hammer Construction is not liable for delayed or undelivered messages. Delivery is subject to effective transmission by your mobile carrier.</p>
+
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container footer-inner">
+        <div class="footer-brand">
+            <span class="nav-logo">BELL <span>&amp;</span> HAMMER</span>
+            <p>Licensed, bonded &amp; insured residential construction in the Pacific Northwest. Built on craft. Led by communication.</p>
+        </div>
+        <div class="footer-col">
+            <p>Navigation</p>
+            <a href="bellnhammer.html#services">Services</a>
+            <a href="bellnhammer.html#work">Our Work</a>
+            <a href="bellnhammer.html#about">About</a>
+            <a href="bellnhammer.html#reviews">Reviews</a>
+            <a href="bellnhammer.html#contact">Request Estimate</a>
+            <a href="careers.html">Careers</a>
+        </div>
+        <div class="footer-col">
+            <p>Contact</p>
+            <a href="tel:3607100409">(360) 710-0409</a>
+            <a href="mailto:admin@bellnhammer.biz">admin@bellnhammer.biz</a>
+            <a href="https://clienthub.getjobber.com/client_hubs/d39802b2-7d77-40f0-a155-36e7188d511d/login/new?source=share_login" target="_blank" style="margin-top:12px; color:var(--rust);">Client Portal Login &rarr;</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Bell &amp; Hammer. All rights reserved. &nbsp;|&nbsp; <a href="terms.html" style="color:var(--rust);">Terms</a> &nbsp;|&nbsp; <a href="privacy.html" style="color:var(--dim);">Privacy</a></p>
+    </div>
+</footer>
+
+<script>
+const toggle = document.getElementById('navToggle');
+const links = document.getElementById('navLinks');
+toggle.addEventListener('click', () => { links.classList.toggle('open'); toggle.classList.toggle('open'); });
+document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); toggle.classList.remove('open'); }));
+</script>
+
+</body>
+</html>

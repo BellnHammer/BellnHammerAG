@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | Bell & Hammer</title>
+    <meta name="description" content="Bell & Hammer privacy policy. How we collect, use, and protect your information. Kitsap County, Washington.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: #e8e4df; background: #0a0a0a; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
+        :root {
+            --dark: #0a0a0a; --dark2: #111; --dark3: #1a1917;
+            --rust: #be7258; --rust-glow: #d4896e; --gold: #c9a96e;
+            --cream: #e8e4df; --mid: #8a8579; --dim: #4a4640; --white: #fff;
+        }
+        h1, h2, h3 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; }
+        h1 { font-size: clamp(2.8rem, 8vw, 5rem); line-height: 0.95; color: var(--cream); }
+        h2 { font-size: clamp(1.6rem, 3vw, 2.4rem); color: var(--cream); margin-top: 48px; margin-bottom: 16px; }
+        h3 { font-size: 1.1rem; letter-spacing: 1.5px; color: var(--cream); margin-top: 32px; margin-bottom: 12px; }
+        .container { max-width: 900px; margin: 0 auto; padding: 0 32px; }
+        .tag { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 4px; color: var(--rust); margin-bottom: 16px; display: inline-block; }
+        .tag::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--rust); margin-right: 12px; vertical-align: middle; }
+
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 24px 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 4px; color: var(--cream); }
+        .nav-logo span { color: var(--rust); }
+        .nav-links { display: flex; gap: 36px; list-style: none; }
+        .nav-links a { color: var(--mid); font-size: 0.75rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--cream); }
+        .nav-cta { font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--rust); border: 1px solid rgba(190,114,88,0.3); padding: 10px 24px; transition: all 0.3s; }
+        .nav-cta:hover { background: var(--rust); color: var(--dark); }
+        .nav-toggle { display: none; background: none; border: none; cursor: pointer; width: 30px; height: 20px; position: relative; z-index: 60; }
+        .nav-toggle span { display: block; width: 100%; height: 1.5px; background: var(--cream); position: absolute; left: 0; transition: all 0.3s; }
+        .nav-toggle span:nth-child(1) { top: 0; }
+        .nav-toggle span:nth-child(2) { top: 9px; }
+        .nav-toggle span:nth-child(3) { top: 18px; }
+        .nav-toggle.open span:nth-child(1) { top: 9px; transform: rotate(45deg); }
+        .nav-toggle.open span:nth-child(2) { opacity: 0; }
+        .nav-toggle.open span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
+
+        .legal-hero { padding: 220px 0 60px; background: var(--dark2); border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .legal-hero h1 em { font-style: normal; color: var(--rust); }
+
+        .legal-content { padding: 60px 0 100px; }
+        .legal-content p { color: var(--mid); font-weight: 300; line-height: 1.9; margin-bottom: 16px; font-size: 0.92rem; }
+        .legal-content strong { color: var(--cream); font-weight: 500; }
+        .legal-content ul { list-style: none; margin: 12px 0 20px; }
+        .legal-content ul li { color: var(--mid); font-weight: 300; font-size: 0.9rem; padding: 6px 0 6px 24px; position: relative; line-height: 1.7; }
+        .legal-content ul li::before { content: ''; position: absolute; left: 0; top: 13px; width: 5px; height: 5px; background: var(--rust); transform: rotate(45deg); }
+        .legal-divider { height: 1px; background: linear-gradient(to right, transparent, var(--dim), transparent); margin: 60px 0; }
+
+        .footer { background: var(--dark2); padding: 60px 0 0; border-top: 1px solid rgba(255,255,255,0.03); }
+        .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 48px; }
+        .footer-brand p { color: var(--dim); font-size: 0.85rem; font-weight: 300; max-width: 300px; line-height: 1.7; margin-top: 16px; }
+        .footer-col p { color: var(--dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+        .footer-col a { display: block; color: var(--mid); font-size: 0.85rem; margin-bottom: 10px; transition: color 0.3s; font-weight: 300; }
+        .footer-col a:hover { color: var(--cream); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.03); padding: 20px 0; text-align: center; font-size: 0.7rem; color: var(--dim); letter-spacing: 1px; }
+
+        @media (max-width: 900px) {
+            .nav-links, .nav-cta { display: none; }
+            .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,10,10,0.98); padding: 100px 32px 32px; gap: 24px; z-index: 55; }
+            .nav-links.open a { font-size: 1.2rem; color: var(--cream); }
+            .nav-toggle { display: block; }
+            .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="bellnhammer.html" class="nav-logo"><img src="images/logo.png" alt="Bell & Hammer" style="height:48px;border-radius:6px;"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="bellnhammer.html#services">Services</a></li>
+            <li><a href="bellnhammer.html#work">Work</a></li>
+            <li><a href="bellnhammer.html#about">About</a></li>
+            <li><a href="bellnhammer.html#reviews">Reviews</a></li>
+            <li><a href="bellnhammer.html#faq">FAQ</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="https://clienthub.getjobber.com/client_hubs/d39802b2-7d77-40f0-a155-36e7188d511d/login/new?source=share_login" target="_blank">Client Portal</a></li>
+        </ul>
+        <a href="bellnhammer.html#contact" class="nav-cta">Get Estimate</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<section class="legal-hero">
+    <div class="container">
+        <div class="tag">Legal</div>
+        <h1>Privacy <em>Policy</em></h1>
+    </div>
+</section>
+
+<section class="legal-content">
+    <div class="container">
+
+        <p><strong>Effective Date: March 29, 2025</strong></p>
+        <p>At Bell &amp; Hammer Construction, your privacy isn't just a checkbox — it's a cornerstone of trust. This Privacy Policy explains how we collect, use, and protect the information you provide when visiting our website. By accessing or using this site, you agree to the practices described in this policy.</p>
+
+        <h3>1. Information We Collect</h3>
+        <p><strong>a. Information You Provide Voluntarily</strong></p>
+        <ul>
+            <li>Contact forms (name, email, phone number, and project details)</li>
+            <li>Appointment or quote requests</li>
+            <li>Newsletter or blog sign-ups (if applicable)</li>
+        </ul>
+        <p><strong>b. Information We Collect Automatically</strong></p>
+        <ul>
+            <li>Cookies &amp; tracking tools (for site analytics)</li>
+            <li>Device/browser information and usage data (IP address, referral source, etc.)</li>
+        </ul>
+
+        <h3>2. How We Use Your Information</h3>
+        <p>We use your information to:</p>
+        <ul>
+            <li>Respond to project inquiries or schedule walkthroughs</li>
+            <li>Provide a better user experience on our website</li>
+            <li>Send you helpful or relevant updates (zero spam policy)</li>
+            <li>Improve our operations and marketing effectiveness</li>
+        </ul>
+
+        <h3>3. Data Sharing</h3>
+        <p>We don't sell or rent your information — period. We may share it with:</p>
+        <ul>
+            <li>Secure third-party vendors (e.g., CRM platforms, Google Analytics)</li>
+            <li>Legal authorities if we are legally obligated to do so</li>
+        </ul>
+
+        <h3>4. Your Choices</h3>
+        <p>You can:</p>
+        <ul>
+            <li>Request to view, change, or delete your personal data</li>
+            <li>Opt out of email communication at any time</li>
+            <li>Contact us and we'll honor your request</li>
+        </ul>
+
+        <h3>5. Data Retention &amp; Security</h3>
+        <p>We keep data only as long as necessary, then we either delete or anonymize it. Security is built into our process — including SSL encryption, access controls, and regular platform audits.</p>
+
+        <h3>6. External Links</h3>
+        <p>Our site may link to helpful resources, but once you leave our website, we can't control what those sites do. Check their privacy policies too.</p>
+
+        <h3>7. Children's Privacy</h3>
+        <p>Our services are aimed at homeowners, not children. If you're under 13, please don't submit personal information through this site.</p>
+
+        <h3>8. Policy Updates</h3>
+        <p>This policy may evolve as technology, law, or our business changes. If so, we'll update the "Effective Date" and post the latest version on this page.</p>
+
+        <h3>9. Contact Us</h3>
+        <p>If you have questions, concerns, or want to make sure your information is being handled right:</p>
+        <p><strong>Bell &amp; Hammer Construction</strong><br>
+        <strong>Phone:</strong> <a href="tel:3607100409" style="color:var(--rust);">(360) 710-0409</a><br>
+        <strong>Email:</strong> <a href="mailto:admin@bellnhammer.biz" style="color:var(--rust);">admin@bellnhammer.biz</a></p>
+
+        <div class="legal-divider"></div>
+
+        <h2>SMS &amp; Communication Policy</h2>
+        <p><strong>Effective Date: February 23, 2026</strong></p>
+        <p>Bell &amp; Hammer, Inc. respects your privacy and is committed to protecting your personal information. This section explains how we collect, use, store, and safeguard your information, including information collected through SMS/text messaging.</p>
+
+        <h3>1. Business Information</h3>
+        <p><strong>Bell &amp; Hammer, Inc.</strong><br>
+        Kitsap County, Washington<br>
+        Email: <a href="mailto:admin@bellnhammer.biz" style="color:var(--rust);">admin@bellnhammer.biz</a><br>
+        Phone: <a href="tel:3607100409" style="color:var(--rust);">(360) 710-0409</a></p>
+
+        <h3>2. Information We Collect</h3>
+        <p>We may collect the following types of information:</p>
+        <ul>
+            <li>Name</li>
+            <li>Phone number</li>
+            <li>Email address</li>
+            <li>Property address</li>
+            <li>Project details and service history</li>
+            <li>Payment information (processed through secure third-party processors)</li>
+            <li>Communication records (including SMS messages and emails)</li>
+        </ul>
+        <p>We only collect information necessary to provide our services and communicate with you.</p>
+
+        <h3>3. How We Use Your Information</h3>
+        <p>We use customer information to:</p>
+        <ul>
+            <li>Schedule and confirm appointments</li>
+            <li>Provide estimates and project updates</li>
+            <li>Send invoices and payment reminders</li>
+            <li>Respond to customer service inquiries</li>
+            <li>Improve our services</li>
+            <li>Send limited service-related communications</li>
+        </ul>
+        <p>If you opt in to SMS messaging, we may send text messages related to appointment reminders, scheduling updates, project coordination, invoice notifications, and customer support. Message frequency varies based on your service activity.</p>
+
+        <h3>4. SMS Messaging &amp; Data Rates</h3>
+        <p>By providing your phone number, you consent to receive SMS messages from Bell &amp; Hammer Construction related to your requested services.</p>
+        <p><strong>Message and data rates may apply.</strong></p>
+        <p>You may opt out at any time by replying <strong>STOP</strong>.</p>
+        <p>For assistance, reply <strong>HELP</strong> or contact us at (360) 710-0409 or admin@bellnhammer.biz.</p>
+        <p>Consent to receive text messages is not a condition of purchase.</p>
+
+        <h3>5. How We Protect Your Information</h3>
+        <p>We implement reasonable security measures to protect your personal information, including:</p>
+        <ul>
+            <li>Secure software systems (such as Jobber and related business tools)</li>
+            <li>Restricted access to authorized personnel only</li>
+            <li>Industry-standard safeguards for payment processing</li>
+        </ul>
+        <p>While no system is 100% secure, we take reasonable steps to protect your information from unauthorized access, misuse, or disclosure.</p>
+
+        <h3>6. Information Sharing</h3>
+        <p>We do not sell, rent, or trade your personal information to third parties for marketing purposes. We may share limited information with trusted third-party service providers only when necessary, including:</p>
+        <ul>
+            <li>Payment processors</li>
+            <li>Software providers (such as scheduling and CRM platforms)</li>
+            <li>Accounting or compliance professionals</li>
+        </ul>
+        <p>These providers are expected to protect your information and use it only for authorized business purposes.</p>
+
+        <h3>7. Data Retention</h3>
+        <p>We retain customer information only as long as necessary to complete services, maintain business records, and comply with legal or regulatory requirements.</p>
+
+        <h3>8. Your Rights</h3>
+        <p>You may:</p>
+        <ul>
+            <li>Request access to your personal information</li>
+            <li>Request corrections to inaccurate information</li>
+            <li>Request deletion of your information (subject to legal or contractual obligations)</li>
+            <li>Withdraw consent for SMS communications at any time</li>
+        </ul>
+        <p>To make a request, contact us at <a href="mailto:admin@bellnhammer.biz" style="color:var(--rust);">admin@bellnhammer.biz</a>.</p>
+
+        <h3>9. Third-Party Links</h3>
+        <p>Our website may contain links to third-party services. We are not responsible for the privacy practices of those external websites.</p>
+
+        <h3>10. Updates to This Policy</h3>
+        <p>We may update this Privacy Policy from time to time. Updates will be posted on this page with a revised effective date.</p>
+
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container footer-inner">
+        <div class="footer-brand">
+            <span class="nav-logo">BELL <span>&amp;</span> HAMMER</span>
+            <p>Licensed, bonded &amp; insured residential construction in the Pacific Northwest. Built on craft. Led by communication.</p>
+        </div>
+        <div class="footer-col">
+            <p>Navigation</p>
+            <a href="bellnhammer.html#services">Services</a>
+            <a href="bellnhammer.html#work">Our Work</a>
+            <a href="bellnhammer.html#about">About</a>
+            <a href="bellnhammer.html#reviews">Reviews</a>
+            <a href="bellnhammer.html#contact">Request Estimate</a>
+            <a href="careers.html">Careers</a>
+        </div>
+        <div class="footer-col">
+            <p>Contact</p>
+            <a href="tel:3607100409">(360) 710-0409</a>
+            <a href="mailto:admin@bellnhammer.biz">admin@bellnhammer.biz</a>
+            <a href="https://clienthub.getjobber.com/client_hubs/d39802b2-7d77-40f0-a155-36e7188d511d/login/new?source=share_login" target="_blank" style="margin-top:12px; color:var(--rust);">Client Portal Login &rarr;</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Bell &amp; Hammer. All rights reserved. &nbsp;|&nbsp; <a href="terms.html" style="color:var(--dim);">Terms</a> &nbsp;|&nbsp; <a href="privacy.html" style="color:var(--rust);">Privacy</a></p>
+    </div>
+</footer>
+
+<script>
+const toggle = document.getElementById('navToggle');
+const links = document.getElementById('navLinks');
+toggle.addEventListener('click', () => { links.classList.toggle('open'); toggle.classList.toggle('open'); });
+document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); toggle.classList.remove('open'); }));
+</script>
+
+</body>
+</html>

@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bell &amp; Hammer | Pacific Northwest Residential Construction</title>
+    <meta name="description" content="Bell & Hammer — licensed, bonded &amp; insured residential construction in the Pacific Northwest. Remodels, additions, roofing, siding, and more.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body { font-family: 'Inter', sans-serif; color: #e8e4df; background: #0a0a0a; line-height: 1.6; overflow-x: hidden; }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+
+        :root {
+            --dark: #0a0a0a;
+            --dark2: #111;
+            --dark3: #1a1917;
+            --rust: #be7258;
+            --rust-glow: #d4896e;
+            --gold: #c9a96e;
+            --cream: #e8e4df;
+            --mid: #8a8579;
+            --dim: #4a4640;
+            --white: #fff;
+        }
+
+        /* ── Dust Particles ── */
+        .dust-canvas { position: absolute; top: 0; left: 0; width: 100%; z-index: 45; pointer-events: none; }
+
+        /* ── Typography ── */
+        h1, h2, h3 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; }
+        h1 { font-size: clamp(3.5rem, 10vw, 8rem); line-height: 0.95; }
+        h2 { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.05; }
+        h3 { font-size: 1.4rem; letter-spacing: 1.5px; }
+
+        /* ── Layout ── */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+        .section { padding: 120px 0; position: relative; z-index: 2; }
+        .tag { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 4px; color: var(--rust); margin-bottom: 16px; display: inline-block; }
+        .tag::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--rust); margin-right: 12px; vertical-align: middle; }
+
+        /* ── Buttons ── */
+        .btn { display: inline-flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; padding: 18px 40px; border: none; cursor: pointer; transition: all 0.4s ease; position: relative; overflow: hidden; }
+        .btn-rust { background: var(--rust); color: var(--dark); }
+        .btn-rust:hover { background: var(--rust-glow); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(196,122,90,0.3); }
+        .btn-ghost { background: transparent; color: var(--cream); border: 1px solid var(--dim); }
+        .btn-ghost:hover { border-color: var(--rust); color: var(--rust); }
+        .btn-lg { padding: 22px 52px; font-size: 0.85rem; }
+
+        /* ── Nav ── */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 24px 0; transition: all 0.4s ease; }
+        .nav.scrolled { background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 4px; color: var(--cream); }
+        .nav-logo span { color: var(--rust); }
+        .nav-links { display: flex; gap: 36px; list-style: none; }
+        .nav-links a { color: var(--mid); font-size: 0.75rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--cream); }
+        .nav-cta { font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--rust); border: 1px solid rgba(196,122,90,0.3); padding: 10px 24px; transition: all 0.3s; }
+        .nav-cta:hover { background: var(--rust); color: var(--dark); }
+        .nav-toggle { display: none; background: none; border: none; cursor: pointer; width: 30px; height: 20px; position: relative; z-index: 60; }
+        .nav-toggle span { display: block; width: 100%; height: 1.5px; background: var(--cream); position: absolute; left: 0; transition: all 0.3s; }
+        .nav-toggle span:nth-child(1) { top: 0; }
+        .nav-toggle span:nth-child(2) { top: 9px; }
+        .nav-toggle span:nth-child(3) { top: 18px; }
+        .nav-toggle.open span:nth-child(1) { top: 9px; transform: rotate(45deg); }
+        .nav-toggle.open span:nth-child(2) { opacity: 0; }
+        .nav-toggle.open span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
+
+        /* ── Dividers ── */
+        .divider { height: 1px; background: linear-gradient(to right, transparent, var(--dim), transparent); position: relative; z-index: 2; }
+        .divider::before { content: ''; position: absolute; top: -40px; left: 50%; transform: translateX(-50%); width: 300px; height: 80px; background: radial-gradient(ellipse, rgba(196,122,90,0.06), transparent 70%); pointer-events: none; }
+
+        /* ── Image Enhancement ── */
+        .img-enhance { position: relative; overflow: hidden; }
+        .img-enhance img { filter: contrast(1.12) brightness(1.05) saturate(1.15); transition: transform 6s ease; }
+        .img-enhance:hover img { transform: scale(1.04); }
+        .img-enhance::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(135deg, rgba(196,122,90,0.08), rgba(201,169,110,0.05), transparent 70%); mix-blend-mode: overlay; pointer-events: none; }
+        .img-enhance::after { content: ''; position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse at center, transparent 50%, rgba(10,10,10,0.45) 100%); pointer-events: none; }
+        .img-cold img { filter: contrast(1.1) brightness(0.88) saturate(0.45) sepia(0.12); }
+        .img-cold::before { background: linear-gradient(135deg, rgba(80,90,100,0.1), transparent 60%); }
+
+        /* ── Hero ── */
+        .hero { position: relative; min-height: 100vh; display: flex; align-items: flex-end; padding-bottom: 80px; padding-top: 120px; overflow: hidden; }
+        .hero-bg { position: absolute; inset: 0; }
+        .hero-bg img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.15) brightness(1.08) saturate(1.2); animation: heroShift 20s ease-in-out infinite alternate; }
+        @keyframes heroShift { 0% { transform: scale(1); } 100% { transform: scale(1.06); } }
+        .hero-bg::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(160deg, rgba(201,169,110,0.12) 0%, rgba(196,122,90,0.08) 30%, transparent 60%); mix-blend-mode: soft-light; pointer-events: none; }
+        .hero-bg::after { content: ''; position: absolute; inset: 0; z-index: 1; background: radial-gradient(ellipse at 30% 80%, transparent 30%, rgba(10,10,10,0.4) 100%); pointer-events: none; }
+        .hero-overlay { position: absolute; inset: 0; z-index: 2; background: linear-gradient(to top, rgba(10,10,10,1) 0%, rgba(10,10,10,0.55) 40%, rgba(10,10,10,0.2) 100%); }
+        .hero-flare { position: absolute; top: 15%; right: 20%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(201,169,110,0.08) 0%, rgba(196,122,90,0.03) 30%, transparent 70%); z-index: 2; pointer-events: none; animation: flarePulse 8s ease-in-out infinite alternate; }
+        @keyframes flarePulse { 0% { opacity: 0.6; transform: scale(1); } 100% { opacity: 1; transform: scale(1.15); } }
+        .grain { position: absolute; inset: 0; z-index: 2; opacity: 0.035; pointer-events: none; mix-blend-mode: overlay; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); background-size: 128px 128px; }
+        .hero-content { position: relative; z-index: 3; max-width: 800px; }
+        .hero h1 { color: var(--cream); margin-bottom: 24px; font-size: clamp(2.8rem, 7vw, 5.5rem); }
+        .hero h1 em { font-style: normal; color: var(--rust); }
+        .hero-sub { color: var(--mid); font-size: 1.1rem; font-weight: 300; max-width: 500px; margin-bottom: 44px; line-height: 1.8; }
+        .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-bottom: 60px; }
+        .hero-stats { display: flex; gap: 60px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.06); }
+        .hero-stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: var(--rust); line-height: 1; }
+        .hero-stat-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--mid); margin-top: 4px; }
+
+        /* ── Services ── */
+        .services { background: var(--dark); }
+        .services-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 64px; gap: 40px; flex-wrap: wrap; }
+        .services-header-text { max-width: 500px; }
+        .services-header-text p { color: var(--mid); font-weight: 300; line-height: 1.8; }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; }
+        .service-card { background: var(--dark2); padding: 48px 36px; position: relative; overflow: hidden; transition: all 0.5s ease; cursor: default; }
+        .service-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--rust); transform: scaleX(0); transform-origin: left; transition: transform 0.5s ease; }
+        .service-card:hover::before { transform: scaleX(1); }
+        .service-card:hover { background: var(--dark3); }
+        .service-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: rgba(255,255,255,0.03); position: absolute; top: 16px; right: 24px; }
+        .service-card h3 { color: var(--cream); margin-bottom: 14px; }
+        .service-card p { color: var(--mid); font-size: 0.9rem; font-weight: 300; line-height: 1.7; }
+
+        /* ── Full-Width Image Break ── */
+        .img-break { position: relative; z-index: 2; height: 50vh; min-height: 350px; overflow: hidden; }
+        .img-break img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.15) brightness(1.0) saturate(1.15); }
+        .img-break::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,10,10,0.6) 0%, rgba(10,10,10,0) 30%, rgba(10,10,10,0) 70%, rgba(10,10,10,0.6) 100%); pointer-events: none; }
+        .img-break-caption { position: absolute; bottom: 28px; left: 32px; z-index: 3; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 3px; color: var(--mid); }
+
+        /* ── Before & After Showcase ── */
+        .ba { background: var(--dark2); }
+        .ba-header { text-align: center; margin-bottom: 64px; }
+        .ba-header h2 { color: var(--cream); }
+        /* ── Before/After Slider ── */
+        .ba-slider { position: relative; width: 100%; max-width: 700px; margin: 0 auto; overflow: hidden; cursor: col-resize; user-select: none; -webkit-user-select: none; aspect-ratio: 3/4; background: var(--dark2); border: 1px solid rgba(255,255,255,0.04); }
+        .ba-slider img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center 30%; image-rendering: auto; -webkit-image-rendering: auto; }
+        .ba-slider .ba-before { position: absolute; inset: 0; }
+        .ba-slider .ba-after { position: absolute; inset: 0; overflow: hidden; }
+        .ba-slider .ba-before img { filter: contrast(1.08) brightness(0.9) saturate(0.4) sepia(0.06) url(#sharpen); }
+        .ba-slider .ba-after img { filter: contrast(1.12) brightness(1.06) saturate(1.18) url(#sharpen); }
+        .ba-handle { position: absolute; top: 0; bottom: 0; width: 4px; background: var(--rust); z-index: 10; cursor: col-resize; }
+        .ba-handle::after { content: ''; position: absolute; top: 50%; left: 50%; width: 44px; height: 44px; border-radius: 50%; border: 3px solid var(--rust); background: var(--dark2); transform: translate(-50%, -50%); box-shadow: 0 4px 20px rgba(0,0,0,0.4); }
+        .ba-handle::before { content: '◀ ▶'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 11; font-size: 0.6rem; color: var(--rust); letter-spacing: 2px; white-space: nowrap; }
+        .ba-label { position: absolute; top: 20px; z-index: 5; font-family: 'Bebas Neue', sans-serif; font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; padding: 6px 16px; }
+        .ba-label-before { left: 20px; background: rgba(10,10,10,0.8); color: var(--mid); border: 1px solid rgba(255,255,255,0.08); }
+        .ba-label-after { right: 20px; background: var(--rust); color: var(--dark); }
+
+        /* ── Portfolio Grid ── */
+        .portfolio { background: var(--dark); }
+        .portfolio-mosaic { display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 300px 300px; gap: 4px; }
+        .portfolio-mosaic .p-wide { grid-column: span 2; }
+        .portfolio-mosaic .p-tall { grid-row: span 2; }
+        .p-item { position: relative; overflow: hidden; cursor: pointer; }
+        .p-item img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.12) brightness(0.85) saturate(1.1); transition: transform 5s ease, filter 0.8s ease; }
+        .p-item:hover img { transform: scale(1.06); filter: contrast(1.15) brightness(1.0) saturate(1.25); }
+        .p-item::before { content: ''; position: absolute; inset: 0; z-index: 2; background: linear-gradient(160deg, rgba(196,122,90,0.06), transparent 60%); mix-blend-mode: overlay; pointer-events: none; }
+        .p-item-overlay { position: absolute; inset: 0; z-index: 2; background: radial-gradient(ellipse at center, transparent 40%, rgba(10,10,10,0.3) 100%), linear-gradient(to top, rgba(10,10,10,0.8), transparent 50%); pointer-events: none; }
+        .p-item-text { position: absolute; bottom: 20px; left: 20px; z-index: 3; }
+        .p-item-text h3 { color: var(--cream); font-size: 1.1rem; margin-bottom: 2px; text-shadow: 0 2px 12px rgba(0,0,0,0.5); }
+        .p-item-text p { color: var(--mid); font-size: 0.65rem; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* ── About ── */
+        .about { background: var(--dark2); }
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .about-img { position: relative; overflow: hidden; }
+        .about-img img { width: 100%; border-radius: 2px; filter: contrast(1.15) brightness(1.05) saturate(1.2); transition: transform 6s ease; }
+        .about-img:hover img { transform: scale(1.04); }
+        .about-img::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(135deg, rgba(196,122,90,0.1), transparent 65%); mix-blend-mode: overlay; pointer-events: none; }
+        .about-img::after { content: ''; position: absolute; inset: 0; z-index: 1; pointer-events: none; border: 1px solid rgba(196,122,90,0.2); background: radial-gradient(ellipse at center, transparent 55%, rgba(10,10,10,0.4) 100%); }
+        .about-text h2 { color: var(--cream); margin-bottom: 24px; }
+        .about-text p { color: var(--mid); font-weight: 300; line-height: 1.9; margin-bottom: 20px; }
+        .about-text strong { color: var(--cream); font-weight: 500; }
+        .about-list { list-style: none; margin: 32px 0 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px 32px; }
+        .about-list li { font-size: 0.85rem; color: var(--mid); padding-left: 20px; position: relative; }
+        .about-list li::before { content: ''; position: absolute; left: 0; top: 8px; width: 6px; height: 6px; background: var(--rust); transform: rotate(45deg); }
+
+        /* ── Reviews ── */
+        .reviews { background: var(--dark); }
+        .reviews-header { text-align: center; margin-bottom: 64px; }
+        .reviews-header h2 { color: var(--cream); }
+        .reviews-big-stars { font-size: 2rem; color: var(--gold); letter-spacing: 8px; margin-bottom: 12px; }
+        .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        .review-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04); padding: 40px 32px; position: relative; transition: border-color 0.4s; }
+        .review-card:hover { border-color: rgba(196,122,90,0.2); }
+        .review-card .stars { color: var(--gold); font-size: 0.85rem; letter-spacing: 3px; margin-bottom: 20px; }
+        .review-text { color: var(--mid); font-weight: 300; font-size: 0.95rem; line-height: 1.8; margin-bottom: 24px; font-style: italic; }
+        .review-author { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--dim); }
+        .review-quote { position: absolute; top: 24px; right: 28px; font-family: 'Bebas Neue', sans-serif; font-size: 4rem; color: rgba(196,122,90,0.08); line-height: 1; }
+
+        /* ── FAQ ── */
+        .faq { background: var(--dark2); }
+        .faq-layout { display: grid; grid-template-columns: 1fr 2fr; gap: 80px; align-items: start; }
+        .faq-left h2 { color: var(--cream); margin-bottom: 20px; }
+        .faq-left p { color: var(--mid); font-weight: 300; line-height: 1.8; }
+        .faq-list { display: flex; flex-direction: column; }
+        .faq-item { border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .faq-item summary { padding: 24px 0; font-weight: 500; font-size: 0.95rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--cream); transition: color 0.3s; letter-spacing: 0.5px; }
+        .faq-item summary:hover { color: var(--rust); }
+        .faq-item summary::after { content: '+'; font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--rust); transition: transform 0.3s; }
+        .faq-item[open] summary::after { transform: rotate(45deg); }
+        .faq-item p { padding: 0 0 24px; color: var(--mid); font-weight: 300; line-height: 1.8; font-size: 0.9rem; }
+
+        /* ── Contact ── */
+        .contact { background: var(--dark); }
+        .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+        .contact-left h2 { color: var(--cream); margin-bottom: 20px; }
+        .contact-left p { color: var(--mid); font-weight: 300; line-height: 1.8; margin-bottom: 32px; }
+        .contact-info { display: flex; flex-direction: column; gap: 20px; }
+        .contact-info-item { display: flex; align-items: center; gap: 16px; }
+        .contact-info-icon { width: 44px; height: 44px; border: 1px solid var(--dim); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+        .contact-info-text a { color: var(--cream); font-weight: 500; transition: color 0.3s; }
+        .contact-info-text a:hover { color: var(--rust); }
+        .contact-info-text small { display: block; color: var(--dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2px; }
+        .jobber-form iframe { display: block; width: 100%; min-height: 700px; border: 1px solid rgba(255,255,255,0.04); background: #fff; border-radius: 2px; }
+
+        /* ── Footer ── */
+        .footer { background: var(--dark2); padding: 60px 0 0; position: relative; z-index: 2; border-top: 1px solid rgba(255,255,255,0.03); }
+        .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 48px; }
+        .footer-brand .nav-logo { display: inline-block; margin-bottom: 16px; }
+        .footer-brand p { color: var(--dim); font-size: 0.85rem; font-weight: 300; max-width: 300px; line-height: 1.7; }
+        .footer-col p { color: var(--dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+        .footer-col a { display: block; color: var(--mid); font-size: 0.85rem; margin-bottom: 10px; transition: color 0.3s; font-weight: 300; }
+        .footer-col a:hover { color: var(--cream); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.03); padding: 20px 0; text-align: center; font-size: 0.7rem; color: var(--dim); letter-spacing: 1px; }
+
+        /* ── Scroll Reveal ── */
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .section { padding: 80px 0; }
+            .nav-links, .nav-cta { display: none; }
+            .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,10,10,0.98); padding: 100px 32px 32px; gap: 24px; z-index: 55; }
+            .nav-links.open a { font-size: 1.2rem; color: var(--cream); }
+            .nav-toggle { display: block; }
+            .services-grid { grid-template-columns: 1fr; }
+            .ba-slider { max-width: 100%; }
+            .portfolio-mosaic { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+            .portfolio-mosaic .p-wide { grid-column: span 2; }
+            .portfolio-mosaic .p-tall { grid-row: span 1; }
+            .about-grid { grid-template-columns: 1fr; gap: 40px; }
+            .reviews-grid { grid-template-columns: 1fr; }
+            .faq-layout { grid-template-columns: 1fr; gap: 40px; }
+            .contact-layout { grid-template-columns: 1fr; gap: 48px; }
+            .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+            .hero-stats { gap: 32px; flex-wrap: wrap; }
+            .hero-actions { flex-direction: column; }
+            .hero { padding-bottom: 60px; }
+            h1 { font-size: clamp(2.8rem, 8vw, 5rem); }
+            .services-header { flex-direction: column; }
+            .img-break { height: 35vh; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- SVG sharpening filter for slider images -->
+<svg width="0" height="0" style="position:absolute;">
+  <filter id="sharpen">
+    <feConvolveMatrix order="3" kernelMatrix="0 -0.5 0 -0.5 3 -0.5 0 -0.5 0" preserveAlpha="true"/>
+  </filter>
+</svg>
+
+<canvas class="dust-canvas" id="dustCanvas"></canvas>
+
+<!-- Nav -->
+<nav class="nav" id="nav">
+    <div class="nav-inner">
+        <a href="#" class="nav-logo"><img src="images/logo.png" alt="Bell & Hammer" style="height:48px;border-radius:6px;"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#services">Services</a></li>
+            <li><a href="#work">Work</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+            <li><a href="#faq">FAQ</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="https://clienthub.getjobber.com/client_hubs/d39802b2-7d77-40f0-a155-36e7188d511d/login/new?source=share_login" target="_blank">Client Portal</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">Get Estimate</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- HERO — twilight landscape render -->
+<!-- ════════════════════════════════════════════ -->
+<header class="hero">
+    <div class="hero-bg">
+        <img src="images/twilight-landscape.png" alt="Backyard renovation concept with landscape lighting at dusk">
+        <div class="grain"></div>
+    </div>
+    <div class="hero-overlay"></div>
+    <div class="hero-flare"></div>
+    <div class="container hero-content">
+        <div class="tag">Pacific Northwest Construction</div>
+        <h1>We don't just<br>build homes.<br>We build <em>trust.</em></h1>
+        <p class="hero-sub">Residential remodels, additions, and repairs with the kind of communication you actually deserve. Licensed. Bonded. Insured. No runaround.</p>
+        <div class="hero-actions">
+            <a href="#contact" class="btn btn-rust btn-lg">Request Free Estimate</a>
+            <a href="tel:3607100409" class="btn btn-ghost btn-lg">(360) 710-0409</a>
+        </div>
+        <div class="hero-stats">
+            <div class="hero-stat">
+                <div class="hero-stat-num">5.0</div>
+                <div class="hero-stat-label">Google Rating</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-num">100%</div>
+                <div class="hero-stat-label">5-Star Reviews</div>
+            </div>
+            <div class="hero-stat">
+                <div class="hero-stat-num">PNW</div>
+                <div class="hero-stat-label">Based &amp; Built</div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- SERVICES -->
+<!-- ════════════════════════════════════════════ -->
+<section class="section services" id="services">
+    <div class="container">
+        <div class="services-header">
+            <div class="services-header-text">
+                <div class="tag">What We Do</div>
+                <h2>Full-Scope Residential Construction</h2>
+                <p>From foundation to finish — one crew, one point of contact, zero guesswork.</p>
+            </div>
+            <a href="#contact" class="btn btn-ghost">Start a Project</a>
+        </div>
+        <div class="services-grid reveal">
+            <a href="services/home-additions-adus.html" class="service-card" style="display:block;">
+                <div class="service-num">01</div>
+                <h3>Additions &amp; ADUs</h3>
+                <p>Second stories, garage conversions, accessory dwelling units — we expand your footprint without the headache.</p>
+            </a>
+            <a href="services/kitchen-bath-remodels.html" class="service-card" style="display:block;">
+                <div class="service-num">02</div>
+                <h3>Kitchen &amp; Bath</h3>
+                <p>Gut-to-finish remodels. Cabinets, tile, countertops, countertop coordination — the whole scope under one roof.</p>
+            </a>
+            <a href="services/roofing-siding.html" class="service-card" style="display:block;">
+                <div class="service-num">03</div>
+                <h3>Roofing &amp; Siding</h3>
+                <p>Tear-offs, re-roofs, siding replacement — weatherproofing engineered for Pacific Northwest conditions.</p>
+            </a>
+            <a href="services/windows-doors.html" class="service-card" style="display:block;">
+                <div class="service-num">04</div>
+                <h3>Windows &amp; Doors</h3>
+                <p>Energy-efficient installs that upgrade comfort, curb appeal, and resale value in a single project.</p>
+            </a>
+            <a href="services/decks-fences.html" class="service-card" style="display:block;">
+                <div class="service-num">05</div>
+                <h3>Decks &amp; Fences</h3>
+                <p>Composite decks, cedar fences, pergolas — outdoor structures built to endure every PNW season.</p>
+            </a>
+            <a href="services/repairs-restoration.html" class="service-card" style="display:block;">
+                <div class="service-num">06</div>
+                <h3>Repairs &amp; Restoration</h3>
+                <p>Water damage, rot, structural issues, drywall — we diagnose it, scope it, and fix it right.</p>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- IMAGE BREAK — cedar fence full width -->
+<!-- ════════════════════════════════════════════ -->
+<div class="img-break">
+    <img src="images/cedar-fence.jpg" alt="Modern horizontal cedar fence">
+    <div class="img-break-caption">Horizontal Cedar &middot; Built to Last</div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- BEFORE & AFTER — real befores + design renders -->
+<!-- ════════════════════════════════════════════ -->
+<section class="section ba" id="work">
+    <div class="container">
+        <div class="ba-header reveal">
+            <div class="tag">Transformations</div>
+            <h2>Before &amp; After</h2>
+        </div>
+    </div>
+
+    <!-- Bathroom Transformation Slider -->
+    <div class="container" style="max-width:900px;">
+        <div class="ba-slider reveal" id="baSlider">
+            <div class="ba-before">
+                <img src="images/bathroom-before.jpg" alt="Dated bathroom before remodel — old tile, brass fixtures, oak vanity">
+            </div>
+            <div class="ba-after" id="baAfter" style="width:50%;">
+                <img src="images/bathroom-after-finished.jpg" alt="Finished bathroom after remodel — white vanity, glass shower door, gray tile">
+            </div>
+            <div class="ba-handle" id="baHandle" style="left:50%;"></div>
+            <div class="ba-label ba-label-before">Before</div>
+            <div class="ba-label ba-label-after">After</div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- IMAGE BREAK — crew framing action shot -->
+<!-- ════════════════════════════════════════════ -->
+<div class="img-break">
+    <img src="images/crew-kitchen-remodel.jpg" alt="Bell & Hammer worker framing a wall opening during a kitchen remodel">
+    <div class="img-break-caption">Our Crew &middot; Hands On &middot; Every Build</div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- PORTFOLIO MOSAIC — all remaining photos -->
+<!-- ════════════════════════════════════════════ -->
+<section class="section portfolio">
+    <div class="container">
+        <div class="tag">Portfolio</div>
+        <h2 style="color:var(--cream); margin-bottom:48px;">Recent Work &amp; Concepts</h2>
+    </div>
+    <div class="container" style="max-width:1200px;">
+        <div class="portfolio-mosaic reveal">
+            <div class="p-item">
+                <img src="images/room-addition.jpg" alt="Waterfront room addition with wood plank ceiling, French doors, and transom windows">
+                <div class="p-item-overlay"></div>
+                <div class="p-item-text">
+                    <h3>Addition Interior</h3>
+                    <p>Framing &middot; Drywall &middot; Finish Carpentry</p>
+                </div>
+            </div>
+            <div class="p-item">
+                <img src="images/window-door-install.jpg" alt="Window and door installation on new construction">
+                <div class="p-item-overlay"></div>
+                <div class="p-item-text">
+                    <h3>Window &amp; Door Installation</h3>
+                    <p>Black Frame &middot; Addition &middot; Exterior</p>
+                </div>
+            </div>
+            <div class="p-item">
+                <img src="images/bathroom-finished.jpg" alt="Finished bathroom with marble tile floor and navy vanity">
+                <div class="p-item-overlay"></div>
+                <div class="p-item-text">
+                    <h3>Bathroom Finish</h3>
+                    <p>Porcelain Tile &middot; Navy Vanity &middot; Quartz</p>
+                </div>
+            </div>
+            <div class="p-item">
+                <img src="images/kitchen-remodel.jpg" alt="Finished kitchen remodel with white cabinets, stove, and hardwood floor">
+                <div class="p-item-overlay"></div>
+                <div class="p-item-text">
+                    <h3>Kitchen Remodel</h3>
+                    <p>Cabinets &middot; Range &middot; Hardwood</p>
+                </div>
+            </div>
+            <div class="p-item">
+                <img src="images/tile-install.jpg" alt="Tile installation with leveling clips on bathroom wall">
+                <div class="p-item-overlay"></div>
+                <div class="p-item-text">
+                    <h3>Tile Installation</h3>
+                    <p>Large Format &middot; Leveling &middot; Precision</p>
+                </div>
+            </div>
+            <div class="p-item">
+                <img src="images/wall-framing.jpg" alt="Interior wall framing with laser level and tools">
+                <div class="p-item-overlay"></div>
+                <div class="p-item-text">
+                    <h3>Wall Framing</h3>
+                    <p>Studs &middot; Laser Level &middot; Structural</p>
+                </div>
+            </div>
+            <div class="p-item p-wide">
+                <img src="images/floor-refinish.jpg" alt="Hardwood floor refinishing in progress">
+                <div class="p-item-overlay"></div>
+                <div class="p-item-text">
+                    <h3>Floor Refinishing</h3>
+                    <p>Hardwood &middot; Sand &middot; Restore</p>
+                </div>
+            </div>
+            <div class="p-item p-wide">
+                <img src="images/bathroom-remodel.jpg" alt="Finished bathroom remodel with marble-look tile and navy vanity">
+                <div class="p-item-overlay"></div>
+                <div class="p-item-text">
+                    <h3>Bathroom Remodel</h3>
+                    <p>Tile &middot; Vanity &middot; Full Finish</p>
+                </div>
+            </div>
+            <div class="p-item">
+                <img src="images/flooring-kitchen.jpg" alt="New hardwood-look flooring with kitchen remodel">
+                <div class="p-item-overlay"></div>
+                <div class="p-item-text">
+                    <h3>Flooring &amp; Kitchen</h3>
+                    <p>Hardwood Plank &middot; Clean Transitions &middot; Cabinets</p>
+                </div>
+            </div>
+            <div class="p-item">
+                <img src="images/paver-walkway.jpg" alt="Finished paver patio and walkway with gravel border">
+                <div class="p-item-overlay"></div>
+                <div class="p-item-text">
+                    <h3>Paver Walkway</h3>
+                    <p>Interlocking Pavers &middot; Gravel &middot; Hardscape</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- ABOUT -->
+<!-- ════════════════════════════════════════════ -->
+<section class="section about" id="about">
+    <div class="container">
+        <div class="about-grid">
+            <div class="about-img reveal">
+                <img src="images/crew-at-work.jpg" alt="Bell & Hammer crew working on exterior siding">
+            </div>
+            <div class="about-text reveal">
+                <div class="tag">Who We Are</div>
+                <h2>Built on Communication &amp; Craft</h2>
+                <p>Bell &amp; Hammer was founded by <strong>Bryce Bell</strong> and <strong>Trayton Shelton</strong> with a straightforward philosophy: deliver quality residential construction without the runaround.</p>
+                <p>We've all dealt with contractors who disappear mid-project, blow past timelines, or surprise you with hidden costs. We built this company to be the opposite of that.</p>
+                <ul class="about-list">
+                    <li>Fully licensed, bonded &amp; insured</li>
+                    <li>Timelines we actually hit</li>
+                    <li>Daily communication updates</li>
+                    <li>Clean sites, respectful crews</li>
+                    <li>Trusted trade partners</li>
+                    <li>No hidden costs, ever</li>
+                </ul>
+                <a href="#contact" class="btn btn-rust">Work With Us</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- IMAGE BREAK — full width twilight deck -->
+<!-- ════════════════════════════════════════════ -->
+<div class="img-break">
+    <img src="images/deck-evening.png" alt="Evening deck design with gazebo and landscape lighting">
+    <div class="img-break-caption">Design &middot; Build &middot; Transform</div>
+</div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- REVIEWS -->
+<!-- ════════════════════════════════════════════ -->
+<section class="section reviews" id="reviews">
+    <div class="container">
+        <div class="reviews-header reveal">
+            <div class="reviews-big-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+            <div class="tag" style="margin-bottom:16px;">Client Reviews</div>
+            <h2>What People Are Saying</h2>
+        </div>
+        <div class="reviews-grid reveal">
+            <div class="review-card">
+                <div class="review-quote">&ldquo;</div>
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="review-text">Bryce and Tray have been phenomenal. I feel like communication is key when it comes to getting any major work done, ESPECIALLY when it's at my home. But it's safe to say these two men blew my expectations and were nothing short of great. Absolutely recommend and would do so time and time over again.</p>
+                <p class="review-author">— Murtaza</p>
+            </div>
+            <div class="review-card">
+                <div class="review-quote">&ldquo;</div>
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="review-text">Amazing group of guys, can get the job done with being very professional and punctual. Redid our whole bathroom with these guys, and couldn't be happier, HIGHLY recommend them to anybody who is in need of a remodel.</p>
+                <p class="review-author">— Aditya Donkada</p>
+            </div>
+            <div class="review-card">
+                <div class="review-quote">&ldquo;</div>
+                <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <p class="review-text">Bryce and Trey really took good care of all of our needs and everything was smooth. Recommend to anyone looking for bathroom or a kitchen :)</p>
+                <p class="review-author">— Diman Moenfar</p>
+            </div>
+        </div>
+        <div style="text-align:center; margin-top:40px;">
+            <a href="https://g.page/r/CSLPrJ0v6y-lEAE/review" target="_blank" class="btn btn-ghost" style="font-size:0.7rem;">Leave Us a Review on Google &rarr;</a>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- FAQ -->
+<!-- ════════════════════════════════════════════ -->
+<section class="section faq" id="faq">
+    <div class="container">
+        <div class="faq-layout">
+            <div class="faq-left reveal">
+                <div class="tag">FAQ</div>
+                <h2>Common Questions</h2>
+                <p>Everything you need to know before starting your project.</p>
+            </div>
+            <div class="faq-list reveal">
+                <details class="faq-item">
+                    <summary>What areas do you serve?</summary>
+                    <p>We serve the Pacific Northwest, primarily throughout Washington state. Contact us to confirm availability in your specific area.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Are you licensed, bonded, and insured?</summary>
+                    <p>Yes — Bell &amp; Hammer is fully licensed, bonded, and insured. We provide documentation on request, no questions asked.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>How does your estimate process work?</summary>
+                    <p>Fill out our form or give us a call. We'll schedule an on-site visit, talk through your goals, and deliver a detailed written estimate — zero pressure, zero obligation.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>Do you handle permits and inspections?</summary>
+                    <p>Absolutely. We handle all permitting and coordinate inspections so the paperwork never falls on you.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>How long does a typical remodel take?</summary>
+                    <p>Depends on scope, but we set realistic timelines upfront and stick to them. You'll have a clear schedule before any work begins.</p>
+                </details>
+                <details class="faq-item">
+                    <summary>What sets you apart from other contractors?</summary>
+                    <p>Communication. We give you daily updates, honest timelines, and no surprises. You'll always know what's happening, what's next, and what it costs.</p>
+                </details>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ════════════════════════════════════════════ -->
+<!-- CONTACT — Jobber embed -->
+<!-- ════════════════════════════════════════════ -->
+<section class="section contact" id="contact">
+    <div class="container">
+        <div class="contact-layout">
+            <div class="contact-left reveal">
+                <div class="tag">Get Started</div>
+                <h2>Let's Talk About Your Project</h2>
+                <p>Tell us what you're envisioning. We'll follow up within one business day with next steps — no sales pitch, no pressure.</p>
+                <div class="contact-info">
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">&#9742;</div>
+                        <div class="contact-info-text">
+                            <small>Phone</small>
+                            <a href="tel:3607100409">(360) 710-0409</a>
+                        </div>
+                    </div>
+                    <div class="contact-info-item">
+                        <div class="contact-info-icon">&#9993;</div>
+                        <div class="contact-info-text">
+                            <small>Email</small>
+                            <a href="mailto:admin@bellnhammer.biz">admin@bellnhammer.biz</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="jobber-form reveal">
+                <iframe
+                    src="https://clienthub.getjobber.com/hubs/d39802b2-7d77-40f0-a155-36e7188d511d/public/requests/2179121/embedded_new"
+                    frameborder="0"
+                    scrolling="yes"
+                    width="100%"
+                    height="700"
+                    title="Request an Estimate - Bell &amp; Hammer"
+                    loading="lazy">
+                </iframe>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <div class="container footer-inner">
+        <div class="footer-brand">
+            <span class="nav-logo">BELL <span>&amp;</span> HAMMER</span>
+            <p>Licensed, bonded &amp; insured residential construction in the Pacific Northwest. Built on craft. Led by communication.</p>
+        </div>
+        <div class="footer-col">
+            <p>Navigation</p>
+            <a href="#services">Services</a>
+            <a href="#work">Our Work</a>
+            <a href="#about">About</a>
+            <a href="#reviews">Reviews</a>
+            <a href="#contact">Request Estimate</a>
+            <a href="careers.html">Careers</a>
+        </div>
+        <div class="footer-col">
+            <p>Contact</p>
+            <a href="tel:3607100409">(360) 710-0409</a>
+            <a href="mailto:admin@bellnhammer.biz">admin@bellnhammer.biz</a>
+            <a href="https://clienthub.getjobber.com/client_hubs/d39802b2-7d77-40f0-a155-36e7188d511d/login/new?source=share_login" target="_blank" style="margin-top:12px; color:var(--rust);">Client Portal Login &rarr;</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2026 Bell &amp; Hammer. All rights reserved. &nbsp;|&nbsp; <a href="terms.html" style="color:var(--dim);">Terms</a> &nbsp;|&nbsp; <a href="privacy.html" style="color:var(--dim);">Privacy</a></p>
+    </div>
+</footer>
+
+<script>
+// ── Sawdust Particles (stream only, no ambient) ──
+const canvas = document.getElementById('dustCanvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+
+function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = document.documentElement.scrollHeight;
+}
+
+class SawDust {
+    constructor() {
+        this.alive = true;
+        this.size = Math.random() * 2.5 + 0.5;
+        this.isSliver = Math.random() > 0.6;
+        if (this.isSliver) {
+            this.w = Math.random() * 4 + 1.5;
+            this.h = Math.random() * 1.2 + 0.3;
+        }
+        this.angle = Math.random() * Math.PI * 2;
+        this.spin = (Math.random() - 0.5) * 0.015;
+        this.vx = 0; this.vy = 0;
+        this.gravity = 0.01;
+        this.drag = 0.995;
+        this.opacity = 0;
+        this.maxOpacity = Math.random() * 0.4 + 0.1;
+        this.fadeSpeed = Math.random() * 0.004 + 0.002;
+        this.life = 0;
+        this.maxLife = Math.random() * 400 + 250;
+        this.x = 0; this.y = 0;
+        const t = ['205,170,110','180,130,80','160,110,60','140,100,55','220,200,160','190,114,88','170,140,90'];
+        this.color = t[Math.floor(Math.random() * t.length)];
+    }
+    update() {
+        if (!this.alive) return;
+        this.x += this.vx;
+        this.y += this.vy;
+        this.vy += this.gravity;
+        this.vx *= this.drag;
+        this.vy *= this.drag;
+        this.angle += this.spin;
+        this.life++;
+        // Fade in quickly
+        if (this.life < 20) {
+            this.opacity = Math.min(this.maxOpacity, this.opacity + this.fadeSpeed * 3);
+        }
+        // Fade out in last 30%
+        if (this.life > this.maxLife * 0.7) {
+            this.opacity -= this.fadeSpeed * 0.8;
+        }
+        if (this.opacity <= 0 || this.life > this.maxLife) { this.alive = false; }
+    }
+    draw() {
+        if (!this.alive || this.opacity <= 0) return;
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.angle);
+        ctx.fillStyle = `rgba(${this.color},${this.opacity})`;
+        if (this.isSliver) {
+            ctx.fillRect(-this.w/2, -this.h/2, this.w, this.h);
+        } else {
+            ctx.beginPath();
+            ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+        ctx.restore();
+    }
+}
+
+function init() { particles = []; }
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    updateStream();
+    particles.forEach(p => { p.update(); p.draw(); });
+    // Remove dead particles, never reset them
+    particles = particles.filter(p => p.alive);
+    requestAnimationFrame(animate);
+}
+
+// Sawdust stream — right to left across "Built on Communication & Craft"
+const aboutSection = document.getElementById('about');
+let aboutBurstFired = false;
+let streamActive = false;
+let streamOriginY = 0;
+let streamFrames = 0;
+let streamMaxFrames = 180;
+
+function startStream(yOnPage) {
+    streamActive = true;
+    streamOriginY = yOnPage;
+    streamFrames = 0;
+}
+
+function updateStream() {
+    if (!streamActive) return;
+    streamFrames++;
+    let spawnRate;
+    if (streamFrames < 30) spawnRate = 15;
+    else if (streamFrames < 60) spawnRate = 10;
+    else if (streamFrames < 120) spawnRate = 5;
+    else spawnRate = 2;
+
+    for (let i = 0; i < spawnRate; i++) {
+        const p = new SawDust();
+        p.x = canvas.width + 2;
+        p.y = streamOriginY + (Math.random() - 0.5) * 20;
+        const angle = Math.PI + (Math.random() - 0.5) * 0.6;
+        const speed = Math.random() * 3.5 + 2;
+        p.vx = Math.cos(angle) * speed;
+        p.vy = Math.sin(angle) * speed + (Math.random() - 0.3) * 0.4;
+        p.gravity = Math.random() * 0.012 + 0.005;
+        p.drag = 0.994;
+        p.opacity = p.maxOpacity * 0.9;
+        p.maxLife = Math.random() * 400 + 300;
+        particles.push(p);
+    }
+    if (streamFrames >= streamMaxFrames) streamActive = false;
+}
+
+const aboutObs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting && !aboutBurstFired) {
+            aboutBurstFired = true;
+            const h2 = aboutSection.querySelector('h2');
+            const target = h2 || aboutSection;
+            const rect = target.getBoundingClientRect();
+            const yOnPage = rect.top + window.scrollY + rect.height / 2;
+            startStream(yOnPage);
+            aboutObs.unobserve(aboutSection);
+        }
+    });
+}, { threshold: 0.15 });
+aboutObs.observe(aboutSection);
+
+window.addEventListener('resize', resize);
+new ResizeObserver(resize).observe(document.body);
+resize(); init(); animate();
+
+// ── Nav ──
+const nav = document.getElementById('nav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+
+// ── Mobile menu ──
+const toggle = document.getElementById('navToggle');
+const links = document.getElementById('navLinks');
+toggle.addEventListener('click', () => { links.classList.toggle('open'); toggle.classList.toggle('open'); });
+document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); toggle.classList.remove('open'); }));
+
+// ── Smooth scroll ──
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => { e.preventDefault(); const t = document.querySelector(a.getAttribute('href')); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+});
+
+// ── Scroll reveal ──
+const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// ── Before/After Slider ──
+(function() {
+    const slider = document.getElementById('baSlider');
+    const afterEl = document.getElementById('baAfter');
+    const handle = document.getElementById('baHandle');
+    if (!slider) return;
+    let dragging = false;
+
+    function move(x) {
+        const rect = slider.getBoundingClientRect();
+        let pos = (x - rect.left) / rect.width;
+        pos = Math.max(0.05, Math.min(0.95, pos));
+        afterEl.style.width = (pos * 100) + '%';
+        handle.style.left = (pos * 100) + '%';
+    }
+
+    slider.addEventListener('mousedown', e => { dragging = true; move(e.clientX); });
+    window.addEventListener('mousemove', e => { if (dragging) { e.preventDefault(); move(e.clientX); } });
+    window.addEventListener('mouseup', () => { dragging = false; });
+
+    slider.addEventListener('touchstart', e => { dragging = true; move(e.touches[0].clientX); }, { passive: true });
+    window.addEventListener('touchmove', e => { if (dragging) move(e.touches[0].clientX); }, { passive: true });
+    window.addEventListener('touchend', () => { dragging = false; });
+})();
+</script>
+
+</body>
+</html>

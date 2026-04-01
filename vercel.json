@@ -1,0 +1,11 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/bellnhammer.html" },
+    { "source": "/services/:path*", "destination": "/services/:path*" },
+    { "source": "/careers", "destination": "/careers.html" },
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/portfolio", "destination": "/portfolio.html" },
+    { "source": "/blog", "destination": "/blog.html" }
+  ]
+}
