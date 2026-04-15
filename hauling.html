@@ -66,7 +66,7 @@
         .addon-table td:last-child{text-align:right;color:var(--cream);font-weight:500;white-space:nowrap}
 
         /* Before/After Slider */
-        .ba-slider{position:relative;width:100%;max-width:700px;margin:0 auto;overflow:hidden;cursor:col-resize;user-select:none;-webkit-user-select:none;aspect-ratio:3/4;background:var(--dark2);border:1px solid rgba(255,255,255,.04)}
+        .ba-slider{position:relative;width:100%;max-width:500px;margin:0 auto;overflow:hidden;cursor:col-resize;user-select:none;-webkit-user-select:none;aspect-ratio:9/16;background:var(--dark2);border:1px solid rgba(255,255,255,.04)}
         .ba-slider img{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
         .ba-slider .ba-before{position:absolute;inset:0}
         .ba-slider .ba-after{position:absolute;inset:0;overflow:hidden}
@@ -137,38 +137,78 @@
 
 <div class="divider"></div>
 
-<!-- Pricing Section -->
+<!-- Pricing Section — Junk Removal -->
 <section class="section" style="background:var(--dark);">
     <div class="container">
-        <div class="tag reveal">Pricing</div>
-        <h2 class="reveal">Flat-Rate Hauling</h2>
-        <p class="reveal" style="color:var(--mid);font-weight:300;line-height:1.9;max-width:620px;">6&times;8 dump bed with built walls. Pick your load size — we handle the rest. No hidden fees, no hourly surprises.</p>
+        <div class="tag reveal">Junk Removal</div>
+        <h2 class="reveal">Junk &amp; Cleanout Pricing</h2>
+        <p class="reveal" style="color:var(--mid);font-weight:300;line-height:1.9;max-width:620px;">Furniture, appliances, old fixtures, garage cleanouts, estate cleanups — we load it and haul it off. Pricing based on how much truck space your junk takes up.</p>
+
+        <div class="pricing-grid reveal" style="grid-template-columns:repeat(3,1fr);">
+            <div class="price-card">
+                <div class="price-label">Small Cleanout</div>
+                <div class="price-amount">$199</div>
+                <div class="price-desc">Starting at</div>
+                <div class="price-details">Up to &frac14; truck &middot; ~2&ndash;3 items<br>Single room or garage corner</div>
+            </div>
+            <div class="price-card featured">
+                <div class="price-label">Half Truck</div>
+                <div class="price-amount">$349</div>
+                <div class="price-desc">Starting at</div>
+                <div class="price-details">~100&ndash;200 cu ft<br>Garage, basement, or storage cleanout</div>
+            </div>
+            <div class="price-card">
+                <div class="price-label">Full Truck</div>
+                <div class="price-amount">$499</div>
+                <div class="price-desc">Starting at</div>
+                <div class="price-details">Full 6&times;8 bed &middot; ~4 cu yd<br>Whole room, moveout, estate</div>
+            </div>
+        </div>
+
+        <div class="note-box reveal" style="margin-top:32px;">
+            <p><strong>We load it for you.</strong> Junk removal includes labor. Just point at what goes and we'll handle the rest. Single items like sofas, mattresses, and appliances start at $159.</p>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Pricing Section — Material Hauling -->
+<section class="section" style="background:var(--dark2);">
+    <div class="container">
+        <div class="tag reveal">Material Hauling</div>
+        <h2 class="reveal">Construction &amp; Debris Hauling</h2>
+        <p class="reveal" style="color:var(--mid);font-weight:300;line-height:1.9;max-width:620px;">Demo debris, roofing tear-off, dirt, gravel, concrete — job site material that needs to go to the dump. You load or we load. 6&times;8 dump bed with built walls.</p>
 
         <div class="pricing-grid reveal">
             <div class="price-card">
-                <div class="price-label">Minimum Trip</div>
+                <div class="price-label">Light Load</div>
                 <div class="price-amount">$175</div>
-                <div class="price-desc">Small load, short haul</div>
-                <div class="price-details">Up to &frac14; load &middot; &le;5 mi<br>Covers fuel + min dump fee</div>
+                <div class="price-desc">Starting at</div>
+                <div class="price-details">Up to &frac14; bed &middot; &le;5 mi<br>Drywall, trim, light demo</div>
             </div>
             <div class="price-card featured">
-                <div class="price-label">Half Load</div>
+                <div class="price-label">Standard Load</div>
                 <div class="price-amount">$275</div>
-                <div class="price-desc">Typical job site haul</div>
-                <div class="price-details">~2&ndash;3 cu yd &middot; local haul<br>Most common booking</div>
+                <div class="price-desc">Starting at</div>
+                <div class="price-details">~2&ndash;3 cu yd &middot; local haul<br>Framing, siding, roofing debris</div>
             </div>
             <div class="price-card">
-                <div class="price-label">Full Load</div>
+                <div class="price-label">Full Bed</div>
                 <div class="price-amount">$400</div>
-                <div class="price-desc">Max capacity (~4 cu yd)</div>
-                <div class="price-details">Full 6&times;8 bed<br>Includes 1 dump run</div>
+                <div class="price-desc">Starting at</div>
+                <div class="price-details">Full 6&times;8 bed &middot; ~4 cu yd<br>Full demo cleanout, 1 dump run</div>
             </div>
             <div class="price-card">
                 <div class="price-label">Hourly Rate</div>
                 <div class="price-amount">$95 <span>/ hr</span></div>
-                <div class="price-desc">Multi-trip or standby</div>
-                <div class="price-details">2-hour minimum<br>Ongoing job sites</div>
+                <div class="price-desc">Starting at</div>
+                <div class="price-details">2-hour minimum<br>Multi-trip, standby, ongoing sites</div>
             </div>
+        </div>
+
+        <div class="note-box reveal" style="margin-top:32px;">
+            <p><strong>Heavy materials priced by weight.</strong> Dirt, concrete, and rock are charged based on dump fees ($243.38/ton at King County transfer stations). We always confirm weight-based pricing before loading so there are no surprises.</p>
         </div>
     </div>
 </section>
@@ -223,9 +263,9 @@
                 <div class="p-item-text"><h3>Crew at Work</h3><p>Secured &middot; Ready to Haul</p></div>
             </div>
             <div class="p-item">
-                <img src="images/hauling/truck-side-profile.jpg" alt="Dump truck side profile showing full bed">
+                <img src="images/hauling/truck-loaded-wide.jpg" alt="Loaded truck ready for haul on residential street">
                 <div class="p-item-overlay"></div>
-                <div class="p-item-text"><h3>Side Profile</h3><p>Stake Sides &middot; Full Capacity</p></div>
+                <div class="p-item-text"><h3>Ready to Roll</h3><p>Loaded &middot; Strapped &middot; Hauling</p></div>
             </div>
             <div class="p-item p-wide">
                 <img src="images/hauling/truck-jobsite-skidsteer.jpg" alt="Dump truck being loaded by skid steer on job site">
