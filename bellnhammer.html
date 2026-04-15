@@ -118,6 +118,21 @@
         .service-card h3 { color: var(--cream); margin-bottom: 14px; }
         .service-card p { color: var(--mid); font-size: 0.9rem; font-weight: 300; line-height: 1.7; }
 
+        /* ── Hauling Banner ── */
+        .hauling-banner { grid-column: 1 / -1; position: relative; overflow: hidden; min-height: 160px; display: flex; align-items: center; cursor: pointer; background: var(--dark2); transition: all 0.5s ease; }
+        .hauling-banner img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%; filter: grayscale(1) brightness(0.5) contrast(1.1); transition: filter 0.8s ease, transform 5s ease; }
+        .hauling-banner:hover img, .hauling-banner:active img { filter: grayscale(0) brightness(0.7) contrast(1.15) saturate(1.2); transform: scale(1.04); }
+        .hauling-banner::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.5) 50%, rgba(10,10,10,0.3) 100%); pointer-events: none; transition: background 0.8s ease; }
+        .hauling-banner:hover::after { background: linear-gradient(to right, rgba(10,10,10,0.7) 0%, rgba(10,10,10,0.3) 50%, rgba(10,10,10,0.15) 100%); }
+        .hauling-banner-content { position: relative; z-index: 2; padding: 36px 40px; display: flex; align-items: center; gap: 24px; }
+        .hauling-banner-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: rgba(255,255,255,0.06); }
+        .hauling-banner-content h3 { color: var(--cream); margin-bottom: 6px; }
+        .hauling-banner-content p { color: var(--mid); font-size: 0.9rem; font-weight: 300; }
+        .hauling-banner-arrow { position: absolute; right: 40px; top: 50%; transform: translateY(-50%); z-index: 2; font-family: 'Bebas Neue', sans-serif; font-size: 1rem; letter-spacing: 3px; color: var(--rust); opacity: 0; transition: opacity 0.5s ease, transform 0.5s ease; }
+        .hauling-banner:hover .hauling-banner-arrow { opacity: 1; transform: translateY(-50%) translateX(4px); }
+        .hauling-banner::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--rust); transform: scaleX(0); transform-origin: left; transition: transform 0.5s ease; z-index: 3; }
+        .hauling-banner:hover::before { transform: scaleX(1); }
+
         /* ── Full-Width Image Break ── */
         .img-break { position: relative; z-index: 2; height: 50vh; min-height: 350px; overflow: hidden; }
         .img-break img { width: 100%; height: 100%; object-fit: cover; filter: contrast(1.15) brightness(1.0) saturate(1.15); }
@@ -327,6 +342,7 @@
             <div class="services-header-text">
                 <div class="tag">What We Do</div>
                 <h2>Full-Scope Residential Construction</h2>
+                <a href="hauling.html" style="display:inline-block;margin-top:8px;font-size:0.7rem;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--rust);transition:color 0.3s;">+ Hauling &amp; Dump Runs &rarr;</a>
                 <p>From foundation to finish — one crew, one point of contact, zero guesswork.</p>
             </div>
             <a href="#contact" class="btn btn-ghost">Start a Project</a>
@@ -361,6 +377,17 @@
                 <div class="service-num">06</div>
                 <h3>Repairs &amp; Restoration</h3>
                 <p>Water damage, rot, structural issues, drywall — we diagnose it, scope it, and fix it right.</p>
+            </a>
+            <a href="hauling.html" class="hauling-banner">
+                <img src="images/hauling/hero-dump-action.jpg" alt="Bell & Hammer dump truck in action">
+                <div class="hauling-banner-content">
+                    <div class="hauling-banner-num">07</div>
+                    <div>
+                        <h3>Hauling &amp; Dump Runs</h3>
+                        <p>Job site debris, demo material, yard waste — loaded, hauled, and dumped. Flat-rate pricing from $175.</p>
+                    </div>
+                </div>
+                <div class="hauling-banner-arrow">VIEW PRICING &rarr;</div>
             </a>
         </div>
     </div>
