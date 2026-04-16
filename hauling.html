@@ -112,7 +112,7 @@
         /* Footer */
         .footer{background:var(--dark2);padding:60px 0 0;border-top:1px solid rgba(255,255,255,.03)}.footer-inner{display:grid;grid-template-columns:2fr 1fr 1fr;gap:60px;padding-bottom:48px}.footer-brand p{color:var(--dim);font-size:.85rem;font-weight:300;max-width:300px;line-height:1.7;margin-top:16px}.footer-col p{color:var(--dim);font-size:.7rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:16px}.footer-col a{display:block;color:var(--mid);font-size:.85rem;margin-bottom:10px;transition:color .3s;font-weight:300}.footer-col a:hover{color:var(--cream)}.footer-bottom{border-top:1px solid rgba(255,255,255,.03);padding:20px 0;text-align:center;font-size:.7rem;color:var(--dim);letter-spacing:1px}
 
-        @media(max-width:900px){.nav-links,.nav-cta{display:none}.nav-links.open{display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,.98);padding:100px 32px 32px;gap:24px;z-index:55}.nav-links.open a{font-size:1.2rem;color:var(--cream)}.nav-toggle{display:block}.pricing-grid{grid-template-columns:1fr 1fr}.photo-mosaic{grid-template-columns:1fr}.photo-mosaic .p-wide{grid-column:span 1}.service-grid{grid-template-columns:1fr;gap:40px}.footer-inner{grid-template-columns:1fr;gap:32px}.haul-hero{min-height:70vh}}
+        @media(max-width:900px){.nav-links,.nav-cta{display:none}.nav-links.open{display:flex;flex-direction:column;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(10,10,10,.98);padding:100px 32px 32px;gap:24px;z-index:55}.nav-links.open a{font-size:1.2rem;color:var(--cream)}.nav-toggle{display:block}.pricing-grid{grid-template-columns:1fr 1fr}.photo-mosaic{grid-template-columns:1fr}.photo-mosaic .p-wide{grid-column:span 1}.service-grid{grid-template-columns:1fr;gap:40px}.footer-inner{grid-template-columns:1fr;gap:32px}.haul-hero{min-height:70vh}[style*="grid-template-columns:1fr 1fr;gap:80px"]{grid-template-columns:1fr !important;gap:48px !important}}
         @media(max-width:600px){.pricing-grid{grid-template-columns:1fr}}
     </style>
 </head>
@@ -129,7 +129,7 @@
         <h1>We haul it.<br>You don't <em>have to.</em></h1>
         <p class="haul-hero-sub">Job site debris, demo material, yard waste — loaded, hauled, and dumped. Flat-rate pricing, same-day availability, no surprises.</p>
         <div class="hero-actions">
-            <a href="bellnhammer.html#contact" class="btn btn-rust">Get a Quote</a>
+            <a href="#quote" class="btn btn-rust">Get a Quote</a>
             <a href="tel:3607100409" class="btn btn-ghost">(360) 710-0409</a>
         </div>
     </div>
@@ -137,78 +137,78 @@
 
 <div class="divider"></div>
 
-<!-- Pricing Section — Junk Removal -->
-<section class="section" style="background:var(--dark);">
+<!-- Pricing Section — Material Hauling (first, higher price) -->
+<section class="section" id="material" style="background:var(--dark);">
     <div class="container">
-        <div class="tag reveal">Junk Removal</div>
-        <h2 class="reveal">Junk &amp; Cleanout Pricing</h2>
-        <p class="reveal" style="color:var(--mid);font-weight:300;line-height:1.9;max-width:620px;">Furniture, appliances, old fixtures, garage cleanouts, estate cleanups — we load it and haul it off. Pricing based on how much truck space your junk takes up.</p>
+        <div class="tag reveal">Material Hauling</div>
+        <h2 class="reveal" style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">Construction &amp; Debris Hauling <a href="#junk" style="font-family:'Inter',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:2px;color:var(--rust);border:1px solid rgba(190,114,88,.3);padding:8px 20px;text-transform:uppercase;transition:all .3s;">Junk Removal &rarr;</a></h2>
+        <p class="reveal" style="color:var(--mid);font-weight:300;line-height:1.9;max-width:620px;">Demo debris, roofing tear-off, dirt, gravel, concrete — heavy material that needs a truck and a crew. 6&times;8 dump bed with built walls, 2-man crew, loaded and hauled.</p>
 
-        <div class="pricing-grid reveal" style="grid-template-columns:repeat(3,1fr);">
+        <div class="pricing-grid reveal">
             <div class="price-card">
-                <div class="price-label">Small Cleanout</div>
-                <div class="price-amount">$199</div>
+                <div class="price-label">Light Load</div>
+                <div class="price-amount">$225</div>
                 <div class="price-desc">Starting at</div>
-                <div class="price-details">Up to &frac14; truck &middot; ~2&ndash;3 items<br>Single room or garage corner</div>
+                <div class="price-details">Up to &frac14; bed &middot; &le;5 mi<br>Drywall, trim, light demo</div>
             </div>
             <div class="price-card featured">
-                <div class="price-label">Half Truck</div>
-                <div class="price-amount">$349</div>
+                <div class="price-label">Standard Load</div>
+                <div class="price-amount">$375</div>
                 <div class="price-desc">Starting at</div>
-                <div class="price-details">~100&ndash;200 cu ft<br>Garage, basement, or storage cleanout</div>
+                <div class="price-details">~2&ndash;3 cu yd &middot; local haul<br>Framing, siding, roofing debris</div>
             </div>
             <div class="price-card">
-                <div class="price-label">Full Truck</div>
-                <div class="price-amount">$499</div>
+                <div class="price-label">Full Bed</div>
+                <div class="price-amount">$525</div>
                 <div class="price-desc">Starting at</div>
-                <div class="price-details">Full 6&times;8 bed &middot; ~4 cu yd<br>Whole room, moveout, estate</div>
+                <div class="price-details">Full 6&times;8 bed &middot; ~4 cu yd<br>Full demo cleanout, 1 dump run</div>
+            </div>
+            <div class="price-card">
+                <div class="price-label">Hourly Rate</div>
+                <div class="price-amount">$150 <span>/ hr</span></div>
+                <div class="price-desc">Starting at &middot; 2-man crew</div>
+                <div class="price-details">2-hour minimum<br>Multi-trip, standby, ongoing sites</div>
             </div>
         </div>
 
         <div class="note-box reveal" style="margin-top:32px;">
-            <p><strong>We load it for you.</strong> Junk removal includes labor. Just point at what goes and we'll handle the rest. Single items like sofas, mattresses, and appliances start at $159.</p>
+            <p><strong>Heavy materials priced by weight.</strong> Dirt, concrete, and rock are charged based on dump fees ($243.38/ton at King County transfer stations). Loading included with all material hauling. We always confirm pricing before we start.</p>
         </div>
     </div>
 </section>
 
 <div class="divider"></div>
 
-<!-- Pricing Section — Material Hauling -->
-<section class="section" style="background:var(--dark2);">
+<!-- Pricing Section — Junk Removal (second, lower price) -->
+<section class="section" id="junk" style="background:var(--dark2);">
     <div class="container">
-        <div class="tag reveal">Material Hauling</div>
-        <h2 class="reveal">Construction &amp; Debris Hauling</h2>
-        <p class="reveal" style="color:var(--mid);font-weight:300;line-height:1.9;max-width:620px;">Demo debris, roofing tear-off, dirt, gravel, concrete — job site material that needs to go to the dump. You load or we load. 6&times;8 dump bed with built walls.</p>
+        <div class="tag reveal">Junk Removal</div>
+        <h2 class="reveal" style="display:flex;align-items:center;gap:20px;flex-wrap:wrap;">Junk &amp; Cleanout Pricing <a href="#material" style="font-family:'Inter',sans-serif;font-size:.7rem;font-weight:600;letter-spacing:2px;color:var(--rust);border:1px solid rgba(190,114,88,.3);padding:8px 20px;text-transform:uppercase;transition:all .3s;">Material Hauling &rarr;</a></h2>
+        <p class="reveal" style="color:var(--mid);font-weight:300;line-height:1.9;max-width:620px;">Furniture, appliances, old fixtures, garage cleanouts, estate cleanups — lighter loads, simpler disposal. We load it and haul it off.</p>
 
-        <div class="pricing-grid reveal">
+        <div class="pricing-grid reveal" style="grid-template-columns:repeat(3,1fr);">
             <div class="price-card">
-                <div class="price-label">Light Load</div>
+                <div class="price-label">Small Cleanout</div>
                 <div class="price-amount">$175</div>
                 <div class="price-desc">Starting at</div>
-                <div class="price-details">Up to &frac14; bed &middot; &le;5 mi<br>Drywall, trim, light demo</div>
+                <div class="price-details">Up to &frac14; truck &middot; ~2&ndash;3 items<br>Single room or garage corner</div>
             </div>
             <div class="price-card featured">
-                <div class="price-label">Standard Load</div>
-                <div class="price-amount">$275</div>
+                <div class="price-label">Half Truck</div>
+                <div class="price-amount">$299</div>
                 <div class="price-desc">Starting at</div>
-                <div class="price-details">~2&ndash;3 cu yd &middot; local haul<br>Framing, siding, roofing debris</div>
+                <div class="price-details">~100&ndash;200 cu ft<br>Garage, basement, or storage cleanout</div>
             </div>
             <div class="price-card">
-                <div class="price-label">Full Bed</div>
-                <div class="price-amount">$400</div>
+                <div class="price-label">Full Truck</div>
+                <div class="price-amount">$425</div>
                 <div class="price-desc">Starting at</div>
-                <div class="price-details">Full 6&times;8 bed &middot; ~4 cu yd<br>Full demo cleanout, 1 dump run</div>
-            </div>
-            <div class="price-card">
-                <div class="price-label">Hourly Rate</div>
-                <div class="price-amount">$95 <span>/ hr</span></div>
-                <div class="price-desc">Starting at</div>
-                <div class="price-details">2-hour minimum<br>Multi-trip, standby, ongoing sites</div>
+                <div class="price-details">Full 6&times;8 bed &middot; ~4 cu yd<br>Whole room, moveout, estate</div>
             </div>
         </div>
 
         <div class="note-box reveal" style="margin-top:32px;">
-            <p><strong>Heavy materials priced by weight.</strong> Dirt, concrete, and rock are charged based on dump fees ($243.38/ton at King County transfer stations). We always confirm weight-based pricing before loading so there are no surprises.</p>
+            <p><strong>We load it for you.</strong> Junk removal includes labor. Just point at what goes and we'll handle the rest. Single items like sofas, mattresses, and appliances start at $149.</p>
         </div>
     </div>
 </section>
@@ -365,15 +365,37 @@
 
 <div class="divider"></div>
 
-<!-- CTA -->
-<section class="haul-cta">
+<!-- Contact / Quote Form -->
+<section class="section" id="quote" style="background:var(--dark2);">
     <div class="container">
-        <div class="tag">Get Started</div>
-        <h2>Need Something Hauled?</h2>
-        <p>Tell us what you've got and where it is. We'll get back to you within one business day with pricing.</p>
-        <div class="cta-actions">
-            <a href="bellnhammer.html#contact" class="btn btn-rust">Request a Quote</a>
-            <a href="tel:3607100409" class="btn btn-ghost">(360) 710-0409</a>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start;" class="reveal">
+            <div>
+                <div class="tag">Get a Quote</div>
+                <h2>Need Something Hauled?</h2>
+                <p style="color:var(--mid);font-weight:300;line-height:1.8;margin-bottom:32px;">Tell us what you've got, where it is, and when you need it gone. We'll get back to you within one business day with a firm price — no bait-and-switch, no surprise fees after the fact.</p>
+                <div style="display:flex;flex-direction:column;gap:20px;">
+                    <div style="display:flex;align-items:center;gap:16px;">
+                        <div style="width:44px;height:44px;border:1px solid var(--dim);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">&#9742;</div>
+                        <div><small style="display:block;color:var(--dim);font-size:.7rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:2px;">Phone</small><a href="tel:3607100409" style="color:var(--cream);font-weight:500;transition:color .3s;">(360) 710-0409</a></div>
+                    </div>
+                    <div style="display:flex;align-items:center;gap:16px;">
+                        <div style="width:44px;height:44px;border:1px solid var(--dim);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;">&#9993;</div>
+                        <div><small style="display:block;color:var(--dim);font-size:.7rem;text-transform:uppercase;letter-spacing:2px;margin-bottom:2px;">Email</small><a href="mailto:admin@bellnhammer.biz" style="color:var(--cream);font-weight:500;transition:color .3s;">admin@bellnhammer.biz</a></div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <iframe
+                    src="https://clienthub.getjobber.com/hubs/d39802b2-7d77-40f0-a155-36e7188d511d/public/requests/2179121/embedded_new"
+                    frameborder="0"
+                    scrolling="yes"
+                    width="100%"
+                    height="700"
+                    title="Request a Hauling Quote - Bell &amp; Hammer"
+                    loading="lazy"
+                    style="display:block;border:1px solid rgba(255,255,255,.04);background:#fff;border-radius:2px;">
+                </iframe>
+            </div>
         </div>
     </div>
 </section>
