@@ -122,7 +122,7 @@
 </head>
 <body>
 
-<nav class="nav"><div class="nav-inner"><a href="bellnhammer.html" class="nav-logo"><img src="images/logo.png" alt="Bell & Hammer" style="height:48px;border-radius:6px;"></a><ul class="nav-links" id="navLinks"><li><a href="bellnhammer.html">Home</a></li><li><a href="bellnhammer.html#services">Services</a></li><li><a href="bellnhammer.html#work">Work</a></li><li><a href="bellnhammer.html#about">About</a></li><li><a href="hauling.html" style="color:var(--cream);">Hauling</a></li><li><a href="careers.html">Careers</a></li><li><a href="https://clienthub.getjobber.com/client_hubs/d39802b2-7d77-40f0-a155-36e7188d511d/login/new?source=share_login" target="_blank">Client Portal</a></li></ul><a href="bellnhammer.html#contact" class="nav-cta">Get Estimate</a><button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button></div></nav>
+<nav class="nav"><div class="nav-inner"><a href="bellnhammer.html" class="nav-logo"><img src="images/logo.png" alt="Bell & Hammer" style="height:48px;border-radius:6px;"></a><ul class="nav-links" id="navLinks"><li><a href="bellnhammer.html">Home</a></li><li><a href="bellnhammer.html#services">Services</a></li><li><a href="demo-and-hauling.html" style="color:var(--cream);">Demo &amp; Hauling</a></li><li><a href="bellnhammer.html#work">Work</a></li><li><a href="bellnhammer.html#about">About</a></li><li><a href="careers.html">Careers</a></li><li><a href="https://clienthub.getjobber.com/client_hubs/d39802b2-7d77-40f0-a155-36e7188d511d/login/new?source=share_login" target="_blank">Client Portal</a></li></ul><a href="bellnhammer.html#contact" class="nav-cta">Get Estimate</a><button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button></div></nav>
 
 <!-- Hero with dump truck action shot -->
 <section class="haul-hero">
@@ -311,15 +311,78 @@
         <h2 class="reveal">Add-Ons &amp; Surcharges</h2>
         <table class="addon-table reveal">
             <tr><td>Extra mileage (beyond 10 mi)</td><td>$3&ndash;4 / mi</td></tr>
-            <tr><td>Heavy material (dirt, concrete, rock)</td><td>+$50&ndash;75</td></tr>
-            <tr><td>Labor / loading assistance</td><td>$65 / hr per person</td></tr>
-            <tr><td>Hazardous / special items (tires, paint)</td><td>+$40&ndash;80</td></tr>
+            <tr><td>Heavy material (concrete, tile, dirt)</td><td>+$100&ndash;150</td></tr>
+            <tr><td>Roofing shingles / asphalt</td><td>+$75</td></tr>
+            <tr><td>Hazardous / special items</td><td>+$60&ndash;100</td></tr>
             <tr><td>Weekend / after-hours</td><td>+15%</td></tr>
-            <tr><td>Same-day / rush booking</td><td>+$50</td></tr>
+            <tr><td>Same-day / rush booking</td><td>+$75</td></tr>
+            <tr><td>Additional dump runs (same job)</td><td>+$200</td></tr>
+            <tr><td>Stairs / difficult access</td><td>+$50</td></tr>
         </table>
 
         <div class="note-box reveal" style="margin-top:40px;">
-            <p><strong>Dump fees:</strong> King County 2026 self-haul rate is $40.25 minimum + $243.38/ton. A 6&times;8 bed of light debris (~500&ndash;800 lbs) runs roughly $60&ndash;100 in dump fees. Heavy loads are quoted by weight — we always confirm before hauling.</p>
+            <p><strong>Heavy load heads-up:</strong> King County charges $243/ton at transfer stations in 2026. Concrete, tile, and roofing debris add up fast — always estimate weight before quoting a flat rate on dense materials.</p>
+        </div>
+
+        <!-- Quote Calculator -->
+        <div class="reveal" style="margin-top:80px;background:var(--dark3);border:1px solid rgba(255,255,255,.06);padding:40px;max-width:720px;" id="calculator">
+            <div class="tag">Estimate Tool</div>
+            <h3 style="margin-bottom:8px;">Load Weight Calculator</h3>
+            <p style="color:var(--mid);font-size:.85rem;font-weight:300;line-height:1.7;margin-bottom:28px;">Select a material and estimate how much you're hauling. We'll calculate approximate weight and dump fees so you know what to expect.</p>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:24px;">
+                <div>
+                    <label style="display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:var(--dim);margin-bottom:8px;">Material Type</label>
+                    <select id="calcMaterial" style="width:100%;padding:14px 16px;background:var(--dark2);color:var(--cream);border:1px solid rgba(255,255,255,.08);font-family:'Inter',sans-serif;font-size:.9rem;cursor:pointer;outline:none;">
+                        <option value="0">— Select material —</option>
+                        <option value="500">Drywall / light demo</option>
+                        <option value="350">Wood framing / lumber</option>
+                        <option value="600">Mixed construction debris</option>
+                        <option value="1400">Asphalt shingles</option>
+                        <option value="2700">Concrete / masonry</option>
+                        <option value="2200">Dirt / topsoil</option>
+                        <option value="2800">Gravel (crushed)</option>
+                        <option value="2700">Sand</option>
+                        <option value="3000">Boulders / rock</option>
+                        <option value="1800">Pavers / brick</option>
+                        <option value="800">Compost</option>
+                        <option value="600">Mulch / bark</option>
+                        <option value="400">Yard waste / brush</option>
+                        <option value="1000">Tile / ceramic</option>
+                        <option value="200">Furniture / household junk</option>
+                    </select>
+                </div>
+                <div>
+                    <label style="display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:2px;color:var(--dim);margin-bottom:8px;">Estimated Volume</label>
+                    <select id="calcVolume" style="width:100%;padding:14px 16px;background:var(--dark2);color:var(--cream);border:1px solid rgba(255,255,255,.08);font-family:'Inter',sans-serif;font-size:.9rem;cursor:pointer;outline:none;">
+                        <option value="0.25">&frac14; bed (~1 cu yd)</option>
+                        <option value="0.5">Half bed (~2 cu yd)</option>
+                        <option value="0.75">&frac34; bed (~3 cu yd)</option>
+                        <option value="1" selected>Full bed (~4 cu yd)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div id="calcResult" style="display:none;background:var(--dark2);border:1px solid rgba(190,114,88,.2);padding:24px;margin-top:8px;">
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;text-align:center;">
+                    <div>
+                        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--dim);margin-bottom:6px;">Est. Weight</div>
+                        <div id="calcWeight" style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--cream);line-height:1;">—</div>
+                        <div style="font-size:.7rem;color:var(--mid);">lbs</div>
+                    </div>
+                    <div>
+                        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--dim);margin-bottom:6px;">Est. Dump Fee</div>
+                        <div id="calcDumpFee" style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--rust);line-height:1;">—</div>
+                        <div style="font-size:.7rem;color:var(--mid);">King County 2026</div>
+                    </div>
+                    <div>
+                        <div style="font-size:.65rem;text-transform:uppercase;letter-spacing:2px;color:var(--dim);margin-bottom:6px;">Load Size</div>
+                        <div id="calcLoadSize" style="font-family:'Bebas Neue',sans-serif;font-size:2rem;color:var(--cream);line-height:1;">—</div>
+                        <div style="font-size:.7rem;color:var(--mid);">pricing tier</div>
+                    </div>
+                </div>
+                <p style="color:var(--dim);font-size:.75rem;font-weight:300;margin-top:16px;text-align:center;line-height:1.6;">Estimates only. Actual weight varies by moisture content and density. <a href="#quote" style="color:var(--rust);">Get a firm quote &rarr;</a></p>
+            </div>
         </div>
 
         <div class="service-grid reveal" style="margin-top:80px;">
@@ -411,7 +474,7 @@
     </div>
 </section>
 
-<footer class="footer"><div class="container footer-inner"><div class="footer-brand"><span class="nav-logo">BELL <span style="color:var(--rust);">&amp;</span> HAMMER</span><p>Licensed, bonded &amp; insured residential construction in the Pacific Northwest. Built on craft. Led by communication.</p></div><div class="footer-col"><p>Navigation</p><a href="bellnhammer.html#services">Services</a><a href="bellnhammer.html#work">Our Work</a><a href="bellnhammer.html#about">About</a><a href="bellnhammer.html#reviews">Reviews</a><a href="bellnhammer.html#contact">Request Estimate</a><a href="hauling.html">Hauling</a><a href="careers.html">Careers</a></div><div class="footer-col"><p>Contact</p><a href="tel:3607100409">(360) 710-0409</a><a href="mailto:admin@bellnhammer.biz">admin@bellnhammer.biz</a><a href="https://clienthub.getjobber.com/client_hubs/d39802b2-7d77-40f0-a155-36e7188d511d/login/new?source=share_login" target="_blank" style="margin-top:12px;color:var(--rust);">Client Portal Login &rarr;</a></div></div><div class="footer-bottom"><p>&copy; 2026 Bell &amp; Hammer. All rights reserved. &nbsp;|&nbsp; <a href="terms.html" style="color:var(--dim);">Terms</a> &nbsp;|&nbsp; <a href="privacy.html" style="color:var(--dim);">Privacy</a></p></div></footer>
+<footer class="footer"><div class="container footer-inner"><div class="footer-brand"><span class="nav-logo">BELL <span style="color:var(--rust);">&amp;</span> HAMMER</span><p>Licensed, bonded &amp; insured residential construction in the Pacific Northwest. Built on craft. Led by communication.</p></div><div class="footer-col"><p>Navigation</p><a href="bellnhammer.html#services">Services</a><a href="bellnhammer.html#work">Our Work</a><a href="bellnhammer.html#about">About</a><a href="bellnhammer.html#reviews">Reviews</a><a href="bellnhammer.html#contact">Request Estimate</a><a href="demo-and-hauling.html">Hauling</a><a href="careers.html">Careers</a></div><div class="footer-col"><p>Contact</p><a href="tel:3607100409">(360) 710-0409</a><a href="mailto:admin@bellnhammer.biz">admin@bellnhammer.biz</a><a href="https://clienthub.getjobber.com/client_hubs/d39802b2-7d77-40f0-a155-36e7188d511d/login/new?source=share_login" target="_blank" style="margin-top:12px;color:var(--rust);">Client Portal Login &rarr;</a></div></div><div class="footer-bottom"><p>&copy; 2026 Bell &amp; Hammer. All rights reserved. &nbsp;|&nbsp; <a href="terms.html" style="color:var(--dim);">Terms</a> &nbsp;|&nbsp; <a href="privacy.html" style="color:var(--dim);">Privacy</a></p></div></footer>
 
 <script>
 // Mobile menu
@@ -471,6 +534,42 @@ const priceObs = new IntersectionObserver(entries => {
     });
 }, { threshold: 0.5 });
 priceCards.forEach(el => priceObs.observe(el));
+
+// Load Weight Calculator
+(function() {
+    const mat = document.getElementById('calcMaterial');
+    const vol = document.getElementById('calcVolume');
+    const result = document.getElementById('calcResult');
+    const weightEl = document.getElementById('calcWeight');
+    const feeEl = document.getElementById('calcDumpFee');
+    const sizeEl = document.getElementById('calcLoadSize');
+    if (!mat || !vol) return;
+
+    function calculate() {
+        const lbsPerYard = parseInt(mat.value);
+        const bedFraction = parseFloat(vol.value);
+        if (!lbsPerYard) { result.style.display = 'none'; return; }
+
+        const totalCuYd = bedFraction * 4;
+        const totalLbs = Math.round(lbsPerYard * totalCuYd);
+        const tons = totalLbs / 2000;
+        const dumpFee = Math.max(40.25, Math.round(tons * 243.38));
+
+        weightEl.textContent = totalLbs.toLocaleString();
+        feeEl.textContent = '$' + dumpFee;
+
+        let tier;
+        if (bedFraction <= 0.25) tier = 'LIGHT';
+        else if (bedFraction <= 0.5) tier = 'STANDARD';
+        else tier = 'FULL BED';
+        sizeEl.textContent = tier;
+
+        result.style.display = 'block';
+    }
+
+    mat.addEventListener('change', calculate);
+    vol.addEventListener('change', calculate);
+})();
 </script>
 
 </body>

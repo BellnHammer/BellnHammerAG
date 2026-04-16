@@ -2,7 +2,7 @@
   "rewrites": [
     { "source": "/", "destination": "/bellnhammer.html" },
     { "source": "/services/:path*", "destination": "/services/:path*" },
-    { "source": "/hauling", "destination": "/hauling.html" },
+    { "source": "/demo-and-hauling", "destination": "/demo-and-hauling.html" },
     { "source": "/careers", "destination": "/careers.html" },
     { "source": "/terms", "destination": "/terms.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
