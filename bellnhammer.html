@@ -24,31 +24,51 @@
     <meta name="twitter:image" content="https://bellnhammer.com/images/logo.png">
 
     <!-- JSON-LD: LocalBusiness -->
-    <!-- TODO: add "address" block once owner confirms business address -->
-    <!-- TODO: add "aggregateRating" once owner confirms exact Google review count -->
-    <!-- TODO: add "sameAs" array once owner provides Facebook/Instagram/GBP URLs -->
-    <!-- TODO: add WA contractor license number to site (required by law) -->
+    <!-- TODO: add Google Business Profile URL to sameAs when provided -->
+    <!-- TODO: add Instagram URL to sameAs when launched -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
       "@type": "GeneralContractor",
       "name": "Bell & Hammer",
+      "url": "https://bellnhammer.com",
       "image": "https://bellnhammer.com/images/logo.png",
+      "logo": "https://bellnhammer.com/images/logo.png",
       "telephone": "+1-360-710-0409",
       "email": "admin@bellnhammer.biz",
-      "url": "https://bellnhammer.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Bremerton",
+        "addressRegion": "WA",
+        "addressCountry": "US"
+      },
       "areaServed": [
         "Kitsap County, WA",
-        "Bremerton",
-        "Silverdale",
-        "Poulsbo",
-        "Port Orchard",
-        "Bainbridge Island",
-        "Kingston",
-        "Seabeck",
-        "Belfair"
+        "Bremerton, WA",
+        "Silverdale, WA",
+        "Poulsbo, WA",
+        "Port Orchard, WA",
+        "Bainbridge Island, WA",
+        "Kingston, WA",
+        "Seabeck, WA",
+        "Belfair, WA"
       ],
       "priceRange": "$$",
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "reviewCount": "7",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "sameAs": [
+        "https://www.facebook.com/bellnhammer"
+      ],
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "WA L&I Contractor License",
+        "value": "BELLHH*754BC"
+      },
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Construction Services",
@@ -789,10 +809,11 @@
             <a href="tel:3607100409">(360) 710-0409</a>
             <a href="mailto:admin@bellnhammer.biz">admin@bellnhammer.biz</a>
             <a href="https://clienthub.getjobber.com/client_hubs/d39802b2-7d77-40f0-a155-36e7188d511d/login/new?source=share_login" target="_blank" style="margin-top:12px; color:var(--rust);">Client Portal Login &rarr;</a>
+            <a href="https://www.facebook.com/bellnhammer" target="_blank" style="margin-top:8px; color:var(--mid);">Facebook &rarr;</a>
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2026 Bell &amp; Hammer. All rights reserved. &nbsp;|&nbsp; <a href="terms.html" style="color:var(--dim);">Terms</a> &nbsp;|&nbsp; <a href="privacy.html" style="color:var(--dim);">Privacy</a></p>
+        <p>WA Contractor Lic# BELLHH*754BC &middot; Licensed &middot; Bonded &middot; Insured &middot; &copy; 2026 Bell &amp; Hammer &nbsp;|&nbsp; <a href="terms.html" style="color:var(--dim);">Terms</a> &nbsp;|&nbsp; <a href="privacy.html" style="color:var(--dim);">Privacy</a></p>
     </div>
 </footer>
 
