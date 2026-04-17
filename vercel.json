@@ -7,6 +7,20 @@
     { "source": "/terms", "destination": "/terms.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/portfolio", "destination": "/portfolio.html" },
-    { "source": "/blog", "destination": "/blog.html" }
+    { "source": "/blog", "destination": "/blog.html" },
+    { "source": "/service-areas/bremerton", "destination": "/service-areas/bremerton.html" },
+    { "source": "/service-areas/silverdale", "destination": "/service-areas/silverdale.html" },
+    { "source": "/service-areas/poulsbo", "destination": "/service-areas/poulsbo.html" },
+    { "source": "/service-areas/port-orchard", "destination": "/service-areas/port-orchard.html" },
+    { "source": "/service-areas/bainbridge-island", "destination": "/service-areas/bainbridge-island.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        { "key": "X-Content-Type-Options", "value": "nosniff" },
+        { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
+      ]
+    }
   ]
 }
