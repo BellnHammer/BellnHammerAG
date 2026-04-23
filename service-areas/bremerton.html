@@ -138,6 +138,37 @@
   gtag('js', new Date());
   gtag('config', 'AW-18087596761');
 </script>
+<!-- Conversion tracking -->
+<script>
+(function() {
+  function fireConversion(label) {
+    if (typeof gtag !== 'function') return;
+    gtag('event', 'conversion', {
+      'send_to': 'AW-18087596761/gaA7CJWwhqEcENml67BD',
+      'value': 1.0,
+      'currency': 'USD'
+    });
+    gtag('event', 'generate_lead', { 'event_category': 'engagement', 'event_label': label || 'unknown' });
+  }
+  // Listen for Jobber iframe submission via postMessage
+  window.addEventListener('message', function(e) {
+    if (!e.data) return;
+    var d = typeof e.data === 'string' ? e.data : JSON.stringify(e.data);
+    if (d.indexOf('jobber') !== -1 && (d.indexOf('submit') !== -1 || d.indexOf('success') !== -1 || d.indexOf('complete') !== -1)) {
+      fireConversion('jobber_form_submit');
+    }
+  });
+  // Track phone & email clicks as lead intent
+  document.addEventListener('click', function(e) {
+    var a = e.target.closest && e.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (href.indexOf('tel:') === 0) fireConversion('phone_click');
+    else if (href.indexOf('mailto:') === 0) fireConversion('email_click');
+    else if (href.indexOf('clienthub.getjobber.com') !== -1) fireConversion('client_portal_click');
+  });
+})();
+</script>
 </head>
 <body>
 
