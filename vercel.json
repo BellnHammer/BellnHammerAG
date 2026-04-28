@@ -8,6 +8,7 @@
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/portfolio", "destination": "/portfolio.html" },
     { "source": "/blog", "destination": "/blog.html" },
+    { "source": "/thank-you", "destination": "/thank-you.html" },
     { "source": "/service-areas/bremerton", "destination": "/service-areas/bremerton.html" },
     { "source": "/service-areas/silverdale", "destination": "/service-areas/silverdale.html" },
     { "source": "/service-areas/poulsbo", "destination": "/service-areas/poulsbo.html" },
