@@ -136,6 +136,7 @@
 <!-- Conversion tracking -->
 <script>
 (function() {
+  var jobberConverted = false;
   function fireConversion(label) {
     if (typeof gtag !== 'function') return;
     gtag('event', 'conversion', {
@@ -145,23 +146,76 @@
     });
     gtag('event', 'generate_lead', { 'event_category': 'engagement', 'event_label': label || 'unknown' });
   }
-  // Listen for Jobber iframe submission via postMessage
+  // 1. Jobber postMessage (best case if Jobber sends one)
   window.addEventListener('message', function(e) {
-    if (!e.data) return;
+    if (!e.data || jobberConverted) return;
     var d = typeof e.data === 'string' ? e.data : JSON.stringify(e.data);
-    if (d.indexOf('jobber') !== -1 && (d.indexOf('submit') !== -1 || d.indexOf('success') !== -1 || d.indexOf('complete') !== -1)) {
-      fireConversion('jobber_form_submit');
+    if (d.indexOf('jobber') !== -1 && (d.indexOf('submit') !== -1 || d.indexOf('success') !== -1 || d.indexOf('complete') !== -1 || d.indexOf('thank') !== -1)) {
+      jobberConverted = true;
+      fireConversion('jobber_postmessage');
     }
   });
-  // Track phone & email clicks as lead intent
+  // 2. Phone & email clicks
   document.addEventListener('click', function(e) {
     var a = e.target.closest && e.target.closest('a');
     if (!a) return;
     var href = a.getAttribute('href') || '';
     if (href.indexOf('tel:') === 0) fireConversion('phone_click');
     else if (href.indexOf('mailto:') === 0) fireConversion('email_click');
-    else if (href.indexOf('clienthub.getjobber.com') !== -1) fireConversion('client_portal_click');
   });
+  // 3. Smart Jobber iframe detection: focus + 30s+ engaged + height change (resize between form steps)
+  function setupJobberTracking() {
+    var iframes = document.querySelectorAll('iframe[src*="getjobber.com"]');
+    if (!iframes.length) return;
+    iframes.forEach(function(iframe) {
+      var focusStart = null;
+      var totalEngaged = 0;
+      var heightChanges = 0;
+      var lastHeight = iframe.offsetHeight;
+      var hasEngaged = false;
+      // Browser fires window blur when iframe takes focus
+      window.addEventListener('blur', function() {
+        setTimeout(function() {
+          if (document.activeElement === iframe) {
+            hasEngaged = true;
+            focusStart = Date.now();
+          }
+        }, 0);
+      });
+      // User left iframe back to page
+      window.addEventListener('focus', function() {
+        if (focusStart) {
+          totalEngaged += Date.now() - focusStart;
+          focusStart = null;
+          checkConversion();
+        }
+      });
+      // Iframe resize = Jobber moved to next form page
+      if (typeof ResizeObserver !== 'undefined') {
+        new ResizeObserver(function() {
+          var newHeight = iframe.offsetHeight;
+          // Don't count initial loads — only count resizes after engagement
+          if (!hasEngaged) { lastHeight = newHeight; return; }
+          if (Math.abs(newHeight - lastHeight) > 30) {
+            heightChanges++;
+            lastHeight = newHeight;
+            checkConversion();
+          }
+        }).observe(iframe);
+      }
+      function checkConversion() {
+        if (jobberConverted) return;
+        var current = totalEngaged + (focusStart ? Date.now() - focusStart : 0);
+        if (hasEngaged && current >= 30000 && heightChanges >= 1) {
+          jobberConverted = true;
+          fireConversion('jobber_likely_submit');
+        }
+      }
+      setInterval(function() { if (focusStart) checkConversion(); }, 5000);
+    });
+  }
+  if (document.readyState === 'complete') setupJobberTracking();
+  else window.addEventListener('load', setupJobberTracking);
 })();
 </script>
 </head>
