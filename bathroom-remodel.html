@@ -1,0 +1,808 @@
+<!--
+HIDDEN PAGE: Bathroom Remodel
+Status: DRAFT — Not visible to public
+
+TO MAKE LIVE:
+1. Remove the <meta name="robots" content="noindex, nofollow"> tag below
+2. Add "Bathroom Remodels" to the main navigation menu in bellnhammer.html
+3. Change the hidden footer link in bellnhammer.html (search "HIDDEN-LINK") to a visible, normal-styled link
+4. Add <url><loc>https://bellnhammer.com/bathroom-remodel</loc>...</url> to sitemap.xml
+5. Remove this comment block or update status to LIVE
+
+TO REMOVE ENTIRELY:
+1. Delete this file (bathroom-remodel.html)
+2. In bellnhammer.html, search for "HIDDEN-LINK" and remove that <a> tag
+3. Remove /bathroom-remodel rewrite from vercel.json
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Bathroom Remodel in Kitsap County, WA | Bell & Hammer</title>
+    <meta name="description" content="Walk-in showers, tub-to-shower conversions, flooring, and countertops — Bell & Hammer remodels bathrooms across Bremerton, Port Orchard, Silverdale, Poulsbo, and Bainbridge Island.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087596761"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18087596761');
+    </script>
+    <!-- Conversion tracking -->
+    <script>
+    (function() {
+      var jobberConverted = false, ctaClicked = false;
+      function fireConversion(label) {
+        if (typeof gtag !== 'function') return;
+        gtag('event', 'conversion', {'send_to': 'AW-18087596761/gaA7CJWwhqEcENml67BD','value': 1.0,'currency': 'USD'});
+        gtag('event', 'generate_lead', { 'event_category': 'engagement', 'event_label': label || 'unknown' });
+      }
+      window.addEventListener('message', function(e) {
+        if (!e.data || jobberConverted) return;
+        var d = typeof e.data === 'string' ? e.data : JSON.stringify(e.data);
+        if (d.indexOf('jobber') !== -1 && (d.indexOf('submit') !== -1 || d.indexOf('success') !== -1 || d.indexOf('complete') !== -1 || d.indexOf('thank') !== -1)) { jobberConverted = true; fireConversion('jobber_postmessage'); }
+      });
+      var CTA_REGEX = /get\s*(an?\s*)?(free\s*)?(estimate|quote)|request\s*(an?\s*)?(free\s*)?(estimate|quote)|free\s*estimate|book\s*now|contact\s*us/i;
+      document.addEventListener('click', function(e) {
+        var a = e.target.closest && e.target.closest('a, button');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var text = (a.textContent || a.innerText || '').trim();
+        if (href.indexOf('tel:') === 0) { fireConversion('phone_click'); return; }
+        if (href.indexOf('mailto:') === 0) { fireConversion('email_click'); return; }
+        if (!ctaClicked && CTA_REGEX.test(text)) { ctaClicked = true; fireConversion('cta_click'); }
+      });
+    })();
+    </script>
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: #e8e4df; background: #0a0a0a; line-height: 1.6; }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        :root { --dark: #0a0a0a; --dark2: #111; --dark3: #1a1917; --rust: #be7258; --rust-glow: #d4896e; --gold: #c9a96e; --cream: #e8e4df; --mid: #8a8579; --dim: #4a4640; }
+        h1, h2, h3 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; }
+        h1 { font-size: clamp(2.8rem, 8vw, 5rem); line-height: 0.95; color: var(--cream); }
+        h2 { font-size: clamp(1.8rem, 4vw, 3rem); color: var(--cream); }
+        h3 { font-size: 1.3rem; letter-spacing: 1.5px; color: var(--cream); }
+        h4 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; font-size: 1.1rem; color: var(--cream); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+        .container-wide { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+        .tag { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 4px; color: var(--rust); margin-bottom: 16px; display: inline-block; }
+        .tag::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--rust); margin-right: 12px; vertical-align: middle; }
+        .divider { height: 1px; background: linear-gradient(to right, transparent, var(--dim), transparent); }
+
+        /* Nav */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 24px 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 4px; color: var(--cream); }
+        .nav-logo span { color: var(--rust); }
+        .nav-links { display: flex; gap: 36px; list-style: none; }
+        .nav-links a { color: var(--mid); font-size: 0.75rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--cream); }
+        .nav-cta { font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--rust); border: 1px solid rgba(190,114,88,0.3); padding: 10px 24px; transition: all 0.3s; }
+        .nav-cta:hover { background: var(--rust); color: var(--dark); }
+        .nav-toggle { display: none; background: none; border: none; cursor: pointer; width: 30px; height: 20px; position: relative; z-index: 60; }
+        .nav-toggle span { display: block; width: 100%; height: 1.5px; background: var(--cream); position: absolute; left: 0; transition: all 0.3s; }
+        .nav-toggle span:nth-child(1) { top: 0; } .nav-toggle span:nth-child(2) { top: 9px; } .nav-toggle span:nth-child(3) { top: 18px; }
+        .nav-toggle.open span:nth-child(1) { top: 9px; transform: rotate(45deg); } .nav-toggle.open span:nth-child(2) { opacity: 0; } .nav-toggle.open span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
+
+        /* Hero */
+        .br-hero { position: relative; min-height: 80vh; display: flex; align-items: center; padding: 220px 0 100px; overflow: hidden; background: var(--dark2); }
+        .br-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, var(--dark2) 0%, var(--dark3) 100%); display: flex; align-items: center; justify-content: center; }
+        .br-hero-bg-placeholder { color: var(--dim); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; border: 1px dashed var(--dim); padding: 16px 32px; }
+        .br-hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(10,10,10,0.92), rgba(10,10,10,0.5)); }
+        .br-hero-content { position: relative; z-index: 3; max-width: 720px; }
+        .br-hero h1 em { font-style: normal; color: var(--rust); }
+        .br-hero-sub { color: var(--mid); font-size: 1.1rem; font-weight: 300; margin: 24px 0 36px; line-height: 1.8; max-width: 560px; }
+        .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+        .btn { display: inline-flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; padding: 18px 40px; border: none; cursor: pointer; transition: all 0.4s ease; }
+        .btn-rust { background: var(--rust); color: var(--dark); }
+        .btn-rust:hover { background: var(--rust-glow); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(190,114,88,0.3); }
+        .btn-ghost { background: transparent; color: var(--cream); border: 1px solid var(--dim); padding: 18px 40px; }
+        .btn-ghost:hover { border-color: var(--rust); color: var(--rust); }
+        .hero-phone { color: var(--cream); font-size: 0.95rem; font-weight: 500; }
+        .hero-phone a { color: var(--rust); }
+
+        /* Section */
+        .section { padding: 100px 0; }
+
+        /* Why Remodel — benefit tiles */
+        .benefit-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 48px; }
+        .benefit-card { background: var(--dark2); padding: 40px 28px; transition: all 0.5s ease; border-top: 2px solid transparent; }
+        .benefit-card:hover { background: var(--dark3); border-top-color: var(--rust); }
+        .benefit-icon { font-size: 2rem; color: var(--rust); margin-bottom: 16px; line-height: 1; }
+        .benefit-card h3 { font-size: 1.05rem; margin-bottom: 12px; }
+        .benefit-card p { color: var(--mid); font-size: 0.85rem; font-weight: 300; line-height: 1.7; }
+
+        /* Shower Styles Gallery */
+        .style-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+        .style-card { background: var(--dark2); border: 1px solid rgba(255,255,255,0.04); transition: border-color 0.4s; overflow: hidden; }
+        .style-card:hover { border-color: rgba(190,114,88,0.3); }
+        .style-img { aspect-ratio: 4/3; background: var(--dark3); display: flex; align-items: center; justify-content: center; color: var(--dim); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; border-bottom: 1px solid rgba(255,255,255,0.04); padding: 16px; text-align: center; }
+        .style-body { padding: 24px 28px; }
+        .style-body h3 { font-size: 1.1rem; margin-bottom: 8px; }
+        .style-body .price-range { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--rust); letter-spacing: 2px; margin-bottom: 12px; }
+        .style-body p { color: var(--mid); font-size: 0.85rem; font-weight: 300; line-height: 1.7; margin-bottom: 8px; }
+        .style-body .best-for { color: var(--dim); font-size: 0.75rem; font-weight: 300; }
+        .style-body .best-for strong { color: var(--mid); }
+
+        /* Process Steps */
+        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 48px; }
+        .process-step { background: var(--dark2); padding: 40px 28px; position: relative; }
+        .process-step .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: rgba(190,114,88,0.15); line-height: 1; margin-bottom: 12px; }
+        .process-step h3 { font-size: 1.05rem; margin-bottom: 12px; }
+        .process-step p { color: var(--mid); font-size: 0.85rem; font-weight: 300; line-height: 1.7; }
+
+        /* Material section (flooring & countertops) — 2-col layout */
+        .material-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 48px; }
+        .material-card { background: var(--dark2); border: 1px solid rgba(255,255,255,0.04); transition: border-color 0.4s; display: grid; grid-template-columns: 200px 1fr; }
+        .material-card:hover { border-color: rgba(190,114,88,0.3); }
+        .material-img { aspect-ratio: 1; background: var(--dark3); display: flex; align-items: center; justify-content: center; color: var(--dim); font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; padding: 12px; text-align: center; border-right: 1px solid rgba(255,255,255,0.04); }
+        .material-body { padding: 24px 28px; }
+        .material-body h3 { font-size: 1.05rem; margin-bottom: 6px; }
+        .material-body .price-range { font-family: 'Bebas Neue', sans-serif; font-size: 0.95rem; color: var(--rust); letter-spacing: 2px; margin-bottom: 10px; }
+        .material-body p { color: var(--mid); font-size: 0.85rem; font-weight: 300; line-height: 1.6; margin-bottom: 10px; }
+        .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 8px; }
+        .pros-cons div { font-size: 0.75rem; line-height: 1.5; }
+        .pros-cons .pros { color: var(--mid); }
+        .pros-cons .cons { color: var(--dim); }
+        .pros-cons strong { color: var(--cream); display: block; margin-bottom: 4px; font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; }
+
+        .source-note { background: var(--dark3); border-left: 3px solid var(--rust); padding: 20px 24px; margin-top: 32px; max-width: 720px; color: var(--mid); font-size: 0.85rem; font-weight: 300; line-height: 1.7; }
+        .source-note strong { color: var(--cream); }
+
+        /* Testimonials */
+        .testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+        .testimonial-card { background: var(--dark2); padding: 32px 28px; border-left: 2px solid var(--rust); }
+        .testimonial-stars { color: var(--rust); font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 12px; }
+        .testimonial-card p { color: var(--mid); font-size: 0.9rem; font-weight: 300; line-height: 1.7; font-style: italic; margin-bottom: 12px; }
+        .testimonial-card .author { color: var(--cream); font-size: 0.75rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; }
+        .testimonial-card .location { color: var(--dim); font-size: 0.7rem; margin-top: 2px; }
+
+        .ba-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 32px; }
+        .ba-slot { aspect-ratio: 4/3; background: var(--dark3); border: 1px solid rgba(255,255,255,0.04); display: flex; align-items: center; justify-content: center; color: var(--dim); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; padding: 12px; text-align: center; }
+
+        /* Service area pill */
+        .service-area-line { color: var(--mid); font-size: 0.85rem; font-weight: 300; margin-top: 24px; padding: 16px 24px; background: var(--dark3); border-left: 2px solid var(--rust); }
+        .service-area-line strong { color: var(--cream); }
+
+        /* CTA / Contact form */
+        .br-cta { padding: 100px 0; background: var(--dark2); border-top: 1px solid rgba(255,255,255,0.04); }
+        .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+        .cta-info p { color: var(--mid); font-weight: 300; line-height: 1.8; margin-bottom: 20px; }
+        .cta-info strong { color: var(--cream); }
+        .cta-info-item { display: flex; align-items: center; gap: 16px; margin-top: 24px; }
+        .cta-info-icon { width: 44px; height: 44px; border: 1px solid var(--dim); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; color: var(--rust); }
+        .cta-info-text small { display: block; color: var(--dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2px; }
+        .cta-info-text a { color: var(--cream); font-weight: 500; transition: color 0.3s; }
+        .cta-info-text a:hover { color: var(--rust); }
+
+        .br-form { background: var(--dark3); padding: 36px; border: 1px solid rgba(255,255,255,0.04); }
+        .br-form h3 { margin-bottom: 8px; }
+        .br-form p { color: var(--mid); font-size: 0.85rem; font-weight: 300; margin-bottom: 24px; }
+        .br-form label { display: block; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--dim); margin-bottom: 6px; margin-top: 16px; }
+        .br-form input, .br-form textarea { width: 100%; background: var(--dark2); border: 1px solid rgba(255,255,255,0.08); color: var(--cream); padding: 12px 14px; font-family: 'Inter', sans-serif; font-size: 0.9rem; outline: none; transition: border-color 0.3s; }
+        .br-form input:focus, .br-form textarea:focus { border-color: var(--rust); }
+        .br-form textarea { resize: vertical; min-height: 100px; }
+        .br-form button { margin-top: 20px; width: 100%; }
+        .form-note { color: var(--dim); font-size: 0.75rem; margin-top: 12px; line-height: 1.6; }
+
+        /* Footer */
+        .footer { background: var(--dark2); padding: 60px 0 0; border-top: 1px solid rgba(255,255,255,0.03); }
+        .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 48px; }
+        .footer-brand p { color: var(--dim); font-size: 0.85rem; font-weight: 300; max-width: 300px; line-height: 1.7; margin-top: 16px; }
+        .footer-col p { color: var(--dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+        .footer-col a { display: block; color: var(--mid); font-size: 0.85rem; margin-bottom: 10px; transition: color 0.3s; font-weight: 300; }
+        .footer-col a:hover { color: var(--cream); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.03); padding: 20px 0; text-align: center; font-size: 0.7rem; color: var(--dim); letter-spacing: 1px; }
+
+        /* Trust strip (Kohler-style stats bar under hero) */
+        .trust-strip { background: var(--dark3); border-top: 1px solid rgba(190,114,88,0.2); border-bottom: 1px solid rgba(190,114,88,0.2); padding: 32px 0; }
+        .trust-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 32px; align-items: center; }
+        .trust-item { text-align: center; border-right: 1px solid rgba(255,255,255,0.04); padding: 0 16px; }
+        .trust-item:last-child { border-right: none; }
+        .trust-stat { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--rust); letter-spacing: 1.5px; line-height: 1; margin-bottom: 6px; }
+        .trust-label { color: var(--mid); font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
+
+        /* Sticky CTA bar (Kohler-style, slides up on scroll) */
+        .sticky-cta { position: fixed; bottom: -100px; left: 0; right: 0; background: var(--rust); color: var(--dark); z-index: 40; padding: 16px 0; box-shadow: 0 -4px 24px rgba(0,0,0,0.4); transition: bottom 0.5s ease; }
+        .sticky-cta.visible { bottom: 0; }
+        .sticky-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+        .sticky-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; letter-spacing: 2px; text-transform: uppercase; line-height: 1.1; }
+        .sticky-text small { display: block; font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 1.5px; font-weight: 500; opacity: 0.75; margin-top: 4px; }
+        .sticky-actions { display: flex; gap: 12px; flex-wrap: wrap; }
+        .sticky-btn { display: inline-flex; align-items: center; gap: 8px; font-family: 'Inter', sans-serif; font-weight: 700; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; padding: 14px 28px; border: none; cursor: pointer; transition: all 0.3s; background: var(--dark); color: var(--cream); }
+        .sticky-btn:hover { background: var(--dark2); }
+        .sticky-btn.outline { background: transparent; color: var(--dark); border: 1.5px solid var(--dark); }
+        .sticky-btn.outline:hover { background: var(--dark); color: var(--cream); }
+
+        /* Limited-time / financing-style strip (Kohler vibe, soft) */
+        .offer-strip { background: linear-gradient(135deg, rgba(190,114,88,0.12), rgba(190,114,88,0.04)); border: 1px solid rgba(190,114,88,0.25); padding: 32px 40px; margin: 48px auto 0; max-width: 900px; display: grid; grid-template-columns: auto 1fr auto; gap: 32px; align-items: center; }
+        .offer-strip .offer-icon { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--rust); line-height: 1; }
+        .offer-strip h3 { margin-bottom: 6px; }
+        .offer-strip p { color: var(--mid); font-size: 0.9rem; font-weight: 300; line-height: 1.6; margin: 0; }
+
+        @media (max-width: 900px) {
+            .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 16px; }
+            .trust-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 16px; }
+            .trust-item:nth-last-child(-n+2) { border-bottom: none; padding-bottom: 0; }
+            .sticky-inner { flex-direction: column; gap: 12px; text-align: center; }
+            .sticky-text { font-size: 1.1rem; }
+            .offer-strip { grid-template-columns: 1fr; text-align: center; gap: 16px; }
+            .nav-links, .nav-cta { display: none; }
+            .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,10,10,0.98); padding: 100px 32px 32px; gap: 24px; z-index: 55; }
+            .nav-links.open a { font-size: 1.2rem; color: var(--cream); }
+            .nav-toggle { display: block; }
+            .benefit-grid, .style-grid, .testimonial-grid, .ba-grid, .process-grid { grid-template-columns: 1fr; }
+            .material-grid { grid-template-columns: 1fr; }
+            .material-card { grid-template-columns: 1fr; }
+            .material-img { aspect-ratio: 4/3; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.04); }
+            .cta-grid { grid-template-columns: 1fr; gap: 48px; }
+            .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+            .br-hero { min-height: 70vh; }
+        }
+        @media (max-width: 600px) {
+            .pros-cons { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="bellnhammer.html" class="nav-logo"><img src="images/logo.png" alt="Bell & Hammer" style="height:48px;border-radius:6px;"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="bellnhammer.html">Home</a></li>
+            <li><a href="bellnhammer.html#services">Services</a></li>
+            <li><a href="demo-and-hauling.html">Demo &amp; Hauling</a></li>
+            <li><a href="bellnhammer.html#work">Work</a></li>
+            <li><a href="bellnhammer.html#about">About</a></li>
+            <li><a href="bellnhammer.html#reviews">Reviews</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="https://clienthub.getjobber.com/client_hubs/d39802b2-7d77-40f0-a155-36e7188d511d/login/new?source=share_login" target="_blank">Client Portal</a></li>
+        </ul>
+        <a href="#contact" class="nav-cta">Get Estimate</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="br-hero">
+    <div class="br-hero-bg">
+        <div class="br-hero-bg-placeholder">[ HERO IMAGE — 1920×800 — finished walk-in shower ]</div>
+    </div>
+    <div class="br-hero-overlay"></div>
+    <div class="container br-hero-content">
+        <div class="tag">Bathroom Remodels</div>
+        <h1>Beautiful walk-in showers,<br>built by your <em>neighbors.</em></h1>
+        <p class="br-hero-sub">Bell &amp; Hammer is a licensed, bonded, and insured general contractor based right here in Kitsap County. We've remodeled bathrooms from tiny powder rooms in Port Orchard to full master baths on Bainbridge Island — and we'd love to help with yours.</p>
+        <div class="hero-actions">
+            <a href="#contact" class="btn btn-rust">Get a Free Estimate</a>
+            <span class="hero-phone">or call <a href="tel:3607100409">(360) 710-0409</a></span>
+        </div>
+    </div>
+</section>
+
+<!-- TRUST STRIP (Kohler-style stat row) -->
+<div class="trust-strip">
+    <div class="container-wide">
+        <div class="trust-grid">
+            <div class="trust-item">
+                <div class="trust-stat">5.0&#9733;</div>
+                <div class="trust-label">Google Reviews</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-stat">Licensed</div>
+                <div class="trust-label">Bonded &amp; Insured</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-stat">Kitsap</div>
+                <div class="trust-label">County Local</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-stat">3–5 Days</div>
+                <div class="trust-label">Typical Shower Remodel</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-stat">24-Mo</div>
+                <div class="trust-label">Workmanship Warranty</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- WHY REMODEL -->
+<section class="section" style="background:var(--dark);">
+    <div class="container-wide">
+        <div class="container">
+            <div class="tag">Why Remodel</div>
+            <h2>Your Bathroom Should Work for You</h2>
+            <p style="color:var(--mid); font-weight:300; line-height:1.9; max-width:620px; margin-top:16px;">If you've been dealing with a cracked tub, a shower that feels like it's from 1985, or a bathroom that's hard to use as you get older — we get it. We've torn out and rebuilt a lot of them. Here's what a remodel actually does for your home.</p>
+        </div>
+
+        <div class="benefit-grid">
+            <div class="benefit-card">
+                <div class="benefit-icon">&#9876;</div>
+                <h3>Safety &amp; Accessibility</h3>
+                <p>Low-threshold entries, built-in benches, and properly-anchored grab bars make daily life easier — and let you stay in your home longer.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">&#9737;</div>
+                <h3>Home Value</h3>
+                <p>A fresh bathroom is one of the best ROI projects you can do. Buyers notice — appraisers do too. A well-built bath remodel pays you back when you sell.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">&#9650;</div>
+                <h3>Modern Design</h3>
+                <p>Large-format tile, frameless glass, matte black or brushed nickel fixtures — today's options look great and last longer than the 80s build you've got.</p>
+            </div>
+            <div class="benefit-card">
+                <div class="benefit-icon">&#9832;</div>
+                <h3>Water Efficiency</h3>
+                <p>New shower valves and toilets use a fraction of the water older fixtures do. Lower bills, less wear on the system, same comfortable shower.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SHOWER STYLES -->
+<section class="section" style="background:var(--dark2);">
+    <div class="container-wide">
+        <div class="container">
+            <div class="tag">Shower Options</div>
+            <h2>Pick the Shower That Fits You</h2>
+            <p style="color:var(--mid); font-weight:300; line-height:1.9; max-width:620px; margin-top:16px;">We work with multiple manufacturers and material suppliers — Kohler, Delta, Moen, American Standard, Schluter, Swanstone, and more — so you're not locked into one brand or one look. Here's what's possible.</p>
+        </div>
+
+        <div class="style-grid">
+            <div class="style-card">
+                <div class="style-img">[ IMAGE — 800×600 — frameless glass walk-in shower ]</div>
+                <div class="style-body">
+                    <h3>Frameless Glass Walk-In</h3>
+                    <div class="price-range">$$ – $$$</div>
+                    <p>Open, modern, easy to clean. Heavy tempered glass with minimal hardware — feels like a hotel.</p>
+                    <p class="best-for"><strong>Best for:</strong> master baths, modern remodels, anyone tired of curtain rings.</p>
+                </div>
+            </div>
+            <div class="style-card">
+                <div class="style-img">[ IMAGE — 800×600 — semi-frameless or sliding glass ]</div>
+                <div class="style-body">
+                    <h3>Semi-Frameless &amp; Sliding</h3>
+                    <div class="price-range">$$</div>
+                    <p>A great middle-ground: cleaner look than full-framed enclosures, lower cost than frameless. Sliding doors save space.</p>
+                    <p class="best-for"><strong>Best for:</strong> hall baths, smaller footprints, mid-range budgets.</p>
+                </div>
+            </div>
+            <div class="style-card">
+                <div class="style-img">[ IMAGE — 800×600 — fully tiled walk-in shower ]</div>
+                <div class="style-body">
+                    <h3>Custom Tiled Showers</h3>
+                    <div class="price-range">$$$</div>
+                    <p>Full tile floor-to-ceiling with a Schluter or KERDI waterproofing system underneath. Truly custom, lasts decades when done right.</p>
+                    <p class="best-for"><strong>Best for:</strong> homeowners who want it dialed in and built to last.</p>
+                </div>
+            </div>
+            <div class="style-card">
+                <div class="style-img">[ IMAGE — 800×600 — tub-to-shower conversion ]</div>
+                <div class="style-body">
+                    <h3>Tub-to-Shower Conversion</h3>
+                    <div class="price-range">$$</div>
+                    <p>Pull the old tub, build a roomy walk-in shower in its place. One of the most popular remodels we do for aging-in-place clients.</p>
+                    <p class="best-for"><strong>Best for:</strong> homes where the tub never gets used, or where stepping over the lip is getting hard.</p>
+                </div>
+            </div>
+            <div class="style-card">
+                <div class="style-img">[ IMAGE — 800×600 — tub/shower combo ]</div>
+                <div class="style-body">
+                    <h3>Tub/Shower Combo</h3>
+                    <div class="price-range">$ – $$</div>
+                    <p>Sometimes you want both — a tub for soaking and kids, a shower for everything else. New surrounds, tile, or acrylic panels.</p>
+                    <p class="best-for"><strong>Best for:</strong> family bathrooms, guest baths, resale value.</p>
+                </div>
+            </div>
+            <div class="style-card">
+                <div class="style-img">[ IMAGE — 800×600 — accessible shower with bench ]</div>
+                <div class="style-body">
+                    <h3>Accessible &amp; ADA-Style</h3>
+                    <div class="price-range">$$ – $$$</div>
+                    <p>Curbless entry, built-in bench, properly-blocked grab bar locations, hand-held shower head. Built so you can stay in your home.</p>
+                    <p class="best-for"><strong>Best for:</strong> aging-in-place, mobility needs, anyone planning ahead.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="source-note">
+            <strong>Wall &amp; surround options:</strong> Ceramic, porcelain, natural stone (marble, travertine), large-format tile, and acrylic/composite panel systems (Swanstone, Onyx, Sterling) — we install all of them. We'll help you pick what fits your budget, your taste, and your maintenance tolerance.
+        </div>
+
+        <!-- Soft offer / financing strip (Kohler-vibe, but local/honest) -->
+        <div class="offer-strip">
+            <div class="offer-icon">$</div>
+            <div>
+                <h3>Honest Quotes, No Surprises</h3>
+                <p>Free in-home consultations across Kitsap County. We'll walk through what you want, what's possible at different budgets, and give you a written quote — no high-pressure pitch, no "today only" gimmicks.</p>
+            </div>
+            <a href="#contact" class="btn btn-rust">Schedule Visit</a>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section class="section" style="background:var(--dark);">
+    <div class="container-wide">
+        <div class="container">
+            <div class="tag">Our Process</div>
+            <h2>How We Build Your Bathroom</h2>
+        </div>
+
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-num">01</div>
+                <h3>Free Consultation</h3>
+                <p>We come to your home, look at what you've got, talk through what you want, and give you an honest written quote. No pressure, no sales pitch.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">02</div>
+                <h3>Design &amp; Materials</h3>
+                <p>Pick your style, fixtures, and tile. We work with multiple suppliers — including Floor &amp; Decor for tile and flooring — so you're not locked into one brand.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">03</div>
+                <h3>Professional Install</h3>
+                <p>Our crew handles demo, rough-in coordination, waterproofing, tile, fixture set, and trim. Most shower remodels run 3–5 days; full bathroom remodels 2–4 weeks.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">04</div>
+                <h3>Final Walkthrough</h3>
+                <p>We walk through everything with you, fix anything that isn't right, and clean up after ourselves. You don't pay the final balance until you're happy.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FLOORING SECTION -->
+<section class="section" style="background:var(--dark2);">
+    <div class="container-wide">
+        <div class="container">
+            <div class="tag">Flooring</div>
+            <h2>Bathroom Floors That Hold Up</h2>
+            <p style="color:var(--mid); font-weight:300; line-height:1.9; max-width:620px; margin-top:16px;">Bathrooms are wet, busy, and where you stand barefoot at 6am. The floor needs to handle all of it. Here's what we install.</p>
+        </div>
+
+        <div class="material-grid">
+            <div class="material-card">
+                <div class="material-img">[ IMAGE — 600×600 — porcelain tile floor ]</div>
+                <div class="material-body">
+                    <h3>Porcelain &amp; Ceramic Tile</h3>
+                    <div class="price-range">$$ – $$$</div>
+                    <p>The gold standard for bathroom floors. Waterproof, durable, endless styles — wood-look, stone-look, classic, modern.</p>
+                    <div class="pros-cons">
+                        <div class="pros"><strong>Pros</strong>Waterproof, hard-wearing, huge selection</div>
+                        <div class="cons"><strong>Cons</strong>Cold underfoot (consider heated flooring)</div>
+                    </div>
+                </div>
+            </div>
+            <div class="material-card">
+                <div class="material-img">[ IMAGE — 600×600 — natural stone tile ]</div>
+                <div class="material-body">
+                    <h3>Natural Stone</h3>
+                    <div class="price-range">$$$</div>
+                    <p>Marble, travertine, slate. Each piece is unique. High-end look, especially in a master bath.</p>
+                    <div class="pros-cons">
+                        <div class="pros"><strong>Pros</strong>Premium look, every floor unique</div>
+                        <div class="cons"><strong>Cons</strong>Needs sealing, softer materials can stain</div>
+                    </div>
+                </div>
+            </div>
+            <div class="material-card">
+                <div class="material-img">[ IMAGE — 600×600 — luxury vinyl plank ]</div>
+                <div class="material-body">
+                    <h3>Luxury Vinyl Plank (LVP/LVT)</h3>
+                    <div class="price-range">$ – $$</div>
+                    <p>Waterproof, warmer underfoot, looks like wood or stone. Great budget option that doesn't look budget.</p>
+                    <div class="pros-cons">
+                        <div class="pros"><strong>Pros</strong>Waterproof, warm, easier on the budget</div>
+                        <div class="cons"><strong>Cons</strong>Less prestige than tile/stone</div>
+                    </div>
+                </div>
+            </div>
+            <div class="material-card">
+                <div class="material-img">[ IMAGE — 600×600 — heated floor mat install ]</div>
+                <div class="material-body">
+                    <h3>Heated Flooring (Add-on)</h3>
+                    <div class="price-range">$$ Add-on</div>
+                    <p>Radiant heat mats installed under tile. Worth every penny on a cold winter morning. Pairs best with porcelain or stone.</p>
+                    <div class="pros-cons">
+                        <div class="pros"><strong>Pros</strong>Warm floors, low operating cost</div>
+                        <div class="cons"><strong>Cons</strong>Up-front cost, install only with new floor</div>
+                    </div>
+                </div>
+            </div>
+            <div class="material-card">
+                <div class="material-img">[ IMAGE — 600×600 — mosaic accent tile ]</div>
+                <div class="material-body">
+                    <h3>Mosaic &amp; Accent Tile</h3>
+                    <div class="price-range">$$ – $$$</div>
+                    <p>Borders, niches, feature walls, shower floors. A small mosaic detail can completely change the look of a bathroom.</p>
+                    <div class="pros-cons">
+                        <div class="pros"><strong>Pros</strong>Adds personality, slip-resistant on shower floors</div>
+                        <div class="cons"><strong>Cons</strong>More grout lines = more cleaning</div>
+                    </div>
+                </div>
+            </div>
+            <div class="material-card">
+                <div class="material-img">[ IMAGE — 600×600 — large-format tile ]</div>
+                <div class="material-body">
+                    <h3>Large-Format Tile</h3>
+                    <div class="price-range">$$ – $$$</div>
+                    <p>24" or larger porcelain tiles. Fewer grout lines means a cleaner look and easier maintenance. Modern and clean.</p>
+                    <div class="pros-cons">
+                        <div class="pros"><strong>Pros</strong>Modern look, less grout to clean</div>
+                        <div class="cons"><strong>Cons</strong>Subfloor needs to be perfectly flat</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="source-note">
+            <strong>Where to browse:</strong> Floor &amp; Decor in Silverdale and Tacoma has a huge in-stock selection — walk in, look at samples in person, pick what you like. We'll bring samples to your consultation too if that's easier. Either way, you pick the look — we install it right.
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- COUNTERTOPS SECTION -->
+<section class="section" style="background:var(--dark);">
+    <div class="container-wide">
+        <div class="container">
+            <div class="tag">Countertops</div>
+            <h2>Vanity Tops That Last</h2>
+            <p style="color:var(--mid); font-weight:300; line-height:1.9; max-width:620px; margin-top:16px;">The vanity top is what you see first thing every morning. Here's what we install — pros, cons, and rough price tier so you can plan.</p>
+        </div>
+
+        <div class="material-grid">
+            <div class="material-card">
+                <div class="material-img">[ IMAGE — 600×600 — quartz countertop ]</div>
+                <div class="material-body">
+                    <h3>Quartz (Engineered Stone)</h3>
+                    <div class="price-range">$$ – $$$</div>
+                    <p>Tons of colors, no sealing required, very durable. Brands: Caesarstone, Silestone, Cambria, MSI Q. Our most-recommended bath top.</p>
+                    <div class="pros-cons">
+                        <div class="pros"><strong>Pros</strong>No sealing, stain-resistant, huge color range</div>
+                        <div class="cons"><strong>Cons</strong>Mid-to-high cost, less heat-tolerant than stone</div>
+                    </div>
+                </div>
+            </div>
+            <div class="material-card">
+                <div class="material-img">[ IMAGE — 600×600 — granite countertop ]</div>
+                <div class="material-body">
+                    <h3>Granite</h3>
+                    <div class="price-range">$$ – $$$</div>
+                    <p>Natural stone with one-of-a-kind patterns. Tough, classic, holds up to anything. Needs annual sealing in a wet bath.</p>
+                    <div class="pros-cons">
+                        <div class="pros"><strong>Pros</strong>Unique patterns, durable, classic look</div>
+                        <div class="cons"><strong>Cons</strong>Periodic sealing needed</div>
+                    </div>
+                </div>
+            </div>
+            <div class="material-card">
+                <div class="material-img">[ IMAGE — 600×600 — marble countertop ]</div>
+                <div class="material-body">
+                    <h3>Marble</h3>
+                    <div class="price-range">$$$</div>
+                    <p>High-end, elegant, instantly recognizable. Best in powder rooms or low-traffic master baths — softer than granite.</p>
+                    <div class="pros-cons">
+                        <div class="pros"><strong>Pros</strong>Premium look, timeless</div>
+                        <div class="cons"><strong>Cons</strong>Etches with acid, needs sealing</div>
+                    </div>
+                </div>
+            </div>
+            <div class="material-card">
+                <div class="material-img">[ IMAGE — 600×600 — solid surface (Corian) ]</div>
+                <div class="material-body">
+                    <h3>Solid Surface (Corian)</h3>
+                    <div class="price-range">$$</div>
+                    <p>Seamless, repairable (you can sand out scratches), integrated sinks. Mid-range price, modern look.</p>
+                    <div class="pros-cons">
+                        <div class="pros"><strong>Pros</strong>Seamless install, scratches buff out</div>
+                        <div class="cons"><strong>Cons</strong>Less premium feel than stone</div>
+                    </div>
+                </div>
+            </div>
+            <div class="material-card">
+                <div class="material-img">[ IMAGE — 600×600 — laminate countertop ]</div>
+                <div class="material-body">
+                    <h3>Laminate</h3>
+                    <div class="price-range">$</div>
+                    <p>Modern laminate has come a long way — stone-look and wood-look options that read way better than the laminate you grew up with.</p>
+                    <div class="pros-cons">
+                        <div class="pros"><strong>Pros</strong>Easiest on the budget, lots of styles</div>
+                        <div class="cons"><strong>Cons</strong>Not as durable as stone, can chip at edges</div>
+                    </div>
+                </div>
+            </div>
+            <div class="material-card">
+                <div class="material-img">[ IMAGE — 600×600 — butcher block / wood top ]</div>
+                <div class="material-body">
+                    <h3>Butcher Block / Wood (Specialty)</h3>
+                    <div class="price-range">$$</div>
+                    <p>Warm, unique, nice for powder rooms. Needs aggressive sealing for bathroom use — we'll talk through whether it's right for the space.</p>
+                    <div class="pros-cons">
+                        <div class="pros"><strong>Pros</strong>Unique character, warm look</div>
+                        <div class="cons"><strong>Cons</strong>Sealing required, not ideal in heavy-use baths</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="source-note">
+            <strong>How material gets sourced:</strong> We can pull from local stone yards in Tacoma and Kitsap County, or you can pick your slab in person at Floor &amp; Decor or another supplier. If you find one you like, we'll measure, order, and install it.
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SOCIAL PROOF -->
+<section class="section" style="background:var(--dark2);">
+    <div class="container-wide">
+        <div class="container">
+            <div class="tag">Real Reviews</div>
+            <h2>What People Say</h2>
+        </div>
+
+        <div class="testimonial-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                <p>[TESTIMONIAL 1 — replace with real Google review. Use a bathroom-specific quote if available.]</p>
+                <div class="author">— [Customer Name]</div>
+                <div class="location">[City, WA]</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                <p>[TESTIMONIAL 2 — replace with real Google review.]</p>
+                <div class="author">— [Customer Name]</div>
+                <div class="location">[City, WA]</div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+                <p>[TESTIMONIAL 3 — replace with real Google review.]</p>
+                <div class="author">— [Customer Name]</div>
+                <div class="location">[City, WA]</div>
+            </div>
+        </div>
+
+        <div style="margin-top:64px;">
+            <div class="container">
+                <h3 style="margin-bottom:8px;">Recent Bathroom Remodels</h3>
+                <p style="color:var(--mid); font-weight:300; font-size:0.9rem;">Add real before/after photos here. 6 slots — pair them as 3 before/after pairs.</p>
+            </div>
+            <div class="ba-grid">
+                <div class="ba-slot">[ BEFORE — 800×600 — old bathroom #1 ]</div>
+                <div class="ba-slot">[ AFTER — 800×600 — same bathroom remodeled ]</div>
+                <div class="ba-slot">[ BEFORE — 800×600 — old bathroom #2 ]</div>
+                <div class="ba-slot">[ AFTER — 800×600 — same bathroom remodeled ]</div>
+                <div class="ba-slot">[ BEFORE — 800×600 — old bathroom #3 ]</div>
+                <div class="ba-slot">[ AFTER — 800×600 — same bathroom remodeled ]</div>
+            </div>
+        </div>
+
+        <div class="container">
+            <p class="service-area-line"><strong>Serving Kitsap County:</strong> Bremerton, Port Orchard, Silverdale, Poulsbo, Bainbridge Island, Gig Harbor, Kingston, Seabeck, Belfair, and the surrounding Pacific Northwest.</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA / CONTACT -->
+<section class="br-cta" id="contact">
+    <div class="container">
+        <div class="cta-grid">
+            <div class="cta-info">
+                <div class="tag">Get Started</div>
+                <h2>Ready to Talk About Your Bathroom?</h2>
+                <p>Tell us a little about your project — or just give Tray a call directly if forms aren't your thing. We'll get back to you within one business day with next steps. No pressure, no high-pressure quote pitch.</p>
+                <div class="cta-info-item">
+                    <div class="cta-info-icon">&#9742;</div>
+                    <div class="cta-info-text">
+                        <small>Phone</small>
+                        <a href="tel:3607100409">(360) 710-0409</a>
+                    </div>
+                </div>
+                <div class="cta-info-item">
+                    <div class="cta-info-icon">&#9993;</div>
+                    <div class="cta-info-text">
+                        <small>Email</small>
+                        <a href="mailto:admin@bellnhammer.biz">admin@bellnhammer.biz</a>
+                    </div>
+                </div>
+                <p style="margin-top:32px; font-size:0.85rem;"><strong>Service area:</strong> Bremerton, Port Orchard, Silverdale, Poulsbo, Bainbridge Island, Gig Harbor, Kingston, and surrounding Kitsap County.</p>
+            </div>
+
+            <div>
+                <iframe
+                    src="https://clienthub.getjobber.com/hubs/d39802b2-7d77-40f0-a155-36e7188d511d/public/requests/2179121/embedded_new"
+                    frameborder="0"
+                    scrolling="yes"
+                    width="100%"
+                    height="700"
+                    title="Request a Bathroom Remodel Quote - Bell &amp; Hammer"
+                    loading="lazy"
+                    style="display:block;border:1px solid rgba(255,255,255,.04);background:#fff;">
+                </iframe>
+                <p class="form-note">Form powered by our Jobber Client Hub — secure, private, and goes straight to our team.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container footer-inner">
+        <div class="footer-brand">
+            <span class="nav-logo">BELL <span>&amp;</span> HAMMER</span>
+            <p>Your local construction company in the Pacific Northwest. Licensed, bonded &amp; insured. Built on craft. Led by communication.</p>
+        </div>
+        <div class="footer-col">
+            <p>Navigation</p>
+            <a href="bellnhammer.html#services">Services</a>
+            <a href="bellnhammer.html#work">Our Work</a>
+            <a href="bellnhammer.html#about">About</a>
+            <a href="bellnhammer.html#reviews">Reviews</a>
+            <a href="bellnhammer.html#contact">Request Estimate</a>
+            <a href="careers.html">Careers</a>
+        </div>
+        <div class="footer-col">
+            <p>Contact</p>
+            <a href="tel:3607100409">(360) 710-0409</a>
+            <a href="mailto:admin@bellnhammer.biz">admin@bellnhammer.biz</a>
+            <a href="https://clienthub.getjobber.com/client_hubs/d39802b2-7d77-40f0-a155-36e7188d511d/login/new?source=share_login" target="_blank" style="margin-top:12px; color:var(--rust);">Client Portal Login &rarr;</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>WA Contractor Lic# BELLHH*754BC &middot; Licensed &middot; Bonded &middot; Insured &middot; &copy; 2026 Bell &amp; Hammer &nbsp;|&nbsp; <a href="terms.html" style="color:var(--dim);">Terms</a> &nbsp;|&nbsp; <a href="privacy.html" style="color:var(--dim);">Privacy</a></p>
+    </div>
+</footer>
+
+<!-- Sticky CTA bar — slides up after user scrolls past hero -->
+<div class="sticky-cta" id="stickyCta">
+    <div class="sticky-inner">
+        <div class="sticky-text">Ready to remodel your bathroom?<small>Free quote — no pressure, no high-pitch sales</small></div>
+        <div class="sticky-actions">
+            <a href="tel:3607100409" class="sticky-btn outline">Call (360) 710-0409</a>
+            <a href="#contact" class="sticky-btn">Get a Free Quote</a>
+        </div>
+    </div>
+</div>
+
+<script>
+const toggle = document.getElementById('navToggle'), links = document.getElementById('navLinks');
+toggle.addEventListener('click', () => { links.classList.toggle('open'); toggle.classList.toggle('open'); });
+document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); toggle.classList.remove('open'); }));
+
+// Sticky CTA shows after user scrolls past the hero (~600px)
+const stickyCta = document.getElementById('stickyCta');
+const contactSection = document.getElementById('contact');
+window.addEventListener('scroll', () => {
+    const past = window.scrollY > 600;
+    // Hide when contact section is visible (don't double-CTA)
+    const rect = contactSection.getBoundingClientRect();
+    const inContact = rect.top < window.innerHeight && rect.bottom > 0;
+    stickyCta.classList.toggle('visible', past && !inContact);
+});
+</script>
+</body>
+</html>
