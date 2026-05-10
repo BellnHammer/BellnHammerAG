@@ -666,24 +666,31 @@ TO REMOVE ENTIRELY:
             <h2>What People Say</h2>
         </div>
 
-        <div class="testimonial-grid">
-            <div class="testimonial-card">
+        <!--
+          Testimonials are real Google reviews shared from the main page.
+          Smart sort: cards with bathroom/shower keywords (in body OR data-topic)
+          float to the front of the grid on this page. To add a new review:
+            1. Drop a new <div class="testimonial-card" data-topic="bathroom|kitchen|general"> ... </div> here.
+            2. The script at the bottom of the body sorts on load.
+        -->
+        <div class="testimonial-grid" id="testimonialGrid">
+            <div class="testimonial-card" data-topic="bathroom">
                 <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
-                <p>[TESTIMONIAL 1 — replace with real Google review. Use a bathroom-specific quote if available.]</p>
-                <div class="author">— [Customer Name]</div>
-                <div class="location">[City, WA]</div>
+                <p>Amazing group of guys, can get the job done with being very professional and punctual. Redid our whole bathroom with these guys, and couldn't be happier, HIGHLY recommend them to anybody who is in need of a remodel.</p>
+                <div class="author">— Aditya Donkada</div>
+                <div class="location">Google Review</div>
             </div>
-            <div class="testimonial-card">
+            <div class="testimonial-card" data-topic="bathroom">
                 <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
-                <p>[TESTIMONIAL 2 — replace with real Google review.]</p>
-                <div class="author">— [Customer Name]</div>
-                <div class="location">[City, WA]</div>
+                <p>Bryce and Trey really took good care of all of our needs and everything was smooth. Recommend to anyone looking for bathroom or a kitchen :)</p>
+                <div class="author">— Diman Moenfar</div>
+                <div class="location">Google Review</div>
             </div>
-            <div class="testimonial-card">
+            <div class="testimonial-card" data-topic="general">
                 <div class="testimonial-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
-                <p>[TESTIMONIAL 3 — replace with real Google review.]</p>
-                <div class="author">— [Customer Name]</div>
-                <div class="location">[City, WA]</div>
+                <p>Bryce and Tray have been phenomenal. I feel like communication is key when it comes to getting any major work done, ESPECIALLY when it's at my home. But it's safe to say these two men blew my expectations and were nothing short of great. Absolutely recommend and would do so time and time over again.</p>
+                <div class="author">— Murtaza</div>
+                <div class="location">Google Review</div>
             </div>
         </div>
 
@@ -792,6 +799,25 @@ TO REMOVE ENTIRELY:
 const toggle = document.getElementById('navToggle'), links = document.getElementById('navLinks');
 toggle.addEventListener('click', () => { links.classList.toggle('open'); toggle.classList.toggle('open'); });
 document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); toggle.classList.remove('open'); }));
+
+// Testimonial sort — favor bathroom/shower-tagged or keyword-matching reviews on this page
+(function() {
+    var grid = document.getElementById('testimonialGrid');
+    if (!grid) return;
+    var cards = Array.prototype.slice.call(grid.querySelectorAll('.testimonial-card'));
+    var TOPIC_KEYWORDS = /bathroom|shower|tub|tile|vanity|walk-?in/i;
+    function score(card) {
+        // Lower score = appears earlier
+        var topic = (card.getAttribute('data-topic') || '').toLowerCase();
+        if (topic === 'bathroom' || topic === 'shower') return 0;
+        // Fallback: scan text content for bathroom/shower keywords
+        if (TOPIC_KEYWORDS.test(card.textContent || '')) return 1;
+        if (topic === 'general' || !topic) return 2;
+        return 3; // off-topic (e.g. kitchen on a bathroom page)
+    }
+    cards.sort(function(a, b) { return score(a) - score(b); });
+    cards.forEach(function(c) { grid.appendChild(c); });
+})();
 
 // Sticky CTA shows after user scrolls past the hero (~600px)
 const stickyCta = document.getElementById('stickyCta');
