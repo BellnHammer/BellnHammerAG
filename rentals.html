@@ -1,37 +1,16 @@
 <!--
-HIDDEN PAGE: Equipment Rentals
-Status: DRAFT — Not visible to public
-
-TO MAKE LIVE:
-1. Remove the <meta name="robots" content="noindex, nofollow"> tag below
-2. Add "Rentals" to the main navigation menu in bellnhammer.html
-3. Change the hidden footer link in bellnhammer.html (search "HIDDEN-LINK-RENTALS") to a visible, normal-styled link
-4. Add <url><loc>https://bellnhammer.com/rentals</loc>...</url> to sitemap.xml
-
-TO REMOVE ENTIRELY:
-1. Delete this file (rentals.html)
-2. In bellnhammer.html, search "HIDDEN-LINK-RENTALS" and remove that <a> tag
-3. Remove /rentals rewrite from vercel.json
-
-PRICING:
-- All prices are currently placeholders (marked $TBD). Search for "$TBD" and replace with real numbers.
-- Pricing tiers per item: 4hr / Daily / Weekly / Monthly
-- Deposit / delivery fee / cleaning fee at the bottom disclaimer section — fill in when confirmed.
-
-IMAGES:
-- Each equipment card has 1 image slot. When photos arrive, drop them in /images/rentals/ with the
-  filenames referenced in the src attributes below (e.g. mini-track-loader.jpg).
-- If multiple photos per item come in, use a gallery pattern (script at bottom rotates through).
-
-RENTAL AGREEMENT:
-- Placeholder link points to /rentals/rental-agreement.pdf — replace with the real PDF when ready.
+LIVE PAGE: Equipment Rentals — public
+Nav: linked from bellnhammer.html main nav ("Rentals")
+Sitemap: listed in sitemap.xml
+Homepage: featured callout link in service area
+Pricing: real rates from master rate table (day / 4hr / weekly / monthly)
+Rental agreement PDF: /rentals/rental-agreement.pdf (still placeholder — drop real PDF into /rentals/ folder)
 -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="robots" content="noindex, nofollow">
     <title>Equipment Rentals in Kitsap County, WA | Bell & Hammer</title>
     <meta name="description" content="Contractor-grade equipment rentals from Bell & Hammer — mini track loaders, jackhammers, tile saws, augers, plate compactors, paint sprayers, and more. Kitsap County pickup and local delivery available.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -327,10 +306,10 @@ RENTAL AGREEMENT:
                         <li><strong>Ideal for:</strong> landscaping, dirt work, hauling material</li>
                     </ul>
                     <div class="price-table">
-                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value">$213</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value">$250</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value">$1,225</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value">$4,165</div></div>
                     </div>
                     <div class="equip-actions">
                         <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
@@ -354,10 +333,10 @@ RENTAL AGREEMENT:
                         <li><strong>Requires:</strong> 15A outlet on standard 120V</li>
                     </ul>
                     <div class="price-table">
-                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value">$55</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value">$65</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value">$319</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value">$1,083</div></div>
                     </div>
                     <div class="equip-actions">
                         <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
@@ -384,10 +363,10 @@ RENTAL AGREEMENT:
                         <li><strong>Includes:</strong> common masonry bits</li>
                     </ul>
                     <div class="price-table">
-                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value">$30</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value">$35</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value">$172</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value">$583</div></div>
                     </div>
                     <div class="equip-actions">
                         <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
@@ -414,10 +393,10 @@ RENTAL AGREEMENT:
                         <li><strong>Best for:</strong> bath floors, backsplashes, small projects</li>
                     </ul>
                     <div class="price-table">
-                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value">$43</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value">$50</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value">$245</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value">$833</div></div>
                     </div>
                     <div class="equip-actions">
                         <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
@@ -441,10 +420,10 @@ RENTAL AGREEMENT:
                         <li><strong>Wet cut:</strong> yes — includes water hookup</li>
                     </ul>
                     <div class="price-table">
-                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value">$98</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value">$115</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value">$564</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value">$1,916</div></div>
                     </div>
                     <div class="equip-actions">
                         <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
@@ -468,10 +447,10 @@ RENTAL AGREEMENT:
                         <li><strong>Fuel:</strong> gas — you fill it, we clean it</li>
                     </ul>
                     <div class="price-table">
-                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value">$55</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value">$65</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value">$319</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value">$1,083</div></div>
                     </div>
                     <div class="equip-actions">
                         <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
@@ -495,10 +474,10 @@ RENTAL AGREEMENT:
                         <li><strong>Fuel:</strong> gas</li>
                     </ul>
                     <div class="price-table">
-                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value">$64</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value">$75</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value">$368</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value">$1,250</div></div>
                     </div>
                     <div class="equip-actions">
                         <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
@@ -522,10 +501,10 @@ RENTAL AGREEMENT:
                         <li><strong>Water:</strong> connects to standard garden hose</li>
                     </ul>
                     <div class="price-table">
-                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value">$64</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value">$75</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value">$368</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value">$1,250</div></div>
                     </div>
                     <div class="equip-actions">
                         <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
@@ -542,17 +521,18 @@ RENTAL AGREEMENT:
                         <div class="equip-cat">Fencing</div>
                         <h3>T-Post Driver</h3>
                     </div>
-                    <p class="equip-desc">Weighted manual driver for setting metal T-posts into the ground. For chain link, field fencing, wire mesh, garden fencing, or livestock/pet enclosures. Fast, no digging, no concrete required.</p>
+                    <p class="equip-desc">Gas-powered post driver for setting metal T-posts into the ground fast. For chain link, field fencing, wire mesh, garden fencing, or livestock/pet enclosures. Fraction of the time and effort of manual driving — no digging, no concrete required.</p>
                     <ul class="equip-specs">
                         <li><strong>Best for:</strong> chain link, wire, garden, livestock fencing</li>
-                        <li><strong>Handheld:</strong> weighted steel, drives posts by gravity + swing</li>
+                        <li><strong>Power:</strong> gas-driven for speed and consistency</li>
+                        <li><strong>Ideal for:</strong> long fence runs, garden and livestock enclosures</li>
                     </ul>
                     <div class="equip-addon"><strong>Full T-post job add-on (+$25):</strong> Bundle the driver with a complete set of T-posts sized to your run. Perfect for tackling a full fence line without a separate hardware-store trip.</div>
                     <div class="price-table">
-                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value">$89</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value">$105</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value">$515</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value">$1,750</div></div>
                     </div>
                     <div class="equip-actions">
                         <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
@@ -576,10 +556,10 @@ RENTAL AGREEMENT:
                         <li><strong>Max tip:</strong> .015"</li>
                     </ul>
                     <div class="price-table">
-                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value">$55</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value">$65</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value">$319</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value">$1,083</div></div>
                     </div>
                     <div class="equip-actions">
                         <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
@@ -603,10 +583,10 @@ RENTAL AGREEMENT:
                         <li><strong>Max tip:</strong> .019"</li>
                     </ul>
                     <div class="price-table">
-                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
-                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value">$81</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value">$95</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value">$466</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value">$1,583</div></div>
                     </div>
                     <div class="equip-actions">
                         <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
@@ -677,7 +657,7 @@ RENTAL AGREEMENT:
             <div class="terms-card">
                 <h3>Rental Periods</h3>
                 <ul>
-                    <li><strong>4-Hour:</strong> for quick jobs; return same day.</li>
+                    <li><strong>4-Hour:</strong> for quick jobs; return within 4 hours. Any use past 4 hours automatically bills the full day rate.</li>
                     <li><strong>Daily:</strong> 24 hours from pickup time.</li>
                     <li><strong>Weekly:</strong> 7 consecutive days.</li>
                     <li><strong>Monthly:</strong> 28 consecutive days.</li>
