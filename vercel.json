@@ -10,6 +10,7 @@
     { "source": "/blog", "destination": "/blog.html" },
     { "source": "/thank-you", "destination": "/thank-you.html" },
     { "source": "/bathroom-remodel", "destination": "/bathroom-remodel.html" },
+    { "source": "/rentals", "destination": "/rentals.html" },
     { "source": "/service-areas/bremerton", "destination": "/service-areas/bremerton.html" },
     { "source": "/service-areas/silverdale", "destination": "/service-areas/silverdale.html" },
     { "source": "/service-areas/poulsbo", "destination": "/service-areas/poulsbo.html" },

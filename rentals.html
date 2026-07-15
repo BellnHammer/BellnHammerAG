@@ -1,0 +1,860 @@
+<!--
+HIDDEN PAGE: Equipment Rentals
+Status: DRAFT — Not visible to public
+
+TO MAKE LIVE:
+1. Remove the <meta name="robots" content="noindex, nofollow"> tag below
+2. Add "Rentals" to the main navigation menu in bellnhammer.html
+3. Change the hidden footer link in bellnhammer.html (search "HIDDEN-LINK-RENTALS") to a visible, normal-styled link
+4. Add <url><loc>https://bellnhammer.com/rentals</loc>...</url> to sitemap.xml
+
+TO REMOVE ENTIRELY:
+1. Delete this file (rentals.html)
+2. In bellnhammer.html, search "HIDDEN-LINK-RENTALS" and remove that <a> tag
+3. Remove /rentals rewrite from vercel.json
+
+PRICING:
+- All prices are currently placeholders (marked $TBD). Search for "$TBD" and replace with real numbers.
+- Pricing tiers per item: 4hr / Daily / Weekly / Monthly
+- Deposit / delivery fee / cleaning fee at the bottom disclaimer section — fill in when confirmed.
+
+IMAGES:
+- Each equipment card has 1 image slot. When photos arrive, drop them in /images/rentals/ with the
+  filenames referenced in the src attributes below (e.g. mini-track-loader.jpg).
+- If multiple photos per item come in, use a gallery pattern (script at bottom rotates through).
+
+RENTAL AGREEMENT:
+- Placeholder link points to /rentals/rental-agreement.pdf — replace with the real PDF when ready.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Equipment Rentals in Kitsap County, WA | Bell & Hammer</title>
+    <meta name="description" content="Contractor-grade equipment rentals from Bell & Hammer — mini track loaders, jackhammers, tile saws, augers, plate compactors, paint sprayers, and more. Kitsap County pickup and local delivery available.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18087596761"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-18087596761');
+    </script>
+    <!-- Conversion tracking -->
+    <script>
+    (function() {
+      var jobberConverted = false, ctaClicked = false;
+      function fireConversion(label) {
+        if (typeof gtag !== 'function') return;
+        gtag('event', 'conversion', {'send_to': 'AW-18087596761/gaA7CJWwhqEcENml67BD','value': 1.0,'currency': 'USD'});
+        gtag('event', 'generate_lead', { 'event_category': 'engagement', 'event_label': label || 'unknown' });
+      }
+      window.addEventListener('message', function(e) {
+        if (!e.data || jobberConverted) return;
+        var d = typeof e.data === 'string' ? e.data : JSON.stringify(e.data);
+        if (d.indexOf('jobber') !== -1 && (d.indexOf('submit') !== -1 || d.indexOf('success') !== -1 || d.indexOf('complete') !== -1 || d.indexOf('thank') !== -1)) { jobberConverted = true; fireConversion('jobber_postmessage'); }
+      });
+      var CTA_REGEX = /reserve|rent|get\s*(an?\s*)?(free\s*)?(estimate|quote)|request\s*(an?\s*)?(free\s*)?(estimate|quote)|contact\s*us/i;
+      document.addEventListener('click', function(e) {
+        var a = e.target.closest && e.target.closest('a, button');
+        if (!a) return;
+        var href = a.getAttribute('href') || '';
+        var text = (a.textContent || a.innerText || '').trim();
+        if (href.indexOf('tel:') === 0) { fireConversion('phone_click'); return; }
+        if (href.indexOf('mailto:') === 0) { fireConversion('email_click'); return; }
+        if (!ctaClicked && CTA_REGEX.test(text)) { ctaClicked = true; fireConversion('rental_cta_click'); }
+      });
+    })();
+    </script>
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: #e8e4df; background: #0a0a0a; line-height: 1.6; }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        :root { --dark: #0a0a0a; --dark2: #111; --dark3: #1a1917; --rust: #be7258; --rust-glow: #d4896e; --gold: #c9a96e; --cream: #e8e4df; --mid: #8a8579; --dim: #4a4640; }
+        h1, h2, h3, h4 { font-family: 'Bebas Neue', sans-serif; font-weight: 400; letter-spacing: 2px; text-transform: uppercase; }
+        h1 { font-size: clamp(2.8rem, 8vw, 5rem); line-height: 0.95; color: var(--cream); }
+        h2 { font-size: clamp(1.8rem, 4vw, 3rem); color: var(--cream); }
+        h3 { font-size: 1.3rem; letter-spacing: 1.5px; color: var(--cream); }
+        h4 { font-size: 1rem; letter-spacing: 1.5px; color: var(--cream); }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 32px; }
+        .container-wide { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+        .tag { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 4px; color: var(--rust); margin-bottom: 16px; display: inline-block; }
+        .tag::before { content: ''; display: inline-block; width: 24px; height: 1px; background: var(--rust); margin-right: 12px; vertical-align: middle; }
+        .divider { height: 1px; background: linear-gradient(to right, transparent, var(--dim), transparent); }
+
+        /* Nav */
+        .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 24px 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; }
+        .nav-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 4px; color: var(--cream); }
+        .nav-logo span { color: var(--rust); }
+        .nav-links { display: flex; gap: 36px; list-style: none; }
+        .nav-links a { color: var(--mid); font-size: 0.75rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--cream); }
+        .nav-cta { font-size: 0.7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: var(--rust); border: 1px solid rgba(190,114,88,0.3); padding: 10px 24px; transition: all 0.3s; }
+        .nav-cta:hover { background: var(--rust); color: var(--dark); }
+        .nav-toggle { display: none; background: none; border: none; cursor: pointer; width: 30px; height: 20px; position: relative; z-index: 60; }
+        .nav-toggle span { display: block; width: 100%; height: 1.5px; background: var(--cream); position: absolute; left: 0; transition: all 0.3s; }
+        .nav-toggle span:nth-child(1) { top: 0; } .nav-toggle span:nth-child(2) { top: 9px; } .nav-toggle span:nth-child(3) { top: 18px; }
+        .nav-toggle.open span:nth-child(1) { top: 9px; transform: rotate(45deg); } .nav-toggle.open span:nth-child(2) { opacity: 0; } .nav-toggle.open span:nth-child(3) { top: 9px; transform: rotate(-45deg); }
+
+        /* Hero */
+        .rent-hero { position: relative; min-height: 60vh; display: flex; align-items: center; padding: 220px 0 80px; background: var(--dark2); border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .rent-hero h1 em { font-style: normal; color: var(--rust); }
+        .rent-hero-sub { color: var(--mid); font-size: 1.05rem; font-weight: 300; max-width: 620px; margin: 24px 0 36px; line-height: 1.8; }
+        .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+        .btn { display: inline-flex; align-items: center; gap: 10px; font-family: 'Inter', sans-serif; font-weight: 600; font-size: 0.8rem; letter-spacing: 2px; text-transform: uppercase; padding: 18px 40px; border: none; cursor: pointer; transition: all 0.4s ease; }
+        .btn-rust { background: var(--rust); color: var(--dark); }
+        .btn-rust:hover { background: var(--rust-glow); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(190,114,88,0.3); }
+        .btn-ghost { background: transparent; color: var(--cream); border: 1px solid var(--dim); padding: 18px 40px; }
+        .btn-ghost:hover { border-color: var(--rust); color: var(--rust); }
+        .btn-sm { padding: 12px 24px; font-size: 0.7rem; }
+        .hero-phone { color: var(--cream); font-size: 0.95rem; font-weight: 500; }
+        .hero-phone a { color: var(--rust); }
+
+        /* Trust strip */
+        .trust-strip { background: var(--dark3); border-top: 1px solid rgba(190,114,88,0.2); border-bottom: 1px solid rgba(190,114,88,0.2); padding: 28px 0; }
+        .trust-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; align-items: center; }
+        .trust-item { text-align: center; border-right: 1px solid rgba(255,255,255,0.04); padding: 0 16px; }
+        .trust-item:last-child { border-right: none; }
+        .trust-stat { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--rust); letter-spacing: 1.5px; line-height: 1; margin-bottom: 6px; }
+        .trust-label { color: var(--mid); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; font-weight: 500; }
+
+        /* Section */
+        .section { padding: 80px 0; }
+
+        /* Category filter chips */
+        .cat-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 32px 0 8px; }
+        .cat-chip { background: var(--dark2); color: var(--mid); border: 1px solid rgba(255,255,255,0.06); padding: 10px 20px; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; transition: all 0.3s; font-family: 'Inter', sans-serif; font-weight: 500; }
+        .cat-chip:hover, .cat-chip.active { background: var(--rust); color: var(--dark); border-color: var(--rust); }
+
+        /* Equipment grid — Sunbelt style */
+        .equip-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 32px; }
+        .equip-card { background: var(--dark2); border: 1px solid rgba(255,255,255,0.04); overflow: hidden; display: flex; flex-direction: column; transition: border-color 0.4s; }
+        .equip-card:hover { border-color: rgba(190,114,88,0.3); }
+        .equip-img { aspect-ratio: 16/10; background: var(--dark3); display: flex; align-items: center; justify-content: center; color: var(--dim); font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase; padding: 20px; text-align: center; border-bottom: 1px solid rgba(255,255,255,0.04); position: relative; }
+        .equip-img img { width: 100%; height: 100%; object-fit: cover; }
+        .equip-badge { position: absolute; top: 12px; left: 12px; background: var(--rust); color: var(--dark); font-family: 'Bebas Neue', sans-serif; font-size: 0.7rem; letter-spacing: 2px; padding: 4px 12px; z-index: 2; }
+        .equip-badge.multi { background: var(--gold); }
+        .equip-body { padding: 28px 32px; display: flex; flex-direction: column; flex: 1; }
+        .equip-head { border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 16px; margin-bottom: 16px; }
+        .equip-body h3 { font-size: 1.2rem; margin-bottom: 4px; }
+        .equip-cat { font-size: 0.65rem; text-transform: uppercase; letter-spacing: 3px; color: var(--rust); }
+        .equip-desc { color: var(--mid); font-size: 0.87rem; font-weight: 300; line-height: 1.7; margin-bottom: 16px; }
+        .equip-specs { list-style: none; margin-bottom: 20px; }
+        .equip-specs li { font-size: 0.75rem; color: var(--dim); padding: 4px 0 4px 18px; position: relative; font-weight: 300; }
+        .equip-specs li::before { content: '▸'; position: absolute; left: 0; color: var(--rust); font-size: 0.65rem; top: 6px; }
+        .equip-specs li strong { color: var(--mid); }
+
+        .price-table { border-top: 1px solid rgba(255,255,255,0.04); margin-top: auto; padding-top: 16px; }
+        .price-row { display: grid; grid-template-columns: 1fr auto; gap: 12px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.03); align-items: center; }
+        .price-row:last-of-type { border-bottom: none; }
+        .price-tier { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--mid); font-weight: 500; }
+        .price-tier small { display: block; color: var(--dim); font-size: 0.62rem; letter-spacing: 1px; margin-top: 2px; text-transform: none; font-weight: 300; }
+        .price-value { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--cream); letter-spacing: 1px; line-height: 1; }
+        .price-value.tbd { color: var(--dim); font-size: 0.9rem; letter-spacing: 2px; }
+
+        .equip-actions { display: flex; gap: 8px; margin-top: 20px; }
+        .equip-actions .btn { flex: 1; text-align: center; justify-content: center; }
+
+        .equip-addon { background: var(--dark3); padding: 12px 16px; margin-top: 12px; font-size: 0.75rem; color: var(--mid); font-weight: 300; border-left: 2px solid var(--gold); }
+        .equip-addon strong { color: var(--cream); }
+
+        /* How it works */
+        .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; margin-top: 40px; }
+        .process-step { background: var(--dark2); padding: 32px 24px; }
+        .process-step .step-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.6rem; color: rgba(190,114,88,0.18); line-height: 1; margin-bottom: 10px; }
+        .process-step h3 { font-size: 1rem; margin-bottom: 10px; }
+        .process-step p { color: var(--mid); font-size: 0.82rem; font-weight: 300; line-height: 1.7; }
+
+        /* Disclaimer / terms */
+        .terms-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
+        .terms-card { background: var(--dark3); padding: 28px 32px; border-left: 3px solid var(--rust); }
+        .terms-card h3 { font-size: 1rem; margin-bottom: 12px; }
+        .terms-card ul { list-style: none; }
+        .terms-card li { color: var(--mid); font-size: 0.85rem; font-weight: 300; line-height: 1.7; padding: 6px 0 6px 20px; position: relative; }
+        .terms-card li::before { content: '—'; position: absolute; left: 0; color: var(--rust); font-weight: 500; }
+        .terms-card li strong { color: var(--cream); }
+
+        /* Agreement download bar */
+        .agreement-bar { background: linear-gradient(135deg, rgba(190,114,88,0.14), rgba(190,114,88,0.04)); border: 1px solid rgba(190,114,88,0.3); padding: 28px 36px; margin-top: 40px; display: grid; grid-template-columns: auto 1fr auto; gap: 28px; align-items: center; }
+        .agreement-icon { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; color: var(--rust); line-height: 1; }
+        .agreement-bar h3 { margin-bottom: 4px; }
+        .agreement-bar p { color: var(--mid); font-size: 0.85rem; font-weight: 300; margin: 0; }
+
+        /* FAQ */
+        .faq-list details { border-bottom: 1px solid rgba(255,255,255,0.04); }
+        .faq-list summary { padding: 20px 0; font-weight: 500; font-size: 0.95rem; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--cream); }
+        .faq-list summary::-webkit-details-marker { display: none; }
+        .faq-list summary span { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--rust); transition: transform 0.3s; }
+        .faq-list details[open] summary span { transform: rotate(45deg); }
+        .faq-list details p { padding: 0 0 20px; color: var(--mid); font-weight: 300; line-height: 1.8; font-size: 0.9rem; }
+
+        /* CTA / Contact */
+        .rent-cta { padding: 100px 0; background: var(--dark2); border-top: 1px solid rgba(255,255,255,0.04); }
+        .cta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+        .cta-info p { color: var(--mid); font-weight: 300; line-height: 1.8; margin-bottom: 20px; }
+        .cta-info-item { display: flex; align-items: center; gap: 16px; margin-top: 24px; }
+        .cta-info-icon { width: 44px; height: 44px; border: 1px solid var(--dim); display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; color: var(--rust); }
+        .cta-info-text small { display: block; color: var(--dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 2px; }
+        .cta-info-text a { color: var(--cream); font-weight: 500; transition: color 0.3s; }
+        .cta-info-text a:hover { color: var(--rust); }
+
+        /* Footer */
+        .footer { background: var(--dark2); padding: 60px 0 0; border-top: 1px solid rgba(255,255,255,0.03); }
+        .footer-inner { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; padding-bottom: 48px; }
+        .footer-brand p { color: var(--dim); font-size: 0.85rem; font-weight: 300; max-width: 300px; line-height: 1.7; margin-top: 16px; }
+        .footer-col p { color: var(--dim); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 16px; }
+        .footer-col a { display: block; color: var(--mid); font-size: 0.85rem; margin-bottom: 10px; transition: color 0.3s; font-weight: 300; }
+        .footer-col a:hover { color: var(--cream); }
+        .footer-bottom { border-top: 1px solid rgba(255,255,255,0.03); padding: 20px 0; text-align: center; font-size: 0.7rem; color: var(--dim); letter-spacing: 1px; }
+
+        @media (max-width: 900px) {
+            .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+            .trust-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.04); padding-bottom: 16px; }
+            .trust-item:nth-last-child(-n+2) { border-bottom: none; padding-bottom: 0; }
+            .nav-links, .nav-cta { display: none; }
+            .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(10,10,10,0.98); padding: 100px 32px 32px; gap: 24px; z-index: 55; }
+            .nav-links.open a { font-size: 1.2rem; color: var(--cream); }
+            .nav-toggle { display: block; }
+            .equip-grid { grid-template-columns: 1fr; }
+            .process-grid { grid-template-columns: 1fr; }
+            .terms-grid { grid-template-columns: 1fr; }
+            .agreement-bar { grid-template-columns: 1fr; text-align: center; gap: 16px; }
+            .cta-grid { grid-template-columns: 1fr; gap: 48px; }
+            .footer-inner { grid-template-columns: 1fr; gap: 32px; }
+        }
+    </style>
+</head>
+<body>
+
+<nav class="nav">
+    <div class="nav-inner">
+        <a href="bellnhammer.html" class="nav-logo"><img src="images/logo.png" alt="Bell & Hammer" style="height:48px;border-radius:6px;"></a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="bellnhammer.html">Home</a></li>
+            <li><a href="bellnhammer.html#services">Services</a></li>
+            <li><a href="demo-and-hauling.html">Demo &amp; Hauling</a></li>
+            <li><a href="bellnhammer.html#work">Work</a></li>
+            <li><a href="bellnhammer.html#about">About</a></li>
+            <li><a href="careers.html">Careers</a></li>
+            <li><a href="https://clienthub.getjobber.com/client_hubs/d39802b2-7d77-40f0-a155-36e7188d511d/login/new?source=share_login" target="_blank">Client Portal</a></li>
+        </ul>
+        <a href="#reserve" class="nav-cta">Reserve Now</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+    </div>
+</nav>
+
+<!-- HERO -->
+<section class="rent-hero">
+    <div class="container">
+        <div class="tag">Equipment Rentals</div>
+        <h1>Contractor-grade tools.<br>Homeowner-friendly <em>rates.</em></h1>
+        <p class="rent-hero-sub">Skip the big-box hassle. Rent the same pro-grade equipment we use on our own job sites — from mini track loaders to large-format tile saws — with pickup at our Kitsap County location or local delivery. Straight-up pricing, no membership fees.</p>
+        <div class="hero-actions">
+            <a href="#equipment" class="btn btn-rust">Browse Equipment</a>
+            <span class="hero-phone">or call <a href="tel:3607100409">(360) 710-0409</a></span>
+        </div>
+    </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust-strip">
+    <div class="container-wide">
+        <div class="trust-grid">
+            <div class="trust-item">
+                <div class="trust-stat">4-Hr / Day / Week / Month</div>
+                <div class="trust-label">Rental Tiers</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-stat">Kitsap</div>
+                <div class="trust-label">Local Pickup &amp; Delivery</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-stat">Same Day</div>
+                <div class="trust-label">Availability When Possible</div>
+            </div>
+            <div class="trust-item">
+                <div class="trust-stat">Bonded</div>
+                <div class="trust-label">Licensed &amp; Insured Contractor</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- EQUIPMENT SECTION -->
+<section class="section" id="equipment">
+    <div class="container-wide">
+        <div class="container">
+            <div class="tag">Available Equipment</div>
+            <h2>Rent What We Use</h2>
+            <p style="color:var(--mid); font-weight:300; line-height:1.9; max-width:640px; margin-top:16px;">All of our rental equipment is contractor-grade and job-site tested. Pick it up at our Kitsap County location, or ask about local delivery. All prices below are per unit — a few items have multiple units available for larger jobs.</p>
+
+            <!-- Category filter chips — click to filter the grid -->
+            <div class="cat-chips" id="catChips">
+                <button class="cat-chip active" data-cat="all">All Equipment</button>
+                <button class="cat-chip" data-cat="earthmoving">Earthmoving</button>
+                <button class="cat-chip" data-cat="demolition">Demolition</button>
+                <button class="cat-chip" data-cat="concrete">Concrete &amp; Compaction</button>
+                <button class="cat-chip" data-cat="tile">Tile &amp; Cutting</button>
+                <button class="cat-chip" data-cat="fencing">Fencing</button>
+                <button class="cat-chip" data-cat="paint">Paint &amp; Cleaning</button>
+            </div>
+        </div>
+
+        <div class="equip-grid" id="equipGrid">
+
+            <!-- 1. MINI TRACK LOADER -->
+            <div class="equip-card" data-cat="earthmoving">
+                <div class="equip-img"><img src="images/rentals/mini-track-loader.jpg" alt="Mini track loader for rent" loading="lazy" onerror="this.style.display='none';this.parentNode.textContent='[ IMAGE — 16:10 — mini track loader ]'"></div>
+                <div class="equip-body">
+                    <div class="equip-head">
+                        <div class="equip-cat">Earthmoving</div>
+                        <h3>Mini Track Loader</h3>
+                    </div>
+                    <p class="equip-desc">Compact tracked skid steer that fits through a standard 36" gate. Perfect for backyard grading, hauling gravel and mulch, digging holes, and moving material in tight spaces where a full-size machine won't reach.</p>
+                    <ul class="equip-specs">
+                        <li><strong>Bucket:</strong> standard included</li>
+                        <li><strong>Gate clearance:</strong> fits ~36" openings</li>
+                        <li><strong>Ideal for:</strong> landscaping, dirt work, hauling material</li>
+                    </ul>
+                    <div class="price-table">
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                    </div>
+                    <div class="equip-actions">
+                        <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
+                        <a href="tel:3607100409" class="btn btn-ghost btn-sm">Call to Rent</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. JACKHAMMER -->
+            <div class="equip-card" data-cat="demolition">
+                <div class="equip-img"><img src="images/rentals/jackhammer.jpg" alt="Electric jackhammer breaker for rent" loading="lazy" onerror="this.style.display='none';this.parentNode.textContent='[ IMAGE — 16:10 — jackhammer ]'"></div>
+                <div class="equip-body">
+                    <div class="equip-head">
+                        <div class="equip-cat">Demolition</div>
+                        <h3>Jackhammer / Demo Breaker</h3>
+                    </div>
+                    <p class="equip-desc">Heavy demolition breaker for busting up concrete slabs, driveways, patios, asphalt, brick, and stone. Bit included. Uses standard shop power — no compressor needed.</p>
+                    <ul class="equip-specs">
+                        <li><strong>Best for:</strong> concrete slabs, driveways, patios</li>
+                        <li><strong>Includes:</strong> pointed chisel bit</li>
+                        <li><strong>Requires:</strong> 15A outlet on standard 120V</li>
+                    </ul>
+                    <div class="price-table">
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                    </div>
+                    <div class="equip-actions">
+                        <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
+                        <a href="tel:3607100409" class="btn btn-ghost btn-sm">Call to Rent</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. HAMMER DRILL (x2 available) -->
+            <div class="equip-card" data-cat="demolition">
+                <div class="equip-img">
+                    <span class="equip-badge multi">2 Available</span>
+                    <img src="images/rentals/hammer-drill.jpg" alt="SDS rotary hammer drill for rent" loading="lazy" onerror="this.style.display='none';this.parentNode.textContent='[ IMAGE — 16:10 — SDS hammer drill ]'">
+                </div>
+                <div class="equip-body">
+                    <div class="equip-head">
+                        <div class="equip-cat">Demolition</div>
+                        <h3>Hammer Drill (SDS)</h3>
+                    </div>
+                    <p class="equip-desc">Rotary hammer drill for drilling anchor holes into concrete, masonry, brick, and stone. Ideal for setting concrete anchors, tapcons, rebar dowels, or running conduit through block walls.</p>
+                    <ul class="equip-specs">
+                        <li><strong>Chuck:</strong> SDS-Plus</li>
+                        <li><strong>Best for:</strong> concrete anchors, tapcons, dowel pins</li>
+                        <li><strong>Includes:</strong> common masonry bits</li>
+                    </ul>
+                    <div class="price-table">
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                    </div>
+                    <div class="equip-actions">
+                        <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
+                        <a href="tel:3607100409" class="btn btn-ghost btn-sm">Call to Rent</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4. SMALL TILE SAW (x2 available) -->
+            <div class="equip-card" data-cat="tile">
+                <div class="equip-img">
+                    <span class="equip-badge multi">2 Available</span>
+                    <img src="images/rentals/tile-saw-small.jpg" alt="Portable wet tile saw for rent" loading="lazy" onerror="this.style.display='none';this.parentNode.textContent='[ IMAGE — 16:10 — small wet tile saw ]'">
+                </div>
+                <div class="equip-body">
+                    <div class="equip-head">
+                        <div class="equip-cat">Tile &amp; Cutting</div>
+                        <h3>Wet Tile Saw &mdash; Standard</h3>
+                    </div>
+                    <p class="equip-desc">Portable tabletop wet tile saw for ceramic, porcelain, and stone tile up to standard sizes. Perfect for bathroom floors, backsplashes, small kitchen jobs, and DIY tile projects.</p>
+                    <ul class="equip-specs">
+                        <li><strong>Cuts:</strong> standard ceramic &amp; porcelain tile</li>
+                        <li><strong>Type:</strong> tabletop wet saw with water reservoir</li>
+                        <li><strong>Best for:</strong> bath floors, backsplashes, small projects</li>
+                    </ul>
+                    <div class="price-table">
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                    </div>
+                    <div class="equip-actions">
+                        <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
+                        <a href="tel:3607100409" class="btn btn-ghost btn-sm">Call to Rent</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 5. LARGE FORMAT TILE SAW -->
+            <div class="equip-card" data-cat="tile">
+                <div class="equip-img"><img src="images/rentals/tile-saw-large.jpg" alt="Large format tile saw for 48 inch tile" loading="lazy" onerror="this.style.display='none';this.parentNode.textContent='[ IMAGE — 16:10 — large-format tile saw ]'"></div>
+                <div class="equip-body">
+                    <div class="equip-head">
+                        <div class="equip-cat">Tile &amp; Cutting</div>
+                        <h3>Large-Format Tile Saw &mdash; 48"</h3>
+                    </div>
+                    <p class="equip-desc">Handles today's oversized porcelain and stone tile — up to 48 inches. If you're doing modern large-format shower walls, floor-to-ceiling tile, or big kitchen backsplashes, this is the machine you need instead of chewing through blades on a smaller saw.</p>
+                    <ul class="equip-specs">
+                        <li><strong>Max cut:</strong> up to 48" tile</li>
+                        <li><strong>Best for:</strong> large-format porcelain, shower walls, feature walls</li>
+                        <li><strong>Wet cut:</strong> yes — includes water hookup</li>
+                    </ul>
+                    <div class="price-table">
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                    </div>
+                    <div class="equip-actions">
+                        <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
+                        <a href="tel:3607100409" class="btn btn-ghost btn-sm">Call to Rent</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. AUGER -->
+            <div class="equip-card" data-cat="earthmoving">
+                <div class="equip-img"><img src="images/rentals/auger.jpg" alt="Powered post-hole auger for rent" loading="lazy" onerror="this.style.display='none';this.parentNode.textContent='[ IMAGE — 16:10 — powered auger ]'"></div>
+                <div class="equip-body">
+                    <div class="equip-head">
+                        <div class="equip-cat">Earthmoving</div>
+                        <h3>Powered Auger</h3>
+                    </div>
+                    <p class="equip-desc">Gas-powered post-hole digger for fence posts, deck footings, sign posts, or planting trees. One-person or two-person operation depending on soil. Way faster than digging by hand — a full fence run in hours instead of a whole weekend.</p>
+                    <ul class="equip-specs">
+                        <li><strong>Hole diameter:</strong> multiple bit sizes (6", 8", 10", 12")</li>
+                        <li><strong>Best for:</strong> fence posts, deck footings, trees</li>
+                        <li><strong>Fuel:</strong> gas — you fill it, we clean it</li>
+                    </ul>
+                    <div class="price-table">
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                    </div>
+                    <div class="equip-actions">
+                        <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
+                        <a href="tel:3607100409" class="btn btn-ghost btn-sm">Call to Rent</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. PLATE COMPACTOR -->
+            <div class="equip-card" data-cat="concrete">
+                <div class="equip-img"><img src="images/rentals/plate-compactor.jpg" alt="Vibratory plate compactor for rent" loading="lazy" onerror="this.style.display='none';this.parentNode.textContent='[ IMAGE — 16:10 — plate compactor ]'"></div>
+                <div class="equip-body">
+                    <div class="equip-head">
+                        <div class="equip-cat">Concrete &amp; Compaction</div>
+                        <h3>Vibratory Plate Compactor</h3>
+                    </div>
+                    <p class="equip-desc">Gas-powered vibrating plate for compacting soil, sand, gravel, and crushed rock base. Essential for paver patios, walkway prep, driveway base, and any project where a solid, level foundation matters.</p>
+                    <ul class="equip-specs">
+                        <li><strong>Best for:</strong> paver base, gravel driveways, walkway prep</li>
+                        <li><strong>Compacts:</strong> soil, sand, gravel, road base</li>
+                        <li><strong>Fuel:</strong> gas</li>
+                    </ul>
+                    <div class="price-table">
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                    </div>
+                    <div class="equip-actions">
+                        <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
+                        <a href="tel:3607100409" class="btn btn-ghost btn-sm">Call to Rent</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. DEWALT PRESSURE WASHER -->
+            <div class="equip-card" data-cat="paint">
+                <div class="equip-img"><img src="images/rentals/pressure-washer.jpg" alt="DeWalt pressure washer for rent" loading="lazy" onerror="this.style.display='none';this.parentNode.textContent='[ IMAGE — 16:10 — DeWalt pressure washer ]'"></div>
+                <div class="equip-body">
+                    <div class="equip-head">
+                        <div class="equip-cat">Paint &amp; Cleaning</div>
+                        <h3>DeWalt Pressure Washer</h3>
+                    </div>
+                    <p class="equip-desc">Contractor-grade pressure washer for cleaning driveways, siding, decks, patios, fences, and equipment. Blast away years of grime, moss, and mildew before staining a deck or repainting siding.</p>
+                    <ul class="equip-specs">
+                        <li><strong>Best for:</strong> driveways, siding prep, decks, moss removal</li>
+                        <li><strong>Includes:</strong> standard tip set</li>
+                        <li><strong>Water:</strong> connects to standard garden hose</li>
+                    </ul>
+                    <div class="price-table">
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                    </div>
+                    <div class="equip-actions">
+                        <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
+                        <a href="tel:3607100409" class="btn btn-ghost btn-sm">Call to Rent</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9. T-POST DRIVER (with T-post set add-on) -->
+            <div class="equip-card" data-cat="fencing">
+                <div class="equip-img"><img src="images/rentals/tpost-driver.jpg" alt="T-post driver for rent" loading="lazy" onerror="this.style.display='none';this.parentNode.textContent='[ IMAGE — 16:10 — T-post driver ]'"></div>
+                <div class="equip-body">
+                    <div class="equip-head">
+                        <div class="equip-cat">Fencing</div>
+                        <h3>T-Post Driver</h3>
+                    </div>
+                    <p class="equip-desc">Weighted manual driver for setting metal T-posts into the ground. For chain link, field fencing, wire mesh, garden fencing, or livestock/pet enclosures. Fast, no digging, no concrete required.</p>
+                    <ul class="equip-specs">
+                        <li><strong>Best for:</strong> chain link, wire, garden, livestock fencing</li>
+                        <li><strong>Handheld:</strong> weighted steel, drives posts by gravity + swing</li>
+                    </ul>
+                    <div class="equip-addon"><strong>Full T-post job add-on (+$25):</strong> Bundle the driver with a complete set of T-posts sized to your run. Perfect for tackling a full fence line without a separate hardware-store trip.</div>
+                    <div class="price-table">
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                    </div>
+                    <div class="equip-actions">
+                        <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
+                        <a href="tel:3607100409" class="btn btn-ghost btn-sm">Call to Rent</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10. GRACO MAGNUM X7 -->
+            <div class="equip-card" data-cat="paint">
+                <div class="equip-img"><img src="images/rentals/graco-magnum-x7.jpg" alt="Graco Magnum X7 airless paint sprayer for rent" loading="lazy" onerror="this.style.display='none';this.parentNode.textContent='[ IMAGE — 16:10 — Graco Magnum X7 ]'"></div>
+                <div class="equip-body">
+                    <div class="equip-head">
+                        <div class="equip-cat">Paint &amp; Cleaning</div>
+                        <h3>Graco Magnum X7 Airless Sprayer</h3>
+                    </div>
+                    <p class="equip-desc">Airless paint sprayer sized for residential interior and exterior projects. Sprays straight from a 1 or 5-gallon paint bucket — no thinning needed for most latex paints. Great for one to two rooms, a fence, or a small exterior.</p>
+                    <ul class="equip-specs">
+                        <li><strong>Best for:</strong> interior rooms, single-story exteriors, fences, decks</li>
+                        <li><strong>Feeds from:</strong> 1 or 5 gal paint bucket</li>
+                        <li><strong>Max tip:</strong> .015"</li>
+                    </ul>
+                    <div class="price-table">
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                    </div>
+                    <div class="equip-actions">
+                        <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
+                        <a href="tel:3607100409" class="btn btn-ghost btn-sm">Call to Rent</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 11. GRACO MAGNUM X19 -->
+            <div class="equip-card" data-cat="paint">
+                <div class="equip-img"><img src="images/rentals/graco-magnum-x19.jpg" alt="Graco Magnum X19 airless paint sprayer for rent" loading="lazy" onerror="this.style.display='none';this.parentNode.textContent='[ IMAGE — 16:10 — Graco Magnum X19 ]'"></div>
+                <div class="equip-body">
+                    <div class="equip-head">
+                        <div class="equip-cat">Paint &amp; Cleaning</div>
+                        <h3>Graco Magnum X19 Airless Sprayer</h3>
+                    </div>
+                    <p class="equip-desc">Bigger brother to the X7 — heavier-duty pump, larger tip capacity, and longer hose. Handles thicker paints and bigger jobs like whole-house exteriors, multiple rooms in a day, or fence lines you want done fast.</p>
+                    <ul class="equip-specs">
+                        <li><strong>Best for:</strong> whole-house exteriors, multi-room interiors, large fences</li>
+                        <li><strong>Feeds from:</strong> 1 or 5 gal paint bucket</li>
+                        <li><strong>Max tip:</strong> .019"</li>
+                    </ul>
+                    <div class="price-table">
+                        <div class="price-row"><div class="price-tier">4 Hour</div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Daily <small>24 hours</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Weekly <small>7 days</small></div><div class="price-value tbd">$TBD</div></div>
+                        <div class="price-row"><div class="price-tier">Monthly <small>28 days</small></div><div class="price-value tbd">$TBD</div></div>
+                    </div>
+                    <div class="equip-actions">
+                        <a href="#reserve" class="btn btn-rust btn-sm">Reserve</a>
+                        <a href="tel:3607100409" class="btn btn-ghost btn-sm">Call to Rent</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- HOW IT WORKS -->
+<section class="section" style="background:var(--dark2);">
+    <div class="container-wide">
+        <div class="container">
+            <div class="tag">How It Works</div>
+            <h2>Simple Rental Process</h2>
+        </div>
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-num">01</div>
+                <h3>Reserve</h3>
+                <p>Call, text, or fill out the form below to lock in your equipment. Let us know when you need it and how long — we'll confirm availability same day.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">02</div>
+                <h3>Pickup or Delivery</h3>
+                <p>Grab it at our Kitsap County location or ask about local delivery for larger items. Bring a valid driver's license and a credit card for the security hold.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">03</div>
+                <h3>Use It</h3>
+                <p>Every item is job-site ready. We walk you through the basics, hand over the manual if needed, and answer questions before you leave.</p>
+            </div>
+            <div class="process-step">
+                <div class="step-num">04</div>
+                <h3>Return &amp; Done</h3>
+                <p>Bring it back clean, fueled up (for gas units), by the return time on your ticket. We inspect it, release your hold, and you're done.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TERMS & DISCLAIMERS -->
+<section class="section" style="background:var(--dark);">
+    <div class="container-wide">
+        <div class="container">
+            <div class="tag">Rental Terms</div>
+            <h2>The Fine Print, Up Front</h2>
+            <p style="color:var(--mid); font-weight:300; line-height:1.9; max-width:640px; margin-top:16px;">We're not here to bury you in legal small print. Here's exactly what you're signing up for when you rent from us — no surprises, no gotchas.</p>
+        </div>
+
+        <div class="terms-grid">
+            <div class="terms-card">
+                <h3>Requirements</h3>
+                <ul>
+                    <li><strong>Valid ID:</strong> driver's license or state ID required at pickup.</li>
+                    <li><strong>Security hold:</strong> credit card hold or deposit — released when equipment returns clean and undamaged.</li>
+                    <li><strong>Age:</strong> 18+ to sign the rental agreement. Some heavy equipment may require 21+.</li>
+                    <li><strong>Rental agreement:</strong> signed at pickup (or in advance — download below).</li>
+                </ul>
+            </div>
+            <div class="terms-card">
+                <h3>Rental Periods</h3>
+                <ul>
+                    <li><strong>4-Hour:</strong> for quick jobs; return same day.</li>
+                    <li><strong>Daily:</strong> 24 hours from pickup time.</li>
+                    <li><strong>Weekly:</strong> 7 consecutive days.</li>
+                    <li><strong>Monthly:</strong> 28 consecutive days.</li>
+                    <li><strong>Late returns:</strong> billed at next tier up (e.g., late daily &rarr; billed 4hr overage rate).</li>
+                </ul>
+            </div>
+            <div class="terms-card">
+                <h3>Damage &amp; Loss</h3>
+                <ul>
+                    <li><strong>Normal wear:</strong> no charge — that's on us.</li>
+                    <li><strong>Damage from misuse:</strong> repair cost billed to renter.</li>
+                    <li><strong>Lost or stolen:</strong> full replacement cost.</li>
+                    <li><strong>Cleaning fee:</strong> applies if returned excessively dirty or full of debris.</li>
+                    <li><strong>Fuel:</strong> gas units returned with full tank, or refueling fee applies.</li>
+                </ul>
+            </div>
+            <div class="terms-card">
+                <h3>Delivery &amp; Pickup</h3>
+                <ul>
+                    <li><strong>Local delivery available</strong> for a fee (varies by distance and item size).</li>
+                    <li><strong>Pickup point:</strong> our Kitsap County location — arranged at reservation.</li>
+                    <li><strong>Site access:</strong> customer responsible for safe unloading area for heavier equipment.</li>
+                    <li><strong>Same-day service</strong> when the schedule allows.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Agreement download -->
+        <div class="agreement-bar">
+            <div class="agreement-icon">&#128196;</div>
+            <div>
+                <h3>Rental Agreement</h3>
+                <p>Download and review our full rental agreement before pickup. Signed copy required at time of rental.</p>
+            </div>
+            <a href="rentals/rental-agreement.pdf" class="btn btn-rust btn-sm" target="_blank" download>Download PDF</a>
+        </div>
+
+        <p style="color:var(--dim); font-size:0.75rem; line-height:1.7; margin-top:32px; max-width:800px; font-weight:300;"><strong style="color:var(--mid);">Disclaimer:</strong> All equipment is rented "as-is" with the understanding that the renter has been shown proper operation. Renter is responsible for safe use, appropriate PPE (eye protection, gloves, hearing protection, etc. — not included unless specified), and compliance with local regulations. Bell &amp; Hammer is not liable for property damage or personal injury resulting from use of rented equipment. Some equipment may not be appropriate for all applications — ask us if you're unsure. Pricing and availability subject to change; final rental cost confirmed at reservation.</p>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- FAQ -->
+<section class="section" style="background:var(--dark2);">
+    <div class="container">
+        <div class="tag">FAQ</div>
+        <h2 style="margin-bottom:32px;">Common Questions</h2>
+        <div class="faq-list">
+            <details>
+                <summary>What do I need to rent equipment?<span>+</span></summary>
+                <p>A valid driver's license or state-issued ID, a credit or debit card for the security hold, and a signed rental agreement. You can download the agreement above to sign in advance and speed up pickup.</p>
+            </details>
+            <details>
+                <summary>Do you deliver?<span>+</span></summary>
+                <p>Yes — we offer local delivery in Kitsap County for a fee that varies by distance and equipment size. Call for a delivery quote. Some items (like the mini track loader) are much easier for us to deliver than for you to trailer yourself.</p>
+            </details>
+            <details>
+                <summary>What if I return it late?<span>+</span></summary>
+                <p>Late returns get billed at the next-tier rate. A late 4-hour rental rolls into a full daily; a late daily rolls into a 2-day rate, and so on. If you know you're going to run over, call us — we'll usually work with you if we don't have it committed to someone else.</p>
+            </details>
+            <details>
+                <summary>Do I need my own insurance?<span>+</span></summary>
+                <p>Renter is responsible for damage or loss under our standard rental agreement. If you have homeowner's or contractor's insurance, that may cover you — check your policy. Some jobs (especially commercial) may require you to add us as an additional insured; ask when you reserve.</p>
+            </details>
+            <details>
+                <summary>What if the equipment breaks while I'm using it?<span>+</span></summary>
+                <p>Stop using it and call us right away. If it's a mechanical failure not caused by misuse, we'll swap it out at no charge or refund your rental for the affected time. If it's damaged from misuse, that gets billed under the damage terms above.</p>
+            </details>
+            <details>
+                <summary>Do you rent to homeowners, or only contractors?<span>+</span></summary>
+                <p>Both. Anyone 18+ with a valid ID and credit card can rent. Most of our rental customers are DIY homeowners tackling a weekend project.</p>
+            </details>
+            <details>
+                <summary>Can you show me how to use it?<span>+</span></summary>
+                <p>Yes. At pickup we walk through the basics of operation, safety, and shutdown. If you have detailed questions about how a machine performs on your specific project, ask when you reserve and we'll go deeper. We use this same equipment every day — we know what works.</p>
+            </details>
+            <details>
+                <summary>Do you offer weekend rates?<span>+</span></summary>
+                <p>Yes — a Friday afternoon to Monday morning rental typically counts as a weekend rate (roughly 1.5x daily). Call to confirm timing based on when you can pick up and drop off.</p>
+            </details>
+        </div>
+    </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- RESERVE / CONTACT -->
+<section class="rent-cta" id="reserve">
+    <div class="container">
+        <div class="cta-grid">
+            <div class="cta-info">
+                <div class="tag">Reserve Equipment</div>
+                <h2>Lock In Your Rental</h2>
+                <p>Tell us what you need and when. We'll confirm availability, pricing, and pickup or delivery details within one business day.</p>
+                <div class="cta-info-item">
+                    <div class="cta-info-icon">&#9742;</div>
+                    <div class="cta-info-text">
+                        <small>Phone (fastest)</small>
+                        <a href="tel:3607100409">(360) 710-0409</a>
+                    </div>
+                </div>
+                <div class="cta-info-item">
+                    <div class="cta-info-icon">&#9993;</div>
+                    <div class="cta-info-text">
+                        <small>Email</small>
+                        <a href="mailto:admin@bellnhammer.biz">admin@bellnhammer.biz</a>
+                    </div>
+                </div>
+                <p style="margin-top:32px; font-size:0.85rem;"><strong style="color:var(--cream);">Rental pickup area:</strong> Bremerton, Port Orchard, Silverdale, Poulsbo, Bainbridge Island, and surrounding Kitsap County. Delivery available.</p>
+            </div>
+
+            <div>
+                <iframe
+                    src="https://clienthub.getjobber.com/hubs/d39802b2-7d77-40f0-a155-36e7188d511d/public/requests/2179121/embedded_new"
+                    frameborder="0"
+                    scrolling="yes"
+                    width="100%"
+                    height="700"
+                    title="Reserve Equipment - Bell &amp; Hammer"
+                    loading="lazy"
+                    style="display:block;border:1px solid rgba(255,255,255,.04);background:#fff;">
+                </iframe>
+                <p style="color:var(--dim); font-size:0.75rem; margin-top:12px; line-height:1.6;">Reservation requests go straight to our team via our Jobber Client Hub. For fastest response, just call.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container footer-inner">
+        <div class="footer-brand">
+            <span class="nav-logo">BELL <span>&amp;</span> HAMMER</span>
+            <p>Your local construction company in the Pacific Northwest. Licensed, bonded &amp; insured. Built on craft. Led by communication.</p>
+        </div>
+        <div class="footer-col">
+            <p>Navigation</p>
+            <a href="bellnhammer.html#services">Services</a>
+            <a href="bellnhammer.html#work">Our Work</a>
+            <a href="bellnhammer.html#about">About</a>
+            <a href="bellnhammer.html#reviews">Reviews</a>
+            <a href="bellnhammer.html#contact">Request Estimate</a>
+            <a href="careers.html">Careers</a>
+        </div>
+        <div class="footer-col">
+            <p>Contact</p>
+            <a href="tel:3607100409">(360) 710-0409</a>
+            <a href="mailto:admin@bellnhammer.biz">admin@bellnhammer.biz</a>
+            <a href="https://clienthub.getjobber.com/client_hubs/d39802b2-7d77-40f0-a155-36e7188d511d/login/new?source=share_login" target="_blank" style="margin-top:12px; color:var(--rust);">Client Portal Login &rarr;</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>WA Contractor Lic# BELLHH*754BC &middot; Licensed &middot; Bonded &middot; Insured &middot; &copy; 2026 Bell &amp; Hammer &nbsp;|&nbsp; <a href="terms.html" style="color:var(--dim);">Terms</a> &nbsp;|&nbsp; <a href="privacy.html" style="color:var(--dim);">Privacy</a></p>
+    </div>
+</footer>
+
+<script>
+// Mobile nav
+const toggle = document.getElementById('navToggle'), links = document.getElementById('navLinks');
+toggle.addEventListener('click', () => { links.classList.toggle('open'); toggle.classList.toggle('open'); });
+document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => { links.classList.remove('open'); toggle.classList.remove('open'); }));
+
+// Category filter — click a chip to filter equipment cards
+(function() {
+    const chips = document.querySelectorAll('#catChips .cat-chip');
+    const cards = document.querySelectorAll('#equipGrid .equip-card');
+    chips.forEach(chip => {
+        chip.addEventListener('click', () => {
+            chips.forEach(c => c.classList.remove('active'));
+            chip.classList.add('active');
+            const cat = chip.dataset.cat;
+            cards.forEach(card => {
+                card.style.display = (cat === 'all' || card.dataset.cat === cat) ? '' : 'none';
+            });
+        });
+    });
+})();
+</script>
+</body>
+</html>
