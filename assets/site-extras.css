@@ -6,7 +6,17 @@
 /* ── Nav: tighter spacing so the expanded menu fits ── */
 .nav-links { gap: 26px !important; align-items: center; }
 .nav-links > li { position: relative; }
-.nav-links a { font-size: .7rem !important; }
+.nav-links a { font-size: .7rem !important; white-space: nowrap; }
+
+/* ── Commercial button (sits beside Get Estimate; stays visible on mobile) ── */
+.nav-pro {
+    font-size: .7rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; color: #c9a96e;
+    border: 1px solid rgba(201,169,110,.45); padding: 10px 20px; margin-left: auto; margin-right: 12px;
+    transition: background .3s, color .3s; white-space: nowrap;
+}
+.nav-cta { white-space: nowrap; }
+.nav-pro:hover { background: #c9a96e; color: #0a0a0a; }
+.nav-links { margin: 0 28px 0 36px; }
 
 /* ── Services dropdown (desktop) ── */
 .dd-caret { font-size: .55rem; margin-left: 4px; display: inline-block; transition: transform .25s; }
@@ -23,10 +33,11 @@
 .has-dd:hover .dd-menu, .has-dd:focus-within .dd-menu { opacity: 1; visibility: visible; transform: translateY(0); }
 .has-dd:hover .dd-caret { transform: rotate(180deg); }
 
-/* ── Collapse to hamburger earlier: the full menu needs ~1100px ── */
-@media (max-width: 1100px) {
+/* ── Collapse to hamburger earlier: the full menu + buttons need ~1280px ── */
+@media (max-width: 1280px) {
     .nav-links, .nav-cta { display: none !important; }
     .nav-toggle { display: block !important; }
+    .nav-pro { margin-right: 18px; padding: 9px 14px; font-size: .62rem; }
     .nav-links.open {
         display: flex !important; flex-direction: column; align-items: flex-start; position: fixed; inset: 0;
         background: rgba(10,10,10,.98); padding: 100px 32px 40px; gap: 20px !important; z-index: 55; overflow-y: auto;

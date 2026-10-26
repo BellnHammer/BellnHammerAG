@@ -28,7 +28,7 @@
     // Capture phase so this runs before each page's own "close menu on link click" handler
     document.addEventListener('click', function (e) {
         var t = e.target.closest && e.target.closest('.dd-toggle');
-        if (!t || !window.matchMedia('(max-width: 1100px)').matches) return;
+        if (!t || !window.matchMedia('(max-width: 1280px)').matches) return;
         e.preventDefault();
         e.stopPropagation();
         t.parentNode.classList.toggle('dd-open');
