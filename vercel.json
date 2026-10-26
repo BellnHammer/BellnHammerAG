@@ -5,6 +5,10 @@
       "destination": "/bellnhammer.html"
     },
     {
+      "source": "/calculator",
+      "destination": "/bellnhammer.html"
+    },
+    {
       "source": "/services/:path*",
       "destination": "/services/:path*"
     },
@@ -102,6 +106,16 @@
       "source": "/services/handyman.html",
       "destination": "/",
       "permanent": true
+    },
+    {
+      "source": "/stingray",
+      "destination": "/calculator?utm_source=google&utm_medium=cpc&utm_campaign=operation-stingray",
+      "permanent": false
+    },
+    {
+      "source": "/orca",
+      "destination": "/calculator?utm_source=google&utm_medium=cpc&utm_campaign=operation-orca",
+      "permanent": false
     }
   ]
 }

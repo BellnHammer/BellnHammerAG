@@ -28,6 +28,24 @@
         addition: { label: 'Addition / ADU', unit: 'weeks', phases: [['Design & engineering', 3, 6], ['Permitting', 4, 8], ['Foundation', 2, 3], ['Framing & dry-in', 3, 5], ['Rough inspections & insulation', 1, 2], ['Drywall, finishes & trim', 3, 5], ['Final inspection & punch', 1, 1]] }
     };
 
+    // Deep links for ads: /calculator?project=bath&size=60&finish=premium (also works on /#planner).
+    // Every param is optional; utm_campaign is reported to Google with each calculator event.
+    var Q = new URLSearchParams(location.search);
+    var ALIAS = { bathroom: 'bath', bathrooms: 'bath', kitchens: 'kitchen', adu: 'addition', additions: 'addition', decks: 'deck',
+        fences: 'fence', fencing: 'fence', roofing: 'roof', window: 'windows', floor: 'flooring', painting: 'paint' };
+    var qProject = (Q.get('project') || '').toLowerCase();
+    qProject = ALIAS[qProject] || qProject;
+    var qTier = { standard: 0, mid: 1, 'mid-range': 1, midrange: 1, premium: 2, luxury: 2 }[(Q.get('finish') || Q.get('tier') || '').toLowerCase()];
+    var qSize = parseInt(Q.get('size'), 10);
+    var campaign = Q.get('utm_campaign') || '';
+    var tracked = false;
+    function track(name, extra) {
+        if (typeof gtag !== 'function') return;
+        var p = { event_category: 'calculator', campaign: campaign || '(none)' };
+        for (var k in extra) p[k] = extra[k];
+        gtag('event', name, p);
+    }
+
     function money(n) { return '$' + (Math.round(n / 500) * 500).toLocaleString('en-US'); }
     function opts(map) { return Object.keys(map).map(function (k) { return '<option value="' + k + '">' + map[k].label + '</option>'; }).join(''); }
     function el(html) { var d = document.createElement('div'); d.innerHTML = html; return d.firstElementChild; }
@@ -43,7 +61,7 @@
             '</div></div>' +
             '<div class="pl-out"><span>Ballpark Range</span><strong id="plOut">\u2014</strong><small id="plPer"></small></div>' +
             '<p class="pl-note">Ballpark only, based on typical Kitsap County projects. Actual pricing depends on site conditions, materials, structural work and permits. Every Bell &amp; Hammer estimate is free and written.</p>' +
-            '<a href="#contact" class="btn btn-rust pl-cta">Get My Exact Quote</a></div>'));
+            '<a href="#quote-form" class="btn btn-rust pl-cta">Get My Exact Quote</a></div>'));
         var type = est.querySelector('#plType'), size = est.querySelector('#plSize'), range = est.querySelector('#plRange'),
             unit = est.querySelector('#plUnit'), out = est.querySelector('#plOut'), per = est.querySelector('#plPer'), tier = 1;
         var calc = function () {
@@ -61,14 +79,24 @@
         type.addEventListener('change', setType);
         range.addEventListener('input', function () { size.value = range.value; calc(); });
         size.addEventListener('input', function () { range.value = size.value; calc(); });
-        est.querySelectorAll('.pl-tiers button').forEach(function (b, _, all) {
-            b.addEventListener('click', function () {
-                tier = +b.dataset.t;
-                all.forEach(function (x) { x.classList.toggle('on', x === b); x.setAttribute('aria-checked', x === b); });
-                calc();
-            });
+        var tierBtns = est.querySelectorAll('.pl-tiers button');
+        var setTier = function (t) {
+            tier = t;
+            tierBtns.forEach(function (x, i) { x.classList.toggle('on', i === t); x.setAttribute('aria-checked', i === t); });
+            calc();
+        };
+        tierBtns.forEach(function (b) { b.addEventListener('click', function () { setTier(+b.dataset.t); }); });
+        // First real interaction counts as "used" once per visit
+        est.addEventListener('change', function () { if (!tracked) { tracked = true; track('calculator_used', { project: type.value }); } });
+        est.addEventListener('click', function (e) {
+            if (e.target.closest('.pl-tiers button') && !tracked) { tracked = true; track('calculator_used', { project: type.value }); }
+            if (e.target.closest('.pl-cta')) track('calculator_quote_click', { project: type.value, finish: TIERS[tier], size: size.value });
         });
+
+        if (COST[qProject]) type.value = qProject;
         setType();
+        if (qSize > 0) { size.value = range.value = qSize; calc(); }
+        if (qTier !== undefined) setTier(qTier);
     }
 
     var tl = document.getElementById('timeline');
@@ -95,6 +123,26 @@
             }).join('');
         };
         tt.addEventListener('change', draw);
+        if (TIMELINE[qProject]) tt.value = qProject;
         draw();
+    }
+
+    // Arriving from a calculator link: jump straight to the planner
+    var planner = document.getElementById('planner');
+    var deepLink = /^\/calculator\/?$/.test(location.pathname) || location.hash === '#planner' || COST[qProject];
+    if (planner && deepLink) {
+        track('calculator_view', { project: qProject || '(none)' });
+        planner.querySelectorAll('.reveal').forEach(function (r) { r.classList.add('visible', 'in'); });
+        // Lazy images above the planner grow as they load, so keep it pinned until the page settles
+        // or the visitor scrolls on their own.
+        var pinned = true, stop = function () { pinned = false; };
+        ['wheel', 'touchstart', 'keydown', 'mousedown'].forEach(function (ev) { window.addEventListener(ev, stop, { once: true, passive: true }); });
+        var pin = function () { if (pinned) window.scrollTo({ top: planner.getBoundingClientRect().top + window.pageYOffset, behavior: 'instant' }); };
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        pin();
+        window.addEventListener('load', pin);
+        document.addEventListener('load', function (e) { if (e.target.tagName === 'IMG') pin(); }, true);
+        [250, 700, 1500, 2500, 3500].forEach(function (ms) { setTimeout(pin, ms); });
+        setTimeout(stop, 10000);
     }
 })();
