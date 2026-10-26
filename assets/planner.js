@@ -1,9 +1,12 @@
 // Project planner: ballpark cost estimator + timeline visualizer. Renders into #estimator and #timeline.
 (function () {
+    // Remodel rates per sq ft: Standard $70-150, Mid-Range $150-250, Premium $500-800 (shared by every remodel type)
+    var REMODEL = [[70, 150], [150, 250], [500, 800]];
+
     // [low, high] dollars per unit for Standard / Mid-Range / Premium finishes - Kitsap County ballparks
     var COST = {
-        bath:     { label: 'Bathroom Remodel', unit: 'sq ft of bathroom', size: 50, min: 20, max: 200, tiers: [[300, 400], [425, 575], [650, 850]] },
-        kitchen:  { label: 'Kitchen Remodel', unit: 'sq ft of kitchen', size: 150, min: 60, max: 500, tiers: [[250, 350], [350, 500], [500, 800]] },
+        bath:     { label: 'Bathroom Remodel', unit: 'sq ft of bathroom', size: 50, min: 20, max: 200, tiers: REMODEL },
+        kitchen:  { label: 'Kitchen Remodel', unit: 'sq ft of kitchen', size: 150, min: 60, max: 500, tiers: REMODEL },
         addition: { label: 'Home Addition / ADU', unit: 'sq ft of new space', size: 400, min: 100, max: 1500, tiers: [[250, 325], [325, 425], [425, 600]] },
         deck:     { label: 'Deck', unit: 'sq ft of deck', size: 300, min: 50, max: 1500, tiers: [[45, 60], [60, 85], [85, 120]] },
         fence:    { label: 'Fence', unit: 'linear ft of fence', size: 150, min: 20, max: 1500, tiers: [[35, 50], [50, 70], [70, 100]] },
