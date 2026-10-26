@@ -91,5 +91,12 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/services/handyman.html",
+      "destination": "/",
+      "permanent": true
+    }
   ]
 }
