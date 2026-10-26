@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /portfolio
 
 Sitemap: https://bellnhammer.com/sitemap.xml

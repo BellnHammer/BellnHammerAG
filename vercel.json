@@ -1,28 +1,94 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/bellnhammer.html" },
-    { "source": "/services/:path*", "destination": "/services/:path*" },
-    { "source": "/demo-and-hauling", "destination": "/demo-and-hauling.html" },
-    { "source": "/careers", "destination": "/careers.html" },
-    { "source": "/terms", "destination": "/terms.html" },
-    { "source": "/privacy", "destination": "/privacy.html" },
-    { "source": "/portfolio", "destination": "/portfolio.html" },
-    { "source": "/blog", "destination": "/blog.html" },
-    { "source": "/thank-you", "destination": "/thank-you.html" },
-    { "source": "/bathroom-remodel", "destination": "/bathroom-remodel.html" },
-    { "source": "/rentals", "destination": "/rentals.html" },
-    { "source": "/service-areas/bremerton", "destination": "/service-areas/bremerton.html" },
-    { "source": "/service-areas/silverdale", "destination": "/service-areas/silverdale.html" },
-    { "source": "/service-areas/poulsbo", "destination": "/service-areas/poulsbo.html" },
-    { "source": "/service-areas/port-orchard", "destination": "/service-areas/port-orchard.html" },
-    { "source": "/service-areas/bainbridge-island", "destination": "/service-areas/bainbridge-island.html" }
+    {
+      "source": "/",
+      "destination": "/bellnhammer.html"
+    },
+    {
+      "source": "/services/:path*",
+      "destination": "/services/:path*"
+    },
+    {
+      "source": "/demo-and-hauling",
+      "destination": "/demo-and-hauling.html"
+    },
+    {
+      "source": "/reviews",
+      "destination": "/reviews.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/about.html"
+    },
+    {
+      "source": "/commercial",
+      "destination": "/commercial.html"
+    },
+    {
+      "source": "/careers",
+      "destination": "/careers.html"
+    },
+    {
+      "source": "/terms",
+      "destination": "/terms.html"
+    },
+    {
+      "source": "/privacy",
+      "destination": "/privacy.html"
+    },
+    {
+      "source": "/portfolio",
+      "destination": "/portfolio.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/blog.html"
+    },
+    {
+      "source": "/thank-you",
+      "destination": "/thank-you.html"
+    },
+    {
+      "source": "/bathroom-remodel",
+      "destination": "/bathroom-remodel.html"
+    },
+    {
+      "source": "/rentals",
+      "destination": "/rentals.html"
+    },
+    {
+      "source": "/service-areas/bremerton",
+      "destination": "/service-areas/bremerton.html"
+    },
+    {
+      "source": "/service-areas/silverdale",
+      "destination": "/service-areas/silverdale.html"
+    },
+    {
+      "source": "/service-areas/poulsbo",
+      "destination": "/service-areas/poulsbo.html"
+    },
+    {
+      "source": "/service-areas/port-orchard",
+      "destination": "/service-areas/port-orchard.html"
+    },
+    {
+      "source": "/service-areas/bainbridge-island",
+      "destination": "/service-areas/bainbridge-island.html"
+    }
   ],
   "headers": [
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
       ]
     }
   ]
