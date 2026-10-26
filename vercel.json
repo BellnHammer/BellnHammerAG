@@ -94,6 +94,11 @@
   ],
   "redirects": [
     {
+      "source": "/bellnhammer.html",
+      "destination": "/",
+      "permanent": true
+    },
+    {
       "source": "/services/handyman.html",
       "destination": "/",
       "permanent": true

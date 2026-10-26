@@ -6,7 +6,7 @@
         // Floating CTA - skipped on pages that already have their own sticky bar
         if (!document.querySelector('.sticky-cta') && !document.body.hasAttribute('data-no-fab')) {
             var target = document.querySelector('#contact, #quote, #reserve, #rfp');
-            var href = target ? '#' + target.id : root + 'bellnhammer.html#contact';
+            var href = target ? '#' + target.id : root + '#contact';
             var fab = document.createElement('div');
             fab.className = 'bh-fab';
             fab.innerHTML = '<a class="bh-fab-call" href="tel:3607100409" aria-label="Call Bell &amp; Hammer">&#9742;</a>' +
