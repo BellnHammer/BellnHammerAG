@@ -312,6 +312,25 @@ write('sitemap.xml', base + '\n' + blogUrls.map(u => `  <url><loc>${SITE}${u.loc
 
 console.log(`Blog built: ${posts.length} posts, ${cats.length} categories, ${cats.reduce((n, c) => n + c.subs.length, 0)} subcategories.`);
 
+// ── Assemble the deployable site in public/ (Vercel serves that folder once a build step exists) ──
+const SKIP = new Set(['.git', '.vercel', 'node_modules', 'public', 'scripts', 'content', 'api', '.gitignore', '.vercelignore',
+  'package.json', 'package-lock.json', 'vercel.json', 'README.md']);
+// Never publish anything git ignores (private folders that only exist on the owner's computer),
+// except the files this script just generated, which are gitignored on purpose.
+const GENERATED = new Set(['blog.html', 'blog', 'llms.txt', 'llms-full.txt', 'sitemap.xml']);
+for (const line of read('.gitignore').split(/\r?\n/)) {
+  const name = line.trim().replace(/^\/+|\/+$/g, '');
+  if (name && !name.startsWith('#') && !/[*/]/.test(name) && !GENERATED.has(name)) SKIP.add(name);
+}
+const OUT = path.join(ROOT, 'public');
+fs.rmSync(OUT, { recursive: true, force: true });
+fs.mkdirSync(OUT);
+for (const name of fs.readdirSync(ROOT)) {
+  if (SKIP.has(name)) continue;
+  fs.cpSync(path.join(ROOT, name), path.join(OUT, name), { recursive: true });
+}
+console.log('Site assembled in public/:', fs.readdirSync(OUT).length, 'top-level entries');
+
 // ── Tell Bing/IndexNow (feeds Copilot and ChatGPT search) about the blog on production deploys ──
 if (process.env.VERCEL_ENV === 'production') {
   try {
