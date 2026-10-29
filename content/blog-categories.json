@@ -1,0 +1,14 @@
+{
+  "categories": [
+    { "name": "Costs & Pricing", "description": "Real Kitsap County price ranges for remodels, additions and exterior projects — and what actually drives the number." },
+    { "name": "Permits & Planning", "description": "Permits, timelines and the big decisions to make before a project starts." },
+    { "name": "Materials & Comparisons", "description": "Side-by-side comparisons of materials that hold up to Pacific Northwest weather." }
+  ],
+  "subcategories": [
+    { "name": "Kitchen & Bath", "parent": "Costs & Pricing", "description": "Kitchen and bathroom remodel pricing." },
+    { "name": "ADUs & Additions", "parent": "Permits & Planning", "description": "Accessory dwelling units and home additions in Kitsap County." },
+    { "name": "Remodel or Move", "parent": "Permits & Planning", "description": "Deciding whether to renovate or relocate." },
+    { "name": "Roofing", "parent": "Materials & Comparisons", "description": "Roofing materials for PNW homes." },
+    { "name": "Fencing", "parent": "Materials & Comparisons", "description": "Fence materials for wet Kitsap winters." }
+  ]
+}

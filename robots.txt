@@ -1,4 +1,22 @@
+# Search engines and AI answer engines are welcome to read and cite this site.
 User-agent: *
+User-agent: Googlebot
+User-agent: Bingbot
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot
+User-agent: Applebot-Extended
+User-agent: DuckAssistBot
 Allow: /
+Disallow: /owner/
+Disallow: /api/
 
-Sitemap: https://bellnhammer.com/sitemap.xml
+Sitemap: https://www.bellnhammer.com/sitemap.xml
+# AI-readable site summary: https://www.bellnhammer.com/llms.txt

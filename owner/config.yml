@@ -1,0 +1,153 @@
+# Blog editor (Decap CMS) — opened at https://www.bellnhammer.com/owner/
+# Saving a post commits it to GitHub; Vercel then runs scripts/build-blog.mjs and publishes it (about 1 minute).
+backend:
+  name: github
+  repo: BellnHammer/BellnHammerAG
+  branch: main
+  base_url: https://www.bellnhammer.com
+  auth_endpoint: api/auth
+  auth_scope: public_repo
+  commit_messages:
+    create: 'Blog: add "{{slug}}"'
+    update: 'Blog: update "{{slug}}"'
+    delete: 'Blog: delete "{{slug}}"'
+    uploadMedia: 'Blog: upload "{{path}}"'
+    deleteMedia: 'Blog: delete "{{path}}"'
+
+site_url: https://www.bellnhammer.com
+display_url: https://www.bellnhammer.com/blog.html
+logo_url: /images/logo.png
+locale: en
+
+media_folder: images/blog
+public_folder: /images/blog
+
+slug:
+  encoding: ascii
+  clean_accents: true
+
+collections:
+  - name: blog
+    label: Blog Posts
+    label_singular: Blog Post
+    description: >-
+      Write the Quick Answer first: 2-3 plain sentences that directly answer the title.
+      Google snippets and AI assistants (ChatGPT, Perplexity, Google AI) quote it word for word.
+    folder: content/blog
+    create: true
+    slug: "{{slug}}"
+    extension: md
+    format: frontmatter
+    summary: "{{title}} — {{category}}"
+    sortable_fields: [date, title, category]
+    view_groups:
+      - { label: Category, field: category }
+    preview_path: "blog/{{slug}}.html"
+    fields:
+      - { name: title, label: Title, widget: string,
+          hint: "Phrase it the way people search or ask, e.g. 'How Much Does a Deck Cost in Kitsap County?'" }
+      - { name: description, label: Search Description, widget: text,
+          hint: "1-2 sentences, about 150 characters. Shown under the title in Google results." }
+      - { name: quick_answer, label: Quick Answer, widget: text, required: false,
+          hint: "2-3 sentences that answer the title directly, with real numbers if you have them. Shown in a box at the top of the post." }
+      - { name: date, label: Publish Date, widget: datetime, format: YYYY-MM-DD, date_format: MMMM D, YYYY, time_format: false }
+      - { name: updated, label: Last Updated, widget: datetime, format: YYYY-MM-DD, date_format: MMMM D, YYYY, time_format: false, required: false,
+          hint: "Set this when you refresh an older post. Fresh dates help rankings." }
+      - { name: author, label: Author, widget: select, default: "Bell & Hammer Team",
+          options: ["Bell & Hammer Team", "Bryce Bell", "Trayton Shelton"] }
+      - name: category
+        label: Category
+        widget: relation
+        collection: categories
+        file: blog_categories
+        value_field: "categories.*.name"
+        search_fields: ["categories.*.name"]
+        display_fields: ["categories.*.name"]
+      - name: subcategory
+        label: Subcategory
+        widget: relation
+        collection: categories
+        file: blog_categories
+        value_field: "subcategories.*.name"
+        search_fields: ["subcategories.*.name", "subcategories.*.parent"]
+        display_fields: ["subcategories.*.name", "subcategories.*.parent"]
+        required: false
+        hint: "Optional. Pick one that belongs to the category above (the category is shown next to each option)."
+      - { name: label, label: Tag Line, widget: string, required: false, hint: "Optional short label shown under the title, e.g. 'Pricing Guide'." }
+      - { name: cover, label: Cover Photo, widget: image, required: false, hint: "Real job-site photos only." }
+      - { name: cover_alt, label: Cover Photo Description, widget: string, required: false,
+          hint: "Describe the photo for Google Images and screen readers, e.g. 'Cedar deck with black railing in Silverdale'." }
+      - name: takeaways
+        label: Key Takeaways
+        label_singular: Takeaway
+        widget: list
+        required: false
+        hint: "3-5 short bullet points. Optional but recommended."
+        field: { name: point, label: Point, widget: string }
+      - { name: body, label: Article, widget: markdown,
+          hint: "Use Heading 2 for each main section (these build the table of contents). Mention Kitsap County towns and real numbers." }
+      - name: faq
+        label: FAQ
+        label_singular: Question
+        widget: list
+        required: false
+        hint: "Questions customers actually ask. Each becomes a FAQ that Google and AI tools can show directly."
+        fields:
+          - { name: question, label: Question, widget: string }
+          - { name: answer, label: Answer, widget: text }
+      - name: service
+        label: Related Service Page
+        widget: select
+        required: false
+        hint: "Adds a link at the bottom of the post to the matching service page."
+        options:
+          - { label: "Kitchen & Bath Remodels", value: services/kitchen-bath-remodels.html }
+          - { label: "Home Additions & ADUs", value: services/home-additions-adus.html }
+          - { label: "Roofing & Siding", value: services/roofing-siding.html }
+          - { label: "Windows & Doors", value: services/windows-doors.html }
+          - { label: "Decks & Fences", value: services/decks-fences.html }
+          - { label: "Repairs & Restoration", value: services/repairs-restoration.html }
+          - { label: "Flooring & Tile", value: services/flooring-tile.html }
+          - { label: "Drywall, Texture & Paint", value: services/drywall-paint.html }
+          - { label: "Landscape & Outdoor", value: services/landscape-outdoor.html }
+          - { label: "Demo & Hauling", value: demo-and-hauling.html }
+          - { label: "Commercial", value: commercial.html }
+      - { name: cta_heading, label: Closing Headline, widget: string, required: false, hint: "Optional. Default: Let's Talk About Your Project" }
+      - { name: cta_text, label: Closing Text, widget: text, required: false }
+      - { name: seo_title, label: Browser Tab Title, widget: string, required: false,
+          hint: "Optional. Only if it should differ from the Title (e.g. add '(2026 Pricing)')." }
+      - { name: draft, label: Draft (hide from site), widget: boolean, default: false }
+
+  - name: categories
+    label: Categories
+    editor: { preview: false }
+    files:
+      - name: blog_categories
+        label: Categories & Subcategories
+        file: content/blog-categories.json
+        description: >-
+          Add a category, then add subcategories under it. They appear in the blog's category bar automatically.
+          Renaming one? Update the posts that use it too.
+        fields:
+          - name: categories
+            label: Categories
+            label_singular: Category
+            widget: list
+            fields:
+              - { name: name, label: Name, widget: string }
+              - { name: description, label: Description, widget: text, hint: "One sentence shown on the category page and in Google." }
+          - name: subcategories
+            label: Subcategories
+            label_singular: Subcategory
+            widget: list
+            fields:
+              - { name: name, label: Name, widget: string }
+              - name: parent
+                label: Belongs To Category
+                widget: relation
+                collection: categories
+                file: blog_categories
+                value_field: "categories.*.name"
+                search_fields: ["categories.*.name"]
+                display_fields: ["categories.*.name"]
+              - { name: description, label: Description, widget: text, required: false }

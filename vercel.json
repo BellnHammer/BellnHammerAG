@@ -1,4 +1,5 @@
 {
+  "buildCommand": "npm run build",
   "rewrites": [
     {
       "source": "/",
@@ -94,6 +95,28 @@
           "value": "SAMEORIGIN"
         }
       ]
+    },
+    {
+      "source": "/owner/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        },
+        {
+          "key": "Cache-Control",
+          "value": "no-store"
+        }
+      ]
+    },
+    {
+      "source": "/llms(.*).txt",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/plain; charset=utf-8"
+        }
+      ]
     }
   ],
   "redirects": [
@@ -116,6 +139,11 @@
       "source": "/orca",
       "destination": "/calculator?utm_source=google&utm_medium=cpc&utm_campaign=operation-orca",
       "permanent": false
+    },
+    {
+      "source": "/owner",
+      "destination": "/owner/",
+      "permanent": true
     }
   ]
 }
